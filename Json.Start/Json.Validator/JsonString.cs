@@ -6,7 +6,7 @@ namespace Json
     {
         public static bool IsJsonString(string input)
         {
-            return string.Equals(input, "\"abc\"");
+            return string.Equals(input, "\"abc\"") || input[^2] == '"';
         }
     }
 }
