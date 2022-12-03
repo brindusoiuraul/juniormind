@@ -7,10 +7,14 @@ namespace Json
         public static bool IsJsonString(string input)
         {
             return
-                !string.IsNullOrEmpty(input) &&
-                IsWrappedInQuotes(input) &&
+                HasContent(input) &&
                 !ContainsControlCharacters(input) &&
                 !ContainsUnrecognizedEscapeCharacters(input);
+        }
+
+        private static bool HasContent(string input)
+        {
+            return !string.IsNullOrEmpty(input) && IsWrappedInQuotes(input);
         }
 
         private static bool IsWrappedInQuotes(string input)
