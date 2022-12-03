@@ -6,7 +6,7 @@ namespace Json
     {
         public static bool IsJsonString(string input)
         {
-            return IsWrappedInQuotes(input);
+            return input != null && IsWrappedInQuotes(input);
         }
 
         private static bool IsWrappedInQuotes(string input)
