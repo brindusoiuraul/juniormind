@@ -9,7 +9,8 @@ namespace Json
             return
                 HasContent(input) &&
                 !ContainsControlCharacters(input) &&
-                !ContainsUnrecognizedEscapeCharacters(input);
+                !ContainsUnrecognizedEscapeCharacters(input) &&
+                !EndsWithReversedSolidus(input);
         }
 
         private static bool HasContent(string input)
@@ -48,6 +49,12 @@ namespace Json
             }
 
             return false;
+        }
+
+        private static bool EndsWithReversedSolidus(string input)
+        {
+            const int lastStringIndex = 2;
+            return input[^lastStringIndex] == '\\';
         }
     }
 }
