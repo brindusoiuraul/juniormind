@@ -8,14 +8,20 @@ namespace Json
         {
             return
                 HasContent(input) &&
-                !ContainsControlCharacters(input) &&
-                !ContainsUnrecognizedEscapeCharacters(input) &&
-                !EndsWithReversedSolidus(input);
+                IsStringContentValid(input);
         }
 
         private static bool HasContent(string input)
         {
             return !string.IsNullOrEmpty(input) && IsWrappedInQuotes(input);
+        }
+
+        private static bool IsStringContentValid(string input)
+        {
+            return
+                !ContainsControlCharacters(input) &&
+                !ContainsUnrecognizedEscapeCharacters(input) &&
+                !EndsWithReversedSolidus(input);
         }
 
         private static bool IsWrappedInQuotes(string input)
