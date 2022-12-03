@@ -9,7 +9,8 @@ namespace Json
             return
                 !string.IsNullOrEmpty(input) &&
                 IsWrappedInQuotes(input) &&
-                !ContainsControlCharacters(input);
+                !ContainsControlCharacters(input) &&
+                !ContainsUnrecognizedEscapeCharacters(input);
         }
 
         private static bool IsWrappedInQuotes(string input)
@@ -22,6 +23,21 @@ namespace Json
             foreach (char character in input)
             {
                 if (char.IsControl(character))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static bool ContainsUnrecognizedEscapeCharacters(string input)
+        {
+            const string escapeCharsLetters = "tbnrfs'\\\"u/ ";
+
+            for (int index = 0; index < input.Length - 1; index++)
+            {
+                if (input[index] == '\\' && !escapeCharsLetters.Contains(input[index + 1]))
                 {
                     return true;
                 }
