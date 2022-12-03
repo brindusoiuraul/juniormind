@@ -113,7 +113,7 @@ namespace Json.Facts
             Assert.True(IsJsonString(Quoted(@"\\\u1212\n\t\r\\\b")));
         }
 
-        [Fact]
+        [Fact(Skip = "Remove this Skip as you implement")]
         public void DoesNotContainUnrecognizedExcapceCharacters()
         {
             Assert.False(IsJsonString(Quoted(@"a\x")));
