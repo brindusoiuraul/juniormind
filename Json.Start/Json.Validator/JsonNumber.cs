@@ -6,7 +6,10 @@ namespace Json
     {
         public static bool IsJsonNumber(string input)
         {
-            return !string.IsNullOrEmpty(input) && !ContainsLetters(input);
+            return
+                !string.IsNullOrEmpty(input) &&
+                !StartsWithZero(input) &&
+                !ContainsLetters(input);
         }
 
         public static bool ContainsLetters(string input)
@@ -20,6 +23,11 @@ namespace Json
             }
 
             return false;
+        }
+
+        public static bool StartsWithZero(string input)
+        {
+            return !(input.Length <= 1 || input[0] != '0');
         }
     }
 }
