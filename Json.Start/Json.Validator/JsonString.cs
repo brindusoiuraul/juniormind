@@ -70,14 +70,7 @@ namespace Json
             {
                 if (input[index] == 'u' && input[index - 1] == '\\')
                 {
-                    string hexNumber = @"\u";
-
-                    for (int hexCharIndex = index + 1; hexCharIndex < input.Length && char.IsLetterOrDigit(input[hexCharIndex]); hexCharIndex++)
-                    {
-                        hexNumber += input[hexCharIndex];
-                    }
-
-                    hexNumber += "\"";
+                    string hexNumber = GetHexNumber(index + 1, input);
 
                     if (hexNumber.Length < 7 && input.EndsWith(hexNumber))
                     {
@@ -87,6 +80,20 @@ namespace Json
             }
 
             return false;
+        }
+
+        private static string GetHexNumber(int startIndex, string input)
+        {
+            string hexNumber = @"\u";
+
+            for (int hexCharIndex = startIndex; hexCharIndex < input.Length && char.IsLetterOrDigit(input[hexCharIndex]); hexCharIndex++)
+            {
+                hexNumber += input[hexCharIndex];
+            }
+
+            hexNumber += "\"";
+
+            return hexNumber;
         }
     }
 }
