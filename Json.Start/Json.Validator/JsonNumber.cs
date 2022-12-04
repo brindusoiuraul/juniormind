@@ -20,9 +20,9 @@ namespace Json
 
         public static bool ContainsLetters(string input)
         {
-            foreach (char character in input)
+            foreach (char character in input.ToLower())
             {
-                if (char.IsLetter(character))
+                if (char.IsLetter(character) && character != 'e')
                 {
                     return true;
                 }
