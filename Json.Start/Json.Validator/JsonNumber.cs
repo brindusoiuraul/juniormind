@@ -6,7 +6,7 @@ namespace Json
     {
         public static bool IsJsonNumber(string input)
         {
-            return input == "0" && !ContainsLetters(input);
+            return !ContainsLetters(input);
         }
 
         public static bool ContainsLetters(string input)
