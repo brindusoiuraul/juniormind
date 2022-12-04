@@ -9,7 +9,7 @@ namespace Json
             return !string.IsNullOrEmpty(input) && IsNumberContentCorrect(input);
         }
 
-        public static bool IsNumberContentCorrect(string input)
+        private static bool IsNumberContentCorrect(string input)
         {
             return
                 !StartsWithZero(input) &&
@@ -18,7 +18,7 @@ namespace Json
                 !EndsWithADot(input);
         }
 
-        public static bool ContainsLetters(string input)
+        private static bool ContainsLetters(string input)
         {
             foreach (char character in input.ToLower())
             {
@@ -31,17 +31,17 @@ namespace Json
             return false;
         }
 
-        public static bool StartsWithZero(string input)
+        private static bool StartsWithZero(string input)
         {
             return input.Length > 1 && input[0] == '0' && input[1] != '.';
         }
 
-        public static bool EndsWithADot(string input)
+        private static bool EndsWithADot(string input)
         {
             return input[^1] == '.';
         }
 
-        public static bool ContainsMultipleFractionParts(string input)
+        private static bool ContainsMultipleFractionParts(string input)
         {
             int numberOfDots = 0;
 
