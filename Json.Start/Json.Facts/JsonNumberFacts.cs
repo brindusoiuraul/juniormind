@@ -17,7 +17,7 @@ namespace Json.Facts
             Assert.False(IsJsonNumber("a"));
         }
 
-        [Fact(Skip = "Remove this Skip as you implement")]
+        [Fact]
         public void CanHaveASingleDigit()
         {
             Assert.True(IsJsonNumber("7"));
