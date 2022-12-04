@@ -21,7 +21,8 @@ namespace Json
             return
                 !ContainsControlCharacters(input) &&
                 !ContainsUnrecognizedEscapeCharacters(input) &&
-                !EndsWithReversedSolidus(input);
+                !EndsWithReversedSolidus(input) &&
+                !EndsWithUnfinishedHexNumber(input);
         }
 
         private static bool IsWrappedInQuotes(string input)
@@ -61,6 +62,31 @@ namespace Json
         {
             const int lastStringIndex = 2;
             return input[^lastStringIndex] == '\\';
+        }
+
+        private static bool EndsWithUnfinishedHexNumber(string input)
+        {
+            for (int index = 0; index < input.Length; index++)
+            {
+                if (input[index] == 'u' && input[index - 1] == '\\')
+                {
+                    string hexNumber = @"\u";
+
+                    for (int hexCharIndex = index + 1; hexCharIndex < input.Length && char.IsLetterOrDigit(input[hexCharIndex]); hexCharIndex++)
+                    {
+                        hexNumber += input[hexCharIndex];
+                    }
+
+                    hexNumber += "\"";
+
+                    if (hexNumber.Length < 7 && input.EndsWith(hexNumber))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }
