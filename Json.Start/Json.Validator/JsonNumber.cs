@@ -9,7 +9,8 @@ namespace Json
             return
                 !string.IsNullOrEmpty(input) &&
                 !StartsWithZero(input) &&
-                !ContainsLetters(input);
+                !ContainsLetters(input) &&
+                !EndsWithADot(input);
         }
 
         public static bool ContainsLetters(string input)
@@ -28,6 +29,11 @@ namespace Json
         public static bool StartsWithZero(string input)
         {
             return input.Length > 1 && input[0] == '0' && input[1] != '.';
+        }
+
+        public static bool EndsWithADot(string input)
+        {
+            return input[^1] == '.';
         }
     }
 }
