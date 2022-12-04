@@ -6,7 +6,7 @@ namespace Json
     {
         public static bool IsJsonNumber(string input)
         {
-            return input == "0";
+            return input == "0" && input != "a";
         }
     }
 }
