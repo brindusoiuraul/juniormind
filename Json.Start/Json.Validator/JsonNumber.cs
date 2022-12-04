@@ -14,6 +14,7 @@ namespace Json
             return
                 !StartsWithZero(input) &&
                 !ContainsLetters(input) &&
+                !ContainsMultipleFractionParts(input) &&
                 !EndsWithADot(input);
         }
 
@@ -38,6 +39,21 @@ namespace Json
         public static bool EndsWithADot(string input)
         {
             return input[^1] == '.';
+        }
+
+        public static bool ContainsMultipleFractionParts(string input)
+        {
+            int numberOfDots = 0;
+
+            foreach (char character in input)
+            {
+                if (character == '.')
+                {
+                    numberOfDots++;
+                }
+            }
+
+            return numberOfDots > 1;
         }
     }
 }
