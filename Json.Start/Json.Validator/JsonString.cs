@@ -32,9 +32,11 @@ namespace Json
 
         private static bool ContainsControlCharacters(string input)
         {
+            const int controlCharsMaxCode = 32;
+
             foreach (char character in input)
             {
-                if (char.IsControl(character))
+                if (Convert.ToInt32(character) < controlCharsMaxCode)
                 {
                     return true;
                 }
@@ -70,7 +72,7 @@ namespace Json
             {
                 if (input[index] == 'u' && input[index - 1] == '\\')
                 {
-                    string hexNumber = GetHexNumber(index + 1, input);
+                    string hexNumber = GetHexNumber(index + 1, input.ToLower());
 
                     if (hexNumber.Length < 7 && input.EndsWith(hexNumber))
                     {
@@ -86,7 +88,7 @@ namespace Json
         {
             string hexNumber = @"\u";
 
-            for (int hexCharIndex = startIndex; hexCharIndex < input.Length && char.IsLetterOrDigit(input[hexCharIndex]); hexCharIndex++)
+            for (int hexCharIndex = startIndex; hexCharIndex < input.Length && IsHexChar(input[hexCharIndex]); hexCharIndex++)
             {
                 hexNumber += input[hexCharIndex];
             }
@@ -94,6 +96,11 @@ namespace Json
             hexNumber += "\"";
 
             return hexNumber;
+        }
+
+        private static bool IsHexChar(char c)
+        {
+            return (c >= 'a' && c <= 'f') || (c >= '0' && c <= '9');
         }
     }
 }
