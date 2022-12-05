@@ -20,7 +20,7 @@ namespace Json
         {
             return
                 !ContainsControlCharacters(input) &&
-                !ContainsUnrecognizedEscapeCharacters(input) &&
+                !ContainsIllegalCharacters(input) &&
                 !EndsWithReversedSolidus(input) &&
                 !EndsWithUnfinishedHexNumber(input);
         }
@@ -43,13 +43,13 @@ namespace Json
             return false;
         }
 
-        private static bool ContainsUnrecognizedEscapeCharacters(string input)
+        private static bool ContainsIllegalCharacters(string input)
         {
-            const string escapeCharsLetters = "tbnrfs'\\\"u/ ";
+            const string legalChars = "abfnrtv'\"?\\/u ";
 
             for (int index = 0; index < input.Length - 1; index++)
             {
-                if (input[index] == '\\' && !escapeCharsLetters.Contains(input[index + 1]))
+                if (input[index] == '\\' && !legalChars.Contains(input[index + 1]))
                 {
                     return true;
                 }
