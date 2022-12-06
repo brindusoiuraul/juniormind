@@ -11,11 +11,22 @@ namespace Json
 
         private static bool IsNumberContentCorrect(string input)
         {
-            return
-                !StartsWithZero(input) &&
-                !ContainsLetters(input) &&
-                !ContainsMultipleChars(input) &&
-                !EndsWithADot(input);
+            return StartsAndEndsCorrectly(input) && !ContainsLetters(input) && !ContainsMultipleChars(input);
+        }
+
+        private static bool StartsAndEndsCorrectly(string input)
+        {
+            return !StartsWithZero(input) && !EndsWithADot(input);
+        }
+
+        private static bool StartsWithZero(string input)
+        {
+            return input.Length > 1 && input[0] == '0' && input[1] != '.';
+        }
+
+        private static bool EndsWithADot(string input)
+        {
+            return input[^1] == '.';
         }
 
         private static bool ContainsLetters(string input)
@@ -29,16 +40,6 @@ namespace Json
             }
 
             return false;
-        }
-
-        private static bool StartsWithZero(string input)
-        {
-            return input.Length > 1 && input[0] == '0' && input[1] != '.';
-        }
-
-        private static bool EndsWithADot(string input)
-        {
-            return input[^1] == '.';
         }
 
         private static bool ContainsMultipleChars(string input)
