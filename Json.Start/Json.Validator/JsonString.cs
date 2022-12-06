@@ -6,52 +6,34 @@ namespace Json
     {
         public static bool IsJsonString(string input)
         {
-            return
-                HasContent(input) &&
-                IsStringContentValid(input);
+            return HasContent(input) && IsStringContentValid(input);
         }
 
         private static bool HasContent(string input)
         {
-            return !string.IsNullOrEmpty(input) && IsWrappedInQuotes(input);
+            return !string.IsNullOrEmpty(input) && IsWrappedPropperly(input);
         }
 
         private static bool IsStringContentValid(string input)
         {
+            return !ContainsIllegalCharacters(input) && !ContainsInvalidHexNumber(input);
+        }
+
+        private static bool IsWrappedPropperly(string input)
+        {
+            const int lastStringIndex = 2;
+
             return
-                !ContainsControlCharacters(input) &&
-                !ContainsIllegalCharacters(input) &&
-                !EndsWithReversedSolidus(input) &&
-                !EndsWithUnfinishedHexNumber(input);
-        }
-
-        private static bool IsWrappedInQuotes(string input)
-        {
-            return input[^1] == '"' && input[0] == '"';
-        }
-
-        private static bool ContainsControlCharacters(string input)
-        {
-            const int controlCharsMaxCode = 32;
-
-            foreach (char character in input)
-            {
-                if (Convert.ToInt32(character) < controlCharsMaxCode)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+                input[^1] == '"' &&
+                input[0] == '"' &&
+                input[^lastStringIndex] != '\\';
         }
 
         private static bool ContainsIllegalCharacters(string input)
         {
-            const string legalChars = "abfnrtv'\"?\\/u ";
-
             for (int index = 0; index < input.Length - 1; index++)
             {
-                if (input[index] == '\\' && !legalChars.Contains(input[index + 1]))
+                if (IsEscapeChar(index, input) && !IsValidEscapeChar(input[index + 1]) || IsControlChar(input[index + 1]))
                 {
                     return true;
                 }
@@ -60,40 +42,61 @@ namespace Json
             return false;
         }
 
-        private static bool EndsWithReversedSolidus(string input)
+        private static bool IsEscapeChar(int currentIndex, string input)
         {
-            const int lastStringIndex = 2;
-            return input[^lastStringIndex] == '\\';
+            return input[currentIndex] == '\\' && input[currentIndex + 1] != ' ';
         }
 
-        private static bool EndsWithUnfinishedHexNumber(string input)
+        private static bool IsValidEscapeChar(char escapeChar)
+        {
+            return "bfnrtu\"\\/".Contains(escapeChar);
+        }
+
+        private static bool IsControlChar(char character)
+        {
+            const int controlCharsMaxCode = 32;
+            return character < controlCharsMaxCode;
+        }
+
+        private static bool ContainsInvalidHexNumber(string input)
         {
             for (int index = 0; index < input.Length; index++)
             {
-                if (input[index] == 'u' && input[index - 1] == '\\')
+                if (IsHexNumber(index, input) && !IsValidHex(GetHexNumber(index + 1, input.ToLower())))
                 {
-                    string hexNumber = GetHexNumber(index + 1, input.ToLower());
-
-                    if (hexNumber.Length < 7 && input.EndsWith(hexNumber))
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
 
             return false;
         }
 
+        private static bool IsHexNumber(int currentIndex, string input)
+        {
+            return input[currentIndex] == 'u' && input[currentIndex - 1] == '\\';
+        }
+
+        private static bool IsValidHex(string hexNumber)
+        {
+            foreach (char c in hexNumber)
+            {
+                if (!IsHexChar(c))
+                {
+                    return false;
+                }
+            }
+
+            return hexNumber.Length == 4;
+        }
+
         private static string GetHexNumber(int startIndex, string input)
         {
-            string hexNumber = @"\u";
+            string hexNumber = "";
 
-            for (int hexCharIndex = startIndex; hexCharIndex < input.Length && IsHexChar(input[hexCharIndex]); hexCharIndex++)
+            for (int hexCharIndex = startIndex; hexCharIndex < input.Length && char.IsLetterOrDigit(input[hexCharIndex]); hexCharIndex++)
             {
                 hexNumber += input[hexCharIndex];
             }
-
-            hexNumber += "\"";
 
             return hexNumber;
         }
