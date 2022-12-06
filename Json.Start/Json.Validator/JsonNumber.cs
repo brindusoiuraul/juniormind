@@ -11,7 +11,17 @@ namespace Json
 
         private static bool IsNumberContentCorrect(string input)
         {
-            return StartsAndEndsCorrectly(input) && !ContainsLetters(input) && !ContainsMultipleChars(input);
+            if (HasExponent(input.ToLower()))
+            {
+                return StartsAndEndsCorrectly(input) && AreCharsValid(input) && IsExponentCorrect(GetExponent(input.ToLower()));
+            }
+
+            return StartsAndEndsCorrectly(input) && AreCharsValid(input);
+        }
+
+        private static bool AreCharsValid(string input)
+        {
+            return !ContainsLetters(input) && !ContainsMultipleChars(input);
         }
 
         private static bool StartsAndEndsCorrectly(string input)
@@ -60,6 +70,39 @@ namespace Json
             }
 
             return numberOfEncounters;
+        }
+
+        private static bool HasExponent(string input)
+        {
+            return input.Contains("e");
+        }
+
+        private static string GetExponent(string input)
+        {
+            int exponentStartIndex = input.IndexOf("e") + 1;
+            int exponentLength = input.Length - exponentStartIndex;
+
+            return input.Substring(exponentStartIndex, exponentLength);
+        }
+
+        private static bool IsExponentCorrect(string exponent)
+        {
+            return !exponent.Contains(".") && IsExponentComplete(exponent);
+        }
+
+        private static bool IsExponentComplete(string exponent)
+        {
+            if (exponent.Length == 1 && char.IsDigit(exponent[0]))
+            {
+                return true;
+            }
+
+            if (exponent.Length > 1 && char.IsDigit(exponent[1]))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
