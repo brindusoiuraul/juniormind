@@ -14,7 +14,7 @@ namespace Json
             return
                 !StartsWithZero(input) &&
                 !ContainsLetters(input) &&
-                !ContainsMultipleFractionParts(input) &&
+                !ContainsMultipleChars(input) &&
                 !EndsWithADot(input);
         }
 
@@ -41,19 +41,24 @@ namespace Json
             return input[^1] == '.';
         }
 
-        private static bool ContainsMultipleFractionParts(string input)
+        private static bool ContainsMultipleChars(string input)
         {
-            int numberOfDots = 0;
+            return NumberOfEncounters('.', input) > 1 || NumberOfEncounters('e', input) > 1;
+        }
 
-            foreach (char character in input)
+        private static int NumberOfEncounters(char characterToCount, string input)
+        {
+            int numberOfEncounters = 0;
+
+            foreach (char c in input.ToLower())
             {
-                if (character == '.')
+                if (c == characterToCount)
                 {
-                    numberOfDots++;
+                    numberOfEncounters++;
                 }
             }
 
-            return numberOfDots > 1;
+            return numberOfEncounters;
         }
     }
 }
