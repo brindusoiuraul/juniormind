@@ -11,29 +11,24 @@ namespace Json
 
         private static bool HasContent(string input)
         {
-            return !string.IsNullOrEmpty(input) && IsWrappedPropperly(input);
+            return !string.IsNullOrEmpty(input) && IsWrappedInQuotes(input);
         }
 
         private static bool IsStringContentValid(string input)
         {
-            return !ContainsIllegalCharacters(input) && !ContainsInvalidHexNumber(input);
+            return !ContainsIllegalCharacters(input) && !ContainsInvalidHexNumber(input) && !EndsWithReverseSolidus(input);
         }
 
-        private static bool IsWrappedPropperly(string input)
+        private static bool IsWrappedInQuotes(string input)
         {
-            const int lastStringIndex = 2;
-
-            return
-                input[^1] == '"' &&
-                input[0] == '"' &&
-                input[^lastStringIndex] != '\\';
+            return input[^1] == '"' && input[0] == '"';
         }
 
         private static bool ContainsIllegalCharacters(string input)
         {
             for (int index = 0; index < input.Length - 1; index++)
             {
-                if (IsEscapeChar(index, input) && !IsValidEscapeChar(input[index + 1]) || IsControlChar(input[index + 1]))
+                if (input[index] == '\\' && input[index - 1] != '\\' && !IsValidEscapeChar(input[index + 1]) || IsControlChar(input[index]))
                 {
                     return true;
                 }
@@ -42,9 +37,10 @@ namespace Json
             return false;
         }
 
-        private static bool IsEscapeChar(int currentIndex, string input)
+        private static bool EndsWithReverseSolidus(string input)
         {
-            return input[currentIndex] == '\\' && input[currentIndex + 1] != ' ';
+            const int lastStringIndex = 2;
+            return input[^lastStringIndex] == '\\' && input[^(lastStringIndex + 1)] != '\\';
         }
 
         private static bool IsValidEscapeChar(char escapeChar)
@@ -91,14 +87,9 @@ namespace Json
 
         private static string GetHexNumber(int startIndex, string input)
         {
-            string hexNumber = "";
+            int hexNumberLength = input.Length - startIndex - 4 >= 0 ? 4 : input.Length - startIndex;
 
-            for (int hexCharIndex = startIndex; hexCharIndex < input.Length && char.IsLetterOrDigit(input[hexCharIndex]); hexCharIndex++)
-            {
-                hexNumber += input[hexCharIndex];
-            }
-
-            return hexNumber;
+            return input.Substring(startIndex, hexNumberLength);
         }
 
         private static bool IsHexChar(char c)
