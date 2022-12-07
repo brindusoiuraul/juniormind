@@ -5,30 +5,38 @@ namespace Json
     public static class JsonString
     {
         public static bool IsJsonString(string input)
-        {
-            return HasContent(input) && IsStringContentValid(input);
-        }
+            => HasContent(input) && IsStringContentValid(input);
 
         private static bool HasContent(string input)
-        {
-            return !string.IsNullOrEmpty(input) && IsWrappedInQuotes(input);
-        }
+            => !string.IsNullOrEmpty(input) && IsWrappedInQuotes(input);
 
         private static bool IsStringContentValid(string input)
-        {
-            return !ContainsIllegalCharacters(input) && !ContainsInvalidHexNumber(input) && !EndsWithReverseSolidus(input);
-        }
+            => !ContainsInvalidHexNumber(input) && AreAllCharsValid(input) && !EndsWithReverseSolidus(input);
 
         private static bool IsWrappedInQuotes(string input)
+            => input[^1] == '"' && input[0] == '"';
+
+        private static bool EndsWithReverseSolidus(string input)
         {
-            return input[^1] == '"' && input[0] == '"';
+            const int lastStringIndex = 2;
+            return input[^lastStringIndex] == '\\' && input[^(lastStringIndex + 1)] != '\\';
         }
 
-        private static bool ContainsIllegalCharacters(string input)
+        private static bool AreAllCharsValid(string input)
+            => !ContainsControlChars(input) && !ContainsInvalidEscapeChars(input);
+
+        private static bool ContainsInvalidEscapeChars(string input)
         {
-            for (int index = 0; index < input.Length - 1; index++)
+            const int step = 2;
+            for (int index = 0; index < input.Length; index++)
             {
-                if (input[index] == '\\' && input[index - 1] != '\\' && !IsValidEscapeChar(input[index + 1]) || IsControlChar(input[index]))
+                if (input[index] == '\\' && IsValidEscapeChar(input[index + 1]))
+                {
+                #pragma warning disable S127 // "for" loop stop conditions should be invariant
+                    index += step;
+                #pragma warning restore S127 // "for" loop stop conditions should be invariant
+                }
+                else if (input[index] == '\\' && !IsValidEscapeChar(input[index + 1]))
                 {
                     return true;
                 }
@@ -37,16 +45,21 @@ namespace Json
             return false;
         }
 
-        private static bool EndsWithReverseSolidus(string input)
+        private static bool ContainsControlChars(string input)
         {
-            const int lastStringIndex = 2;
-            return input[^lastStringIndex] == '\\' && input[^(lastStringIndex + 1)] != '\\';
+            foreach (char c in input)
+            {
+                if (IsControlChar(c))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private static bool IsValidEscapeChar(char escapeChar)
-        {
-            return "bfnrtu\"\\/".Contains(escapeChar);
-        }
+            => "bfnrtu\"\\/".Contains(escapeChar);
 
         private static bool IsControlChar(char character)
         {
@@ -68,9 +81,7 @@ namespace Json
         }
 
         private static bool IsHexNumber(int currentIndex, string input)
-        {
-            return input[currentIndex] == 'u' && input[currentIndex - 1] == '\\';
-        }
+            => input[currentIndex] == 'u' && input[currentIndex - 1] == '\\';
 
         private static bool IsValidHex(string hexNumber)
         {
@@ -93,8 +104,6 @@ namespace Json
         }
 
         private static bool IsHexChar(char c)
-        {
-            return (c >= 'a' && c <= 'f') || (c >= '0' && c <= '9');
-        }
+            => (c >= 'a' && c <= 'f') || (c >= '0' && c <= '9');
     }
 }
