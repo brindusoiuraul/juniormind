@@ -30,6 +30,7 @@ namespace Json
             int step = 1;
             for (int index = 0; index < input.Length; index += step)
             {
+                step = 1;
                 if (input[index] == '\\')
                 {
                     if (!IsValidEscapeChar(input[index + 1]))
