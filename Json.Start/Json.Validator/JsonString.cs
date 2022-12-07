@@ -27,7 +27,7 @@ namespace Json
 
         private static bool ContainsInvalidEscapeChars(string input)
         {
-            int step = 1;
+            int step;
             for (int index = 0; index < input.Length; index += step)
             {
                 step = 1;
