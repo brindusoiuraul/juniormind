@@ -27,18 +27,17 @@ namespace Json
 
         private static bool ContainsInvalidEscapeChars(string input)
         {
-            const int step = 2;
-            for (int index = 0; index < input.Length; index++)
+            int step = 1;
+            for (int index = 0; index < input.Length; index += step)
             {
-                if (input[index] == '\\' && IsValidEscapeChar(input[index + 1]))
+                if (input[index] == '\\')
                 {
-                #pragma warning disable S127 // "for" loop stop conditions should be invariant
-                    index += step;
-                #pragma warning restore S127 // "for" loop stop conditions should be invariant
-                }
-                else if (input[index] == '\\' && !IsValidEscapeChar(input[index + 1]))
-                {
-                    return true;
+                    if (!IsValidEscapeChar(input[index + 1]))
+                    {
+                        return true;
+                    }
+
+                    step++;
                 }
             }
 
