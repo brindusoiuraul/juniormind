@@ -6,103 +6,80 @@ namespace Json
     {
         public static bool IsJsonNumber(string input)
         {
-            return !string.IsNullOrEmpty(input) && IsNumberContentCorrect(input);
-        }
-
-        private static bool IsNumberContentCorrect(string input)
-        {
-            if (HasExponent(input.ToLower()))
+            if (!IsInputValid(input))
             {
-                return StartsAndEndsCorrectly(input) && AreCharsValid(input) && IsExponentCorrect(GetExponent(input.ToLower()));
+                return false;
             }
 
-            return StartsAndEndsCorrectly(input) && AreCharsValid(input);
+            var indexOfDot = input.IndexOf('.');
+            var indexOfExponent = input.IndexOfAny("eE".ToCharArray());
+
+            return IsInteger(Integer(input, indexOfDot, indexOfExponent));
         }
 
-        private static bool AreCharsValid(string input)
+        private static bool IsInteger(string integer)
         {
-            return !ContainsLetters(input) && !ContainsMultipleChars(input);
-        }
+            bool isValidInteger = true;
+            const string validChars = "+-0123456789";
 
-        private static bool StartsAndEndsCorrectly(string input)
-        {
-            return !StartsWithZero(input) && !EndsWithADot(input);
-        }
-
-        private static bool StartsWithZero(string input)
-        {
-            return input.Length > 1 && input[0] == '0' && input[1] != '.';
-        }
-
-        private static bool EndsWithADot(string input)
-        {
-            return input[^1] == '.';
-        }
-
-        private static bool ContainsLetters(string input)
-        {
-            foreach (char character in input.ToLower())
+            foreach (char c in integer)
             {
-                if (char.IsLetter(character) && character != 'e')
+                if (!validChars.Contains(c))
                 {
-                    return true;
+                    isValidInteger = false;
                 }
             }
 
-            return false;
-        }
-
-        private static bool ContainsMultipleChars(string input)
-        {
-            return NumberOfEncounters('.', input) > 1 || NumberOfEncounters('e', input) > 1;
-        }
-
-        private static int NumberOfEncounters(char characterToCount, string input)
-        {
-            int numberOfEncounters = 0;
-
-            foreach (char c in input.ToLower())
+            if (integer.Length > 1 && integer[0] == '0')
             {
-                if (c == characterToCount)
+                isValidInteger = false;
+            }
+
+            return isValidInteger;
+        }
+
+        private static string Integer(string input, int indexOfDot, int indexOfExponent)
+        {
+            int integerEndIndex = GetEndIndex(input, indexOfDot, indexOfExponent);
+
+            return input.Substring(0, integerEndIndex + 1);
+        }
+
+        private static int GetEndIndex(string input, int indexOfDot, int indexOfExponent)
+        {
+            int integerEndIndex = input.Length - 1;
+
+            if (indexOfExponent != -1)
+            {
+                integerEndIndex = indexOfExponent - 1;
+            }
+
+            if (indexOfDot != -1)
+            {
+                integerEndIndex = indexOfDot - 1;
+            }
+
+            return integerEndIndex;
+        }
+
+        private static bool IsInputValid(string input)
+        {
+            if (input == null)
+            {
+                return false;
+            }
+
+            int numberOfDigits = 0;
+
+            for (int index = 0; index < input.Length; index++)
+            {
+                if (char.IsDigit(input[index]))
                 {
-                    numberOfEncounters++;
+                    numberOfDigits++;
                 }
             }
 
-            return numberOfEncounters;
-        }
-
-        private static bool HasExponent(string input)
-        {
-            return input.Contains("e");
-        }
-
-        private static string GetExponent(string input)
-        {
-            int exponentStartIndex = input.IndexOf("e") + 1;
-            int exponentLength = input.Length - exponentStartIndex;
-
-            return input.Substring(exponentStartIndex, exponentLength);
-        }
-
-        private static bool IsExponentCorrect(string exponent)
-        {
-            return !exponent.Contains(".") && IsExponentComplete(exponent);
-        }
-
-        private static bool IsExponentComplete(string exponent)
-        {
-            if (exponent.Length == 1 && char.IsDigit(exponent[0]))
-            {
-                return true;
-            }
-
-            if (exponent.Length > 1 && char.IsDigit(exponent[1]))
-            {
-                return true;
-            }
-
-            return false;
+            return numberOfDigits > 0;
         }
     }
 }
