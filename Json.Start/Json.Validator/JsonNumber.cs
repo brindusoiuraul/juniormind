@@ -24,7 +24,7 @@ namespace Json
         {
             const int exponentDigitsStart = 2;
 
-            if (input.Length > 2 && (input[1] == '+' || input[1] == '-'))
+            if (input.Length > 1 && (input[1] == '+' || input[1] == '-'))
             {
                 return ContainsOnlyDigits(input[exponentDigitsStart..]);
             }
