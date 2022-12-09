@@ -59,7 +59,7 @@ namespace Json
                 return input[indexOfDot.. indexOfExponent];
             }
 
-            return input[indexOfDot.. input.Length];
+            return input[indexOfDot..];
         }
 
         private static bool IsInteger(string integer)
