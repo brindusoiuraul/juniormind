@@ -28,6 +28,7 @@ namespace Json
             }
 
             input = input[1..];
+
             if (input.StartsWith('+') || input.StartsWith('-'))
             {
                 input = input[1..];
