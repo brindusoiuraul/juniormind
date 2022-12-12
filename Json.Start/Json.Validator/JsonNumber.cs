@@ -22,14 +22,18 @@ namespace Json
 
         private static bool IsExponent(string input)
         {
-            const int exponentDigitsStart = 2;
-
-            if (input.Length > 1 && (input[1] == '+' || input[1] == '-'))
+            if (input == string.Empty)
             {
-                return ContainsOnlyDigits(input[exponentDigitsStart..]);
+                return true;
             }
 
-            return input == string.Empty || ContainsOnlyDigits(input[1..]);
+            input = input[1..];
+            if (input.StartsWith('+') || input.StartsWith('-'))
+            {
+                input = input[1..];
+            }
+
+            return ContainsOnlyDigits(input);
         }
 
         private static string Exponent(string input, int indexOfExponent)
