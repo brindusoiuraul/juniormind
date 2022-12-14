@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace Soccer_Ranking
+namespace SoccerRanking
 {
     public class Ranking
     {
-
     }
 }

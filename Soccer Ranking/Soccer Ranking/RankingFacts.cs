@@ -1,13 +1,12 @@
 using Xunit;
 
-namespace Soccer_Ranking
+namespace SoccerRanking
 {
     public class RankingFacts
     {
         [Fact]
         public void Test()
         {
-
         }
     }
 }
