@@ -39,7 +39,7 @@ namespace SoccerRanking
 
             Assert.False(firstTeam.HasMorePointsThan(secondTeam));
 
-            firstTeam.AddPointsToTeam(2);
+            firstTeam.AddPoints(2);
 
             Assert.True(firstTeam.HasMorePointsThan(secondTeam));
         }
@@ -52,8 +52,8 @@ namespace SoccerRanking
 
             Assert.False(firstTeam.HasMorePointsThan(secondTeam));
 
-            firstTeam.AddPointsToTeam(3);
-            secondTeam.AddPointsToTeam(5);
+            firstTeam.AddPoints(3);
+            secondTeam.AddPoints(5);
 
             Assert.False(firstTeam.HasMorePointsThan(secondTeam));
         }

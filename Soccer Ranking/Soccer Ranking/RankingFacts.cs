@@ -19,7 +19,7 @@ namespace SoccerRanking
 
             ranking.AddTeamToRanking(newTeam);
 
-            Assert.True(ranking.GetTeamPosition(newTeam) == 1);
+            Assert.True(ranking.PositionOf(newTeam) == 1);
         }
     }
 }
