@@ -16,5 +16,22 @@ namespace SoccerRanking
             Array.Resize(ref teams, teams.Length + 1);
             teams[teams.Length - 1] = teamToAdd;
         }
+
+        public int GetTeamPosition(Team teamToGetPosition)
+        {
+            int position = 1;
+
+            foreach (Team team in teams)
+            {
+                if (team == teamToGetPosition)
+                {
+                    return position;
+                }
+
+                position++;
+            }
+
+            return -1;
+        }
     }
 }
