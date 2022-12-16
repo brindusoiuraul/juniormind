@@ -46,12 +46,13 @@ namespace SoccerRanking
 
         private void SortTeamsByPoints()
         {
-            for (int i = 1; i < teams.Length; i++)
+            for (int i = 0; i < teams.Length - 1; i++)
             {
-                for (int j = i; j >= 0 && teams[i].HasMorePointsThan(teams[j]); j--)
+                for (int j = i + 1; j > 0 && teams[i].HasMorePointsThan(teams[j]); j--)
                 {
-                    teams[j + 1] = teams[j];
-                    teams[j + 1] = teams[i];
+                    Team tempTeam = teams[j - 1];
+                    teams[j - 1] = teams[j];
+                    teams[j] = tempTeam;
                 }
             }
         }
