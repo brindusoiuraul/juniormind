@@ -30,5 +30,32 @@ namespace SoccerRanking
 
             Assert.False(firstTeam.HasMorePointsThan(secondTeam));
         }
+
+        [Fact]
+        public void AddPointsToTeamCheckIfPointsAreAddedToATeam()
+        {
+            Team firstTeam = new Team("FC Unirea Urziceni", 15);
+            Team secondTeam = new Team("Sporting Rosiori", 15);
+
+            Assert.False(firstTeam.HasMorePointsThan(secondTeam));
+
+            firstTeam.AddPointsToTeam(2);
+
+            Assert.True(firstTeam.HasMorePointsThan(secondTeam));
+        }
+
+        [Fact]
+        public void AddPointsToTeamCheckIfPointsAreAddedToBothTeams()
+        {
+            Team firstTeam = new Team("FC Politehnica Iasi", 8);
+            Team secondTeam = new Team("CS Concordia Chiajna", 8);
+
+            Assert.False(firstTeam.HasMorePointsThan(secondTeam));
+
+            firstTeam.AddPointsToTeam(3);
+            secondTeam.AddPointsToTeam(5);
+
+            Assert.False(firstTeam.HasMorePointsThan(secondTeam));
+        }
     }
 }
