@@ -50,22 +50,20 @@ namespace SoccerRanking
 
         private void SortTeamsByPoints()
         {
-            const int divide = 2;
+            int numberOfTeams = teams.Length;
 
-            for (int i = teams.Length / 2; i > 0; i /= divide)
+            for (int i = 1; i < numberOfTeams; i++)
             {
-                for (int j = i; j < teams.Length; j++)
+                Team tempTeam = teams[i];
+                int j = i - 1;
+
+                while (j >= 0 && tempTeam.HasMorePointsThan(teams[j]))
                 {
-                    Team tempTeam = teams[j];
-
-                    int x;
-                    for (x = j; x >= i && tempTeam.HasMorePointsThan(teams[x - i]); x -= i)
-                    {
-                        teams[x] = teams[x - i];
-                    }
-
-                    teams[x] = tempTeam;
+                    teams[j + 1] = teams[j];
+                    j--;
                 }
+
+                teams[j + 1] = tempTeam;
             }
         }
     }
