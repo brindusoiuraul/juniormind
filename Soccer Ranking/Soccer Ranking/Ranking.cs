@@ -33,16 +33,12 @@ namespace SoccerRanking
 
         public int PositionOf(Team teamToGetPosition)
         {
-            int position = 1;
-
-            foreach (Team team in teams)
+            for (int index = 0; index < teams.Length; index++)
             {
-                if (team == teamToGetPosition)
+                if (teams[index] == teamToGetPosition)
                 {
-                    return position;
+                    return index + 1;
                 }
-
-                position++;
             }
 
             return -1;
@@ -52,11 +48,10 @@ namespace SoccerRanking
         {
             for (int i = 1; i < teams.Length; i++)
             {
-                int j = i - 1;
-                while (j >= 0 && teams[i].HasMorePointsThan(teams[j]))
+                int j;
+                for (j = i; j >= 0 && teams[i].HasMorePointsThan(teams[j]); j--)
                 {
                     teams[j + 1] = teams[j];
-                    j--;
                 }
 
                 teams[j + 1] = teams[i];
