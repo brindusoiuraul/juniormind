@@ -5,7 +5,7 @@ namespace SoccerRanking
     public class RankingFacts
     {
         [Fact]
-        public void Test()
+        public void AddTeamToRanking()
         {
         }
     }

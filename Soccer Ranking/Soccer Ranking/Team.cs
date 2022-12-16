@@ -12,5 +12,10 @@ namespace SoccerRanking
             this.name = name;
             this.points = points;
         }
+
+        public bool HasMorePointsThan(Team teamToCheck)
+        {
+            return this.points > teamToCheck.points;
+        }
     }
 }
