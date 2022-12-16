@@ -6,9 +6,9 @@ namespace SoccerRanking
     {
         private Team[] teams;
 
-        public Ranking(Team[] teams)
+        public Ranking()
         {
-            this.teams = teams;
+            this.teams = new Team[0];
         }
 
         public void AddTeamToRanking(Team teamToAdd)

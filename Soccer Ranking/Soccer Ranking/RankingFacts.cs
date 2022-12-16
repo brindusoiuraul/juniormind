@@ -7,13 +7,7 @@ namespace SoccerRanking
         [Fact]
         public void AddTeamToRankingAddOneTeamShouldReturnTrue()
         {
-            Team[] teams =
-            {
-                new Team("Aerostar Bacau", 8),
-                new Team("CS Afumati", 5)
-            };
-
-            Ranking ranking = new Ranking(teams);
+            Ranking ranking = new Ranking();
 
             Team newTeam = new Team("CSM Deva", 12);
 
