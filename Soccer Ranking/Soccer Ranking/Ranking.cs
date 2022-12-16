@@ -15,6 +15,7 @@ namespace SoccerRanking
         {
             Array.Resize(ref teams, teams.Length + 1);
             teams[teams.Length - 1] = teamToAdd;
+            SortTeamsByPoints(teams);
         }
 
         public Team? GetTeamByPosition(int position)
@@ -37,6 +38,27 @@ namespace SoccerRanking
             }
 
             return -1;
+        }
+
+        static void SortTeamsByPoints(Team[] teamsToSort)
+        {
+            const int divide = 2;
+
+            for (int i = teamsToSort.Length / 2; i > 0; i /= divide)
+            {
+                for (int j = i; j < teamsToSort.Length; j++)
+                {
+                    Team tempTeam = teamsToSort[j];
+
+                    int x;
+                    for (x = j; x >= i && tempTeam.HasMorePointsThan(teamsToSort[x - i]); x -= i)
+                    {
+                        teamsToSort[x] = teamsToSort[x - i];
+                    }
+
+                    teamsToSort[x] = tempTeam;
+                }
+            }
         }
     }
 }
