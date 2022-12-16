@@ -52,9 +52,8 @@ namespace SoccerRanking
                 for (j = i; j >= 0 && teams[i].HasMorePointsThan(teams[j]); j--)
                 {
                     teams[j + 1] = teams[j];
+                    teams[j + 1] = teams[i];
                 }
-
-                teams[j + 1] = teams[i];
             }
         }
     }
