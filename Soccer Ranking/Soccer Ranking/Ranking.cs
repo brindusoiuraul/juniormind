@@ -15,7 +15,7 @@ namespace SoccerRanking
         {
             Array.Resize(ref teams, teams.Length + 1);
             teams[teams.Length - 1] = teamToAdd;
-            SortTeamsByPoints(teams);
+            SortTeamsByPoints();
         }
 
         public Team? GetTeamByPosition(int position)
@@ -25,13 +25,13 @@ namespace SoccerRanking
 
         public void UpdateRanking(Team firstTeam, Team secondTeam, int firstTeamPoints, int secondTeamPoints)
         {
-            firstTeam.AddPointsToTeam(firstTeamPoints);
-            secondTeam.AddPointsToTeam(secondTeamPoints);
+            firstTeam.AddPoints(firstTeamPoints);
+            secondTeam.AddPoints(secondTeamPoints);
 
-            SortTeamsByPoints(teams);
+            SortTeamsByPoints();
         }
 
-        public int GetTeamPosition(Team teamToGetPosition)
+        public int PositionOf(Team teamToGetPosition)
         {
             int position = 1;
 
@@ -48,23 +48,23 @@ namespace SoccerRanking
             return -1;
         }
 
-        static void SortTeamsByPoints(Team[] teamsToSort)
+        private void SortTeamsByPoints()
         {
             const int divide = 2;
 
-            for (int i = teamsToSort.Length / 2; i > 0; i /= divide)
+            for (int i = teams.Length / 2; i > 0; i /= divide)
             {
-                for (int j = i; j < teamsToSort.Length; j++)
+                for (int j = i; j < teams.Length; j++)
                 {
-                    Team tempTeam = teamsToSort[j];
+                    Team tempTeam = teams[j];
 
                     int x;
-                    for (x = j; x >= i && tempTeam.HasMorePointsThan(teamsToSort[x - i]); x -= i)
+                    for (x = j; x >= i && tempTeam.HasMorePointsThan(teams[x - i]); x -= i)
                     {
-                        teamsToSort[x] = teamsToSort[x - i];
+                        teams[x] = teams[x - i];
                     }
 
-                    teamsToSort[x] = tempTeam;
+                    teams[x] = tempTeam;
                 }
             }
         }

@@ -18,7 +18,7 @@ namespace SoccerRanking
             return this.points > teamToCheck.points;
         }
 
-        public void AddPointsToTeam(int numberOfPoints)
+        public void AddPoints(int numberOfPoints)
         {
             this.points += numberOfPoints;
         }
