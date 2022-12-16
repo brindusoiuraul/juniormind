@@ -50,9 +50,7 @@ namespace SoccerRanking
             {
                 for (int j = i + 1; j > 0 && teams[i].HasMorePointsThan(teams[j]); j--)
                 {
-                    Team tempTeam = teams[j - 1];
-                    teams[j - 1] = teams[j];
-                    teams[j] = tempTeam;
+                    (teams[j], teams[j - 1]) = (teams[j - 1], teams[j]);
                 }
             }
         }
