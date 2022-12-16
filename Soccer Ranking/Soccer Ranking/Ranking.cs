@@ -17,9 +17,9 @@ namespace SoccerRanking
             teams[teams.Length - 1] = teamToAdd;
         }
 
-        public Team GetTeamByPosition(int position)
+        public Team? GetTeamByPosition(int position)
         {
-
+            return teams.Length < position ? teams[position - 1] : null;
         }
 
         public int GetTeamPosition(Team teamToGetPosition)
