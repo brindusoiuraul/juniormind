@@ -23,6 +23,14 @@ namespace SoccerRanking
             return teams.Length < position ? teams[position - 1] : null;
         }
 
+        public void UpdateRanking(Team firstTeam, Team secondTeam, int firstTeamPoints, int secondTeamPoints)
+        {
+            firstTeam.AddPointsToTeam(firstTeamPoints);
+            secondTeam.AddPointsToTeam(secondTeamPoints);
+
+            SortTeamsByPoints(teams);
+        }
+
         public int GetTeamPosition(Team teamToGetPosition)
         {
             int position = 1;

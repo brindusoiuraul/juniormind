@@ -5,7 +5,7 @@ namespace SoccerRanking
     public class Team
     {
         readonly string name;
-        readonly int points;
+        private int points;
 
         public Team(string name, int points)
         {
@@ -16,6 +16,11 @@ namespace SoccerRanking
         public bool HasMorePointsThan(Team teamToCheck)
         {
             return this.points > teamToCheck.points;
+        }
+
+        public void AddPointsToTeam(int numberOfPoints)
+        {
+            this.points += numberOfPoints;
         }
     }
 }
