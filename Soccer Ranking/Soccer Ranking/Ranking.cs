@@ -20,7 +20,7 @@ namespace SoccerRanking
 
         public Team? GetTeamByPosition(int position)
         {
-            return teams.Length < position ? teams[position - 1] : null;
+            return teams.Length > position ? teams[position - 1] : null;
         }
 
         public void UpdateRanking(Team firstTeam, Team secondTeam, int firstTeamPoints, int secondTeamPoints)
