@@ -52,5 +52,32 @@ namespace SoccerRanking
 
             Assert.Equal(firstObj, secondObj);
         }
+
+        [Fact]
+        public void UpdateRankingAddThreePointsToBothTeamsShouldAddPoints()
+        {
+            Ranking ranking = new Ranking();
+
+            Team firstTeam = new Team("FC Farul Constanta", 18);
+            Team secondTeam = new Team("FC Universitatea Cluj", 17);
+            Team thirdTeam = new Team("AFC Chindia Targoviste", 16);
+            Team fourthTeam = new Team("CS Mioveni", 15);
+
+            ranking.AddTeamToRanking(firstTeam);
+            ranking.AddTeamToRanking(secondTeam);
+            ranking.AddTeamToRanking(thirdTeam);
+            ranking.AddTeamToRanking(fourthTeam);
+
+            ranking.UpdateRanking(secondTeam, fourthTeam, 3, 3);
+
+            var firstObj = JsonConvert.SerializeObject(ranking.GetTeamByPosition(1));
+            var firstObjCompare = JsonConvert.SerializeObject(new Team("FC Universitatea Cluj", 20));
+
+            var secondObj = JsonConvert.SerializeObject(ranking.GetTeamByPosition(2));
+            var secondObjCompare = JsonConvert.SerializeObject(new Team("AFC Chindia Targoviste", 19));
+
+            Assert.Equal(firstObj, firstObjCompare);
+            Assert.Equal(secondObj, secondObjCompare);
+        }
     }
 }
