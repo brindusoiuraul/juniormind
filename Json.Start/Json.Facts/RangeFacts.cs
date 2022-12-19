@@ -13,5 +13,13 @@ namespace Json.Facts
             Assert.True(digit.Match("fab"));
             Assert.True(digit.Match("bcd"));
         }
+
+        [Fact]
+        public void CheckMatchFunctionShouldReturnFalse()
+        {
+            var digit = new Range('a', 'f');
+
+            Assert.False(digit.Match("1ab"));
+        }
     }
 }
