@@ -13,7 +13,15 @@ namespace Json
 
         public bool Match(string text)
         {
-            throw new NotImplementedException();
+            foreach (var pattern in patterns)
+            {
+                if (pattern.Match(text))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
