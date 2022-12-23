@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    internal interface IPattern
+    public interface IPattern
     {
         public bool Match(string text);
     }
