@@ -8,5 +8,6 @@ namespace Json
 {
     internal interface IPattern
     {
+        public bool Match(string text);
     }
 }
