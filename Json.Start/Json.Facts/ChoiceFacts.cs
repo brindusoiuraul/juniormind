@@ -54,5 +54,15 @@ namespace Json.Facts
 
             Assert.False(digit.Match(""));
         }
+
+        [Fact]
+        public void CheckPatternMatchCharacterOrRangeClassForNullShouldReturnFalse()
+        {
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9'));
+
+            Assert.False(digit.Match(null));
+        }
     }
 }
