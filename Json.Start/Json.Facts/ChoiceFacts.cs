@@ -64,5 +64,27 @@ namespace Json.Facts
 
             Assert.False(digit.Match(null));
         }
+
+        [Fact]
+        public void CheckPatternMatchForNumberRangeAndLetterRangeShouldReturnTrue()
+        {
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9'));
+
+            var hex = new Choice(
+                (IPattern)digit,
+                (IPattern)new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')));
+
+            Assert.True(hex.Match("012"));
+            Assert.True(hex.Match("12"));
+            Assert.True(hex.Match("92"));
+            Assert.True(hex.Match("a9"));
+            Assert.True(hex.Match("f8"));
+            Assert.True(hex.Match("A9"));
+            Assert.True(hex.Match("F8"));
+        }
     }
 }
