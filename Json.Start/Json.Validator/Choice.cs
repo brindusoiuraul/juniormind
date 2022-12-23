@@ -2,11 +2,6 @@
 
 namespace Json
 {
-    interface IPattern
-    {
-        bool Match(string pattern);
-    }
-
     class Choice
     {
         public Choice(params IPattern[] patterns)
