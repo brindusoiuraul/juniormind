@@ -72,11 +72,7 @@ namespace Json.Facts
                 new Character('0'),
                 new Range('1', '9'));
 
-            var hex = new Choice(
-                (IPattern)digit,
-                (IPattern)new Choice(
-                    new Range('a', 'f'),
-                    new Range('A', 'F')));
+            var hex = new Choice(digit, new Choice(new Range('a', 'f'), new Range('A', 'F')));
 
             Assert.True(hex.Match("012"));
             Assert.True(hex.Match("12"));
