@@ -6,7 +6,25 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    internal class Match
+    public class Match : IMatch
     {
+        readonly bool succes;
+        readonly string remainingText;
+
+        public Match(bool succes, string remainingText)
+        {
+            this.succes = succes;
+            this.remainingText = remainingText;
+        }
+
+        public bool Success()
+        {
+            return this.succes;
+        }
+
+        public string RemainingText()
+        {
+            return this.remainingText;
+        }
     }
 }
