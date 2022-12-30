@@ -9,9 +9,9 @@ namespace Json.Facts
         {
             var digit = new Range('a', 'f');
 
-            Assert.True(digit.Match("abc"));
-            Assert.True(digit.Match("fab"));
-            Assert.True(digit.Match("bcd"));
+            Assert.True(digit.Match("abc").Success());
+            Assert.True(digit.Match("fab").Success());
+            Assert.True(digit.Match("bcd").Success());
         }
 
         [Fact]
@@ -19,7 +19,7 @@ namespace Json.Facts
         {
             var digit = new Range('a', 'f');
 
-            Assert.False(digit.Match("1ab"));
+            Assert.False(digit.Match("1ab").Success());
         }
     }
 }
