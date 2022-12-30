@@ -17,10 +17,13 @@ namespace Json
         {
             if (string.IsNullOrEmpty(text))
             {
-                return false;
+                return new Match(false, text);
             }
 
-            return start <= text[0] && text[0] <= end;
+            return
+                start <= text[0] && text[0] <= end ?
+                new Match(true, text[1..]) :
+                new Match(false, text);
         }
     }
 }
