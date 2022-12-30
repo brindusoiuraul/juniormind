@@ -11,17 +11,21 @@ namespace Json
             this.patterns = patterns;
         }
 
-        public bool Match(string text)
+        public IMatch Match(string text)
         {
+            IMatch match = new Match(false, text);
+
             foreach (IPattern pattern in patterns)
             {
-                if (pattern.Match(text))
+                match = pattern.Match(match.RemainingText());
+
+                if (match.Success())
                 {
-                    return true;
+                    return match;
                 }
             }
 
-            return false;
+            return new Match(false, text);
         }
     }
 }
