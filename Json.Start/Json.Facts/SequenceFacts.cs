@@ -29,8 +29,8 @@ namespace Json.Facts
             Assert.False(ab.Match("").Success());
             Assert.Equal("", ab.Match("").RemainingText());
 
-            Assert.False(ab.Match("null").Success());
-            Assert.Equal("null", ab.Match("null").RemainingText());
+            Assert.False(ab.Match(null).Success());
+            Assert.Null(ab.Match(null).RemainingText());
         }
 
         [Fact]
@@ -48,6 +48,40 @@ namespace Json.Facts
 
             Assert.True(abc.Match("abcd").Success());
             Assert.Equal("d", abc.Match("abcd").RemainingText());
+
+            Assert.False(abc.Match("def").Success());
+            Assert.Equal("def", abc.Match("def").RemainingText());
+
+            Assert.False(abc.Match("abx").Success());
+            Assert.Equal("abx", abc.Match("abx").RemainingText());
+
+            Assert.False(abc.Match(null).Success());
+            Assert.Null(abc.Match(null).RemainingText());
+
+            Assert.False(abc.Match("").Success());
+            Assert.Equal("", abc.Match("").RemainingText());
+        }
+
+        [Fact]
+        public void CheckForHex()
+        {
+            var hex = new Choice(
+                new Range('0', '9'),
+                new Range('a', 'f'),
+                new Range('A', 'F')
+            );
+
+            var hexSeq = new Sequence(
+                new Character('u'),
+                new Sequence(
+                    hex,
+                    hex,
+                    hex,
+                    hex)
+            );
+
+            Assert.True(hexSeq.Match("u1234").Success());
+            Assert.Equal("", hexSeq.Match("u1234").RemainingText());
         }
     }
 }
