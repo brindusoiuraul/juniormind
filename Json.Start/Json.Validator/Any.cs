@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    public class Any
+    public class Any : IPattern
     {
+        public Any(string accepted)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IMatch Match(string text)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
