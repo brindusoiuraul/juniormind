@@ -82,6 +82,18 @@ namespace Json.Facts
 
             Assert.True(hexSeq.Match("u1234").Success());
             Assert.Equal("", hexSeq.Match("u1234").RemainingText());
+
+            Assert.True(hexSeq.Match("uabcdef").Success());
+            Assert.Equal("ef", hexSeq.Match("uabcdef").RemainingText());
+
+            Assert.True(hexSeq.Match("uB005 ab").Success());
+            Assert.Equal(" ab", hexSeq.Match("uB005 ab").RemainingText());
+
+            Assert.False(hexSeq.Match("abc").Success());
+            Assert.Equal("abc", hexSeq.Match("abc").RemainingText());
+
+            Assert.False(hexSeq.Match(null).Success());
+            Assert.Null(hexSeq.Match(null).RemainingText());
         }
     }
 }
