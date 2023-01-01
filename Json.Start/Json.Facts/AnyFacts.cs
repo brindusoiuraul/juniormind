@@ -16,5 +16,21 @@ namespace Json.Facts
             Assert.True(e.Match("ea").Success());
             Assert.Equal("a", e.Match("ea").RemainingText());
         }
+
+        [Fact]
+        public void CheckForUppercaseLetterShouldReturnTrue()
+        {
+            var e = new Any("eE");
+            Assert.True(e.Match("Ea").Success());
+            Assert.Equal("a", e.Match("Ea").RemainingText());
+        }
+
+        [Fact]
+        public void CheckForOneLowerCaseLetterShouldReturnFalse()
+        {
+            var e = new Any("eE");
+            Assert.False(e.Match("a").Success());
+            Assert.Equal("a", e.Match("a").RemainingText());
+        }
     }
 }
