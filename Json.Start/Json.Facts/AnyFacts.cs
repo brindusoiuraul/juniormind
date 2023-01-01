@@ -32,5 +32,13 @@ namespace Json.Facts
             Assert.False(e.Match("a").Success());
             Assert.Equal("a", e.Match("a").RemainingText());
         }
+
+        [Fact]
+        public void CheckForEmptyStringShouldReturnFalse()
+        {
+            var e = new Any("eE");
+            Assert.False(e.Match("").Success());
+            Assert.Equal("", e.Match("").RemainingText());
+        }
     }
 }
