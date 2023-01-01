@@ -17,6 +17,11 @@ namespace Json
 
         public IMatch Match(string text)
         {
+            if (text == "")
+            {
+                return new Match(false, text);
+            }
+
             if (accepted.Contains(text[0]))
             {
                 return new Match(true, text[1..]);
