@@ -8,14 +8,21 @@ namespace Json
 {
     public class Any : IPattern
     {
+        readonly string accepted;
+
         public Any(string accepted)
         {
-            throw new NotImplementedException();
+            this.accepted = accepted;
         }
 
         public IMatch Match(string text)
         {
-            throw new NotImplementedException();
+            if (accepted.Contains(text[0]))
+            {
+                return new Match(true, text[1..]);
+            }
+
+            return new Match(false, text);
         }
     }
 }
