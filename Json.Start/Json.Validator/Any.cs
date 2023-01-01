@@ -22,12 +22,9 @@ namespace Json
                 return new Match(false, text);
             }
 
-            if (accepted.Contains(text[0]))
-            {
-                return new Match(true, text[1..]);
-            }
-
-            return new Match(false, text);
+            return accepted.Contains(text[0]) ?
+                new Match(true, text[1..]) :
+                new Match(false, text);
         }
     }
 }
