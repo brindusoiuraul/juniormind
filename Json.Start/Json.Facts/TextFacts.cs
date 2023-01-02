@@ -10,6 +10,7 @@ namespace Json.Facts
     public class TextFacts
     {
         Text True = new Text("true");
+        Text False = new Text("false");
 
         [Fact]
         public void CheckForExistingPrefixShouldReturnTrue()
@@ -44,6 +45,20 @@ namespace Json.Facts
         {
             Assert.False(True.Match(null).Success());
             Assert.Null(True.Match(null).RemainingText());
+        }
+
+        [Fact]
+        public void CheckForExistingPrefixShouldReturnTrueAndRemainingShouldBeAnEmptyString()
+        {
+            Assert.True(False.Match("false").Success());
+            Assert.Equal("", False.Match("false").RemainingText());
+        }
+
+        [Fact]
+        public void CheckForExistingPrefixShouldReturnTrueAndRemainingShouldBeX()
+        {
+            Assert.True(False.Match("falseX").Success());
+            Assert.Equal("X", False.Match("falseX").RemainingText());
         }
     }
 }
