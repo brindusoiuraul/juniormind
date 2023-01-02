@@ -17,5 +17,26 @@ namespace Json.Facts
             Assert.True(True.Match("true").Success());
             Assert.Equal("", True.Match("true").RemainingText());
         }
+
+        [Fact]
+        public void CheckForExistingPrefixShouldReturnTrueAndRemainShouldBeX()
+        {
+            Assert.True(True.Match("trueX").Success());
+            Assert.Equal("X", True.Match("trueX").RemainingText());
+        }
+
+        [Fact]
+        public void CheckForNonExistingPrefixShouldReturnFalseAndRemainShouldBeFalse()
+        {
+            Assert.False(True.Match("false").Success());
+            Assert.Equal("false", True.Match("false").RemainingText());
+        }
+
+        [Fact]
+        public void CheckForEmptyStringShouldReturnFalseAndRemainShouldBeAnEmptyString()
+        {
+            Assert.False(True.Match("").Success());
+            Assert.Equal("", True.Match("").RemainingText());
+        }
     }
 }
