@@ -8,14 +8,18 @@ namespace Json
 {
     public class Text : IPattern
     {
+        readonly string prefix;
+
         public Text(string prefix)
         {
-            throw new NotImplementedException();
+            this.prefix = prefix;
         }
 
         public IMatch Match(string text)
         {
-            throw new NotImplementedException();
+            return text[0..prefix.Length] == prefix ?
+                new Match(true, text[prefix.Length..]) :
+                new Match(false, text);
         }
     }
 }

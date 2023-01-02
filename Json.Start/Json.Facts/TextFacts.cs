@@ -9,5 +9,13 @@ namespace Json.Facts
 {
     public class TextFacts
     {
+        Text True = new Text("true");
+
+        [Fact]
+        public void CheckForExistingPrefixShouldReturnTrue()
+        {
+            Assert.True(True.Match("true").Success());
+            Assert.Equal("", True.Match("true").RemainingText());
+        }
     }
 }
