@@ -11,6 +11,7 @@ namespace Json.Facts
     {
         Text True = new Text("true");
         Text False = new Text("false");
+        Text Empty = new Text("");
 
         [Fact]
         public void CheckForExistingPrefixShouldReturnTrue()
@@ -59,6 +60,20 @@ namespace Json.Facts
         {
             Assert.True(False.Match("falseX").Success());
             Assert.Equal("X", False.Match("falseX").RemainingText());
+        }
+
+        [Fact]
+        public void CheckAnEmptyStringShouldReturnTrue()
+        {
+            Assert.True(Empty.Match("true").Success());
+            Assert.Equal("true", Empty.Match("true").RemainingText());
+        }
+        
+        [Fact]
+        public void CheckForEmptyStringWithNullShouldReturnFalse()
+        {
+            Assert.False(Empty.Match(null).Success());
+            Assert.Null(Empty.Match(null).RemainingText());
         }
     }
 }
