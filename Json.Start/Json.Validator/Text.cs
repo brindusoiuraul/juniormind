@@ -17,7 +17,7 @@ namespace Json
 
         public IMatch Match(string text)
         {
-            if (text == "")
+            if (text == "" || text == null)
             {
                 return new Match(false, text);
             }
