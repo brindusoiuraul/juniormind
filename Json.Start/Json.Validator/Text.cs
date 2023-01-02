@@ -22,7 +22,7 @@ namespace Json
                 return new Match(false, text);
             }
 
-            return text[0..prefix.Length] == prefix ?
+            return Equals(text[0..prefix.Length], prefix) ?
                 new Match(true, text[prefix.Length..]) :
                 new Match(false, text);
         }
