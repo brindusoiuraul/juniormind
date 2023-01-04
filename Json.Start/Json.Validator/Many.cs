@@ -17,7 +17,14 @@ namespace Json
 
         public IMatch Match(string text)
         {
-            throw new NotImplementedException();
+            IMatch match = new Match(true, text);
+
+            while (match.Success())
+            {
+                match = pattern.Match(match.RemainingText());
+            }
+
+            return new Match(true, match.RemainingText());
         }
     }
 }
