@@ -10,6 +10,7 @@ namespace Json.Facts
     public class ManyFacts
     {
         Many a = new Many(new Character('a'));
+        Many digits = new Many(new Range('0', '9'));
 
         [Fact]
         public void CheckForABCShouldReturnTrueAndRemainingTextShouldBeBC()
@@ -44,6 +45,13 @@ namespace Json.Facts
         {
             Assert.True(a.Match(null).Success());
             Assert.Null(a.Match(null).RemainingText());
+        }
+
+        [Fact]
+        public void CheckForRangeShouldReturnTrueAndRemainingTextShouldBeAB123()
+        {
+            Assert.True(digits.Match("12345ab123").Success());
+            Assert.Equal("ab123", digits.Match("12345ab123").RemainingText());
         }
     }
 }
