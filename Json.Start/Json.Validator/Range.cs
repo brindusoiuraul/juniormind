@@ -19,7 +19,7 @@ namespace Json
 
         public bool Match(string text)
         {
-            if (text == null || text == "")
+            if (string.IsNullOrEmpty(text))
             {
                 return false;
             }
