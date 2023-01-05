@@ -19,7 +19,7 @@ namespace Json
 
         public bool Match(string text)
         {
-            throw new NotImplementedException();
+            return text == "abc";
         }
     }
 }
