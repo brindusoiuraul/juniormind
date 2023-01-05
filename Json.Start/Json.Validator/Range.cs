@@ -19,7 +19,7 @@ namespace Json
 
         public bool Match(string text)
         {
-            return text == "abc";
+            return text[0] >= start && text[0] <= end;
         }
     }
 }

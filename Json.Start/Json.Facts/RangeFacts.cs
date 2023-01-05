@@ -17,7 +17,7 @@ namespace Json.Facts
             Assert.True(digit.Match("abc"));
         }
 
-        [Fact (Skip = "Locked test")]
+        [Fact]
         public void CheckForStringThatStartsWithFShouldReturnTrue()
         {
             Assert.True(digit.Match("fab"));
