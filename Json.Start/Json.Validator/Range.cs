@@ -19,6 +19,11 @@ namespace Json
 
         public bool Match(string text)
         {
+            if (text == null)
+            {
+                return false;
+            }
+
             return text[0] >= start && text[0] <= end;
         }
     }

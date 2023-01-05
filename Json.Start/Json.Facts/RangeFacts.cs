@@ -23,19 +23,19 @@ namespace Json.Facts
             Assert.True(digit.Match("fab"));
         }
 
-        [Fact (Skip = "Locked test")]
+        [Fact]
         public void CheckForStringThatStartsWithBShouldReturnTrue()
         {
             Assert.True(digit.Match("bcd"));
         }
 
-        [Fact (Skip = "Locked test")]
+        [Fact]
         public void CheckForStringThatStartsWithANumberShouldReturnFalse()
         {
             Assert.False(digit.Match("1ab"));
         }
 
-        [Fact (Skip = "Locked test")]
+        [Fact]
         public void CheckForNullShouldReturnFalse()
         {
             Assert.False(digit.Match(null));
