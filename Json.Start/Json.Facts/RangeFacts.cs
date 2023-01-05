@@ -41,7 +41,7 @@ namespace Json.Facts
             Assert.False(digit.Match(null));
         }
 
-        [Fact (Skip = "Locked test")]
+        [Fact]
         public void CheckForEmptyStringShouldReturnFalse()
         {
             Assert.False(digit.Match(""));
