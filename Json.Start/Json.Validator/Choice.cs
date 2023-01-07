@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    public class Choice
+    public class Choice : IPattern
     {
         readonly IPattern[] patterns;
 
@@ -17,7 +17,15 @@ namespace Json
 
         public bool Match(string text)
         {
-            throw new NotImplementedException();
+            foreach (IPattern pattern in patterns)
+            {
+                if (pattern.Match(text))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

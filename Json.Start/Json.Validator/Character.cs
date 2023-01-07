@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    public class Character
+    public class Character : IPattern
     {
         readonly char pattern;
 
