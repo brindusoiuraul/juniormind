@@ -15,17 +15,19 @@ namespace Json
             this.patterns = patterns;
         }
 
-        public bool Match(string text)
+        public IMatch Match(string text)
         {
-            foreach (IPattern pattern in patterns)
+            var match = new Match(false, text);
+
+            foreach (var pattern in patterns)
             {
-                if (pattern.Match(text))
+                if (pattern.Match(match.RemainingText()).Success())
                 {
-                    return true;
+                    return match;
                 }
             }
 
-            return false;
+            return new Match(false, text);
         }
     }
 }

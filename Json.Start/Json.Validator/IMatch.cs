@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    public interface IPattern
+    public interface IMatch
     {
-        public IMatch Match(string text);
+        public bool Success();
+
+        public string RemainingText();
     }
 }
