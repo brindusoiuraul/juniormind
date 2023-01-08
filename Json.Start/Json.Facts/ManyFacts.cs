@@ -12,21 +12,21 @@ namespace Json.Facts
         Many a = new Many(new Character('a'));
         Many digits = new Many(new Range('0', '9'));
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenPatternIsPresentJustOneTimeAtTheBeginningShoulRemainBC()
         {
             Assert.True(a.Match("abc").Success());
             Assert.Equal("bc", a.Match("abc").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenPatternIsPresentMultipleTimesAtTheBegginingShouldRemainBC()
         {
             Assert.True(a.Match("aaaabc").Success());
             Assert.Equal("bc", a.Match("aaaabc").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenPatternIsNotPresentAtTheBegginingShouldRemainIntact()
         {
             Assert.True(a.Match("bc").Success());
