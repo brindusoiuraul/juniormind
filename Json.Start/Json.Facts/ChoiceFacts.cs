@@ -17,37 +17,37 @@ namespace Json.Facts
         [Fact]
         public void CheckStringWhenCharacterMatchIsCorrectShouldReturnTrue()
         {
-            Assert.True(digit.Match("012"));
+            Assert.True(digit.Match("012").Success());
         }
 
         [Fact]
         public void CheckStringWhenRangeMatchIsCorrectShouldReturnTrue()
         {
-            Assert.True(digit.Match("12"));
+            Assert.True(digit.Match("12").Success());
         }
 
         [Fact]
         public void CheckStringWhenRangeMatchIsCorrectButIsLastNumberFromTheRangeShouldReturnTrue()
         {
-            Assert.True(digit.Match("92"));
+            Assert.True(digit.Match("92").Success());
         }
 
         [Fact]
         public void CheckStringWithInexistentPatternShouldReturnFalse()
         {
-            Assert.False(digit.Match("a9"));
+            Assert.False(digit.Match("a9").Success());
         }
 
         [Fact]
         public void CheckForEmptyStringShouldReturnFalse()
         {
-            Assert.False(digit.Match(""));
+            Assert.False(digit.Match("").Success());
         }
 
         [Fact]
         public void CheckForNullShouldReturnFalse()
         {
-            Assert.False(digit.Match(null));
+            Assert.False(digit.Match(null).Success());
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace Json.Facts
                 )
             );
 
-            Assert.True(hex.Match("012"));
+            Assert.True(hex.Match("012").Success());
         }
 
         [Fact]
@@ -75,7 +75,7 @@ namespace Json.Facts
                 )
             );
 
-            Assert.True(hex.Match("A9"));
+            Assert.True(hex.Match("A9").Success());
         }
     }
 }

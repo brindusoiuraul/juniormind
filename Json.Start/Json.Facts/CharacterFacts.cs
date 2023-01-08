@@ -14,25 +14,25 @@ namespace Json.Facts
         [Fact]
         public void CheckForStringWithXAtTheStartShouldReturnTrue()
         {
-            Assert.True(x.Match("xavier"));
+            Assert.True(x.Match("xavier").Success());
         }
 
         [Fact]
         public void CheckForStringWithoutXAtTheStartShouldReturnFalse()
         {
-            Assert.False(x.Match("Fiora"));
+            Assert.False(x.Match("Fiora").Success());
         }
 
         [Fact]
         public void CheckForNullShouldReturnFalse()
         {
-            Assert.False(x.Match(null));
+            Assert.False(x.Match(null).Success());
         }
 
         [Fact]
         public void CheckForEmptyStringShouldReturnFalse()
         {
-            Assert.False(x.Match(""));
+            Assert.False(x.Match("").Success());
         }
     }
 }

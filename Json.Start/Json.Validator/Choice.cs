@@ -23,7 +23,7 @@ namespace Json
             {
                 if (pattern.Match(match.RemainingText()).Success())
                 {
-                    return match;
+                    return new Match(true, match.RemainingText());
                 }
             }
 

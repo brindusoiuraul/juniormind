@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    public class Sequence
+    public class Sequence : IPattern
     {
         readonly IPattern[] patterns;
 
@@ -17,7 +17,19 @@ namespace Json
 
         public IMatch Match(string text)
         {
-            throw new NotImplementedException();
+            IMatch match = new Match(false, text);
+
+            foreach (IPattern pattern in patterns)
+            {
+                match = pattern.Match(match.RemainingText());
+
+                if (!match.Success())
+                {
+                    return new Match(false, text);
+                }
+            }
+
+            return match;
         }
     }
 }
