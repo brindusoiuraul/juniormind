@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    public class Text
+    public class Text : IPattern
     {
         readonly string prefix;
 
