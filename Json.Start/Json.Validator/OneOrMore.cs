@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    public class OneOrMore
+    public class OneOrMore : IPattern
     {
         readonly IPattern pattern;
 
