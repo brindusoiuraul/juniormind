@@ -11,7 +11,7 @@ namespace Json.Facts
     {
         OneOrMore a = new OneOrMore(new Range('0', '9'));
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenPatternAppearsMultipleTimesShouldReturnTrueAndRemainsEmpty()
         {
             Assert.True(a.Match("123").Success());
