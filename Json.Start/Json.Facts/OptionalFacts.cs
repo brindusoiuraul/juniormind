@@ -12,7 +12,7 @@ namespace Json.Facts
         Optional a = new Optional(new Character('a'));
         Optional sign = new Optional(new Character('-'));
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenIsOnlyOnePatternPresentShouldRemainBC()
         {
             Assert.True(a.Match("abc").Success());
