@@ -19,7 +19,7 @@ namespace Json
         {
             IMatch match = new Match(false, text);
 
-            foreach (var pattern in patterns)
+            foreach (IPattern pattern in patterns)
             {
                 match = pattern.Match(match.RemainingText());
 
