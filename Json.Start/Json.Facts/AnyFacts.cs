@@ -47,21 +47,21 @@ namespace Json.Facts
             Assert.Null(e.Match(null).RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForExistentPlusSignShouldReturnTrue()
         {
             Assert.True(sign.Match("+3").Success());
             Assert.Equal("3", sign.Match("+3").RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForExistentMinusSignShouldReturnTrue()
         {
             Assert.True(sign.Match("-2").Success());
             Assert.Equal("2", sign.Match("-2").RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForNoSignShouldReturnFalse()
         {
             Assert.False(sign.Match("2").Success());
