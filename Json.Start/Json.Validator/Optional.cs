@@ -17,7 +17,7 @@ namespace Json
 
         public IMatch Match(string text)
         {
-            return pattern.Match(text);
+            return new Match(true, pattern.Match(text).RemainingText());
         }
     }
 }

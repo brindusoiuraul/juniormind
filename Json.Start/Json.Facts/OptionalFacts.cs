@@ -19,14 +19,14 @@ namespace Json.Facts
             Assert.Equal("bc", a.Match("abc").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenThereAreMultiplePatternsPresentShouldRemainABC()
         {
             Assert.True(a.Match("aabc").Success());
             Assert.Equal("abc", a.Match("aabc").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenThereIsNoPatternPresentShouldRemainBC()
         {
             Assert.True(a.Match("bc").Success());
