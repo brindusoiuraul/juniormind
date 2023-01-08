@@ -40,7 +40,7 @@ namespace Json.Facts
             Assert.Equal("", e.Match("").RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForNullShouldReturnFalse()
         {
             Assert.False(e.Match(null).Success());
