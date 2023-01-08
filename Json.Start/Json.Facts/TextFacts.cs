@@ -12,7 +12,7 @@ namespace Json.Facts
         Text True = new Text("true");
         Text empty = new Text("");
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenTextIsTheSameAsPrefixShouldReturnTrue()
         {
             Assert.True(True.Match("true").Success());
