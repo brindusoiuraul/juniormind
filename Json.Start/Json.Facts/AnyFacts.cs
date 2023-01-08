@@ -19,21 +19,21 @@ namespace Json.Facts
             Assert.Equal("a", e.Match("ea").RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForUpperCaseEShouldReturnTrue()
         {
             Assert.True(e.Match("Ea").Success());
             Assert.Equal("a", e.Match("Ea").RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForInexistentCharShouldReturnFalse()
         {
             Assert.False(e.Match("a").Success());
             Assert.Equal("a", e.Match("a").RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForEmptyStringShouldReturnFalse()
         {
             Assert.False(e.Match("").Success());
