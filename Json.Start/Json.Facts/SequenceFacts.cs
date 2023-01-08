@@ -28,28 +28,28 @@ namespace Json.Facts
             Assert.Equal("ax", ab.Match("ax").RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForStringWhichNoPatternIsCorrectShouldReturnFalse()
         {
             Assert.False(ab.Match("def").Success());
             Assert.Equal("def", ab.Match("def").RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForEmptyStringShouldReturnFalse()
         {
             Assert.False(ab.Match("").Success());
             Assert.Equal("", ab.Match("").RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForNullShouldReturnFalse()
         {
             Assert.False(ab.Match(null).Success());
             Assert.Null(ab.Match(null).RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForASequenceAndAPatternShouldReturnTrue()
         {
             Sequence abc = new Sequence(
@@ -61,7 +61,7 @@ namespace Json.Facts
             Assert.Equal("d", abc.Match("abcd").RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForASequenceAndAPatternShouldReturnFalse()
         {
             Sequence abc = new Sequence(
@@ -73,7 +73,7 @@ namespace Json.Facts
             Assert.Equal("def", abc.Match("def").RemainingText());
         }
 
-        [Fact (Skip = "Test Locked")]
+        [Fact]
         public void CheckForValidHexSequenceShouldReturnTrue()
         {
             var hex = new Choice(
@@ -96,7 +96,7 @@ namespace Json.Facts
             Assert.Equal("", hexSeq.Match("u1234").RemainingText());
         }
 
-        [Fact (Skip = "Locked test")]
+        [Fact]
         public void CheckForInvalidHexSequenceShouldReturnFalse()
         {
             var hex = new Choice(
