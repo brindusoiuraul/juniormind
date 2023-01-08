@@ -33,28 +33,28 @@ namespace Json.Facts
             Assert.Equal("bc", a.Match("bc").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void ChecForEmptyStringShouldRemainEmptyString()
         {
             Assert.True(a.Match("").Success());
             Assert.Equal("", a.Match("").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckForNullShouldRemainNull()
         {
             Assert.True(a.Match(null).Success());
             Assert.Null(a.Match(null).RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckForNumberDigitsShouldReturnAB123()
         {
             Assert.True(digits.Match("12345ab123").Success());
             Assert.Equal("ab123", digits.Match("12345ab123").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckForInexistentNumberDigitsPatternShouldRemainAB()
         {
             Assert.True(digits.Match("ab").Success());
