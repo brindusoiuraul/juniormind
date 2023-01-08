@@ -26,7 +26,7 @@ namespace Json.Facts
             Assert.Equal("X", True.Match("trueX").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenTextIsNotPrefixedByGivenPrefixShouldReturnFalse()
         {
             Assert.False(True.Match("false").Success());
@@ -47,14 +47,14 @@ namespace Json.Facts
             Assert.Null(True.Match(null).RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenPrefixIsEmptyStringAndTextIsNotShouldReturnTrue()
         {
             Assert.True(empty.Match("true").Success());
             Assert.Equal("true", empty.Match("true").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenPrefixIsEmptyStringAndTextIsNullShouldReturnFalse()
         {
             Assert.False(empty.Match(null).Success());
