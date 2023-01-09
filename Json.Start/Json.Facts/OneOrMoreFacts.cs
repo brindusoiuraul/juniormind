@@ -18,28 +18,28 @@ namespace Json.Facts
             Assert.Equal("", a.Match("123").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenPatternAppearsOneTimeShouldReturnTrueAndRemainsA()
         {
             Assert.True(a.Match("1a").Success());
             Assert.Equal("a", a.Match("1a").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenPatternDoesNotAppearShouldReturnFalseAndReturnBC()
         {
             Assert.False(a.Match("bc").Success());
             Assert.Equal("bc", a.Match("bc").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckForEmptyStringShouldReturnFalseAndRemainsEmptyString()
         {
             Assert.False(a.Match("").Success());
             Assert.Equal("", a.Match("").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckForNullShouldReturnFalseAndRemainsNull()
         {
             Assert.False(a.Match(null).Success());

@@ -17,12 +17,10 @@ namespace Json
 
         public IMatch Match(string text)
         {
-            if (string.IsNullOrEmpty(text))
-            {
-                return new Match(false, text);
-            }
-
-            return Equals(text[0..prefix.Length], prefix) ? new Match(true, text[prefix.Length..]) : new Match(false, text);
+            return
+                !string.IsNullOrEmpty(text) && text.StartsWith(prefix) ?
+                new Match(true, text[prefix.Length..]) :
+                new Match(false, text);
         }
     }
 }
