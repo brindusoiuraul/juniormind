@@ -12,7 +12,7 @@ namespace Json
 
         public List(IPattern element, IPattern separator)
         {
-            this.pattern = pattern;
+            this.pattern = new Optional(new Sequence(element, new Many(new Sequence(separator, element))));
         }
 
         public IMatch Match(string text)

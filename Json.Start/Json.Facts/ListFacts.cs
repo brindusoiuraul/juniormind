@@ -11,42 +11,42 @@ namespace Json.Facts
     {
         List a = new List(new Range('0', '9'), new Character(','));
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenStringIsEliminatedCompletelyShouldReturnTrueAndRemainEmptyString()
         {
             Assert.True(a.Match("1,2,3").Success());
             Assert.Equal("", a.Match("1,2,3").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenThereIsASeparatorInPlusShouldReturnTrueAndRemainsTheSeparator()
         {
             Assert.True(a.Match("1,2,3,").Success());
             Assert.Equal(",", a.Match("1,2,3,").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenThereIsNoSeparatorShouldReturnTrueAndRemainsA()
         {
             Assert.True(a.Match("1a").Success());
             Assert.Equal("a", a.Match("1a").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckWhenThereIsNoElementNorSeparatorShouldReturnTrueAndTestShouldBeUntouched()
         {
             Assert.True(a.Match("abc").Success());
             Assert.Equal("abc", a.Match("abc").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckForEmptyStringShouldReturnTrueAndRemainAnEmptyString()
         {
             Assert.True(a.Match("").Success());
             Assert.Equal("", a.Match("").RemainingText());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckForNullShouldReturnTrueAndRemainingShouldBeNull()
         {
             Assert.True(a.Match(null).Success());
