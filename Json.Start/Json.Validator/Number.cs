@@ -13,8 +13,10 @@ namespace Json
         public Number()
         {
             var sign = new Any("-+");
+            var dot = new Character('.');
             var digit = new Range('1', '9');
             var number = new Sequence(new Optional(sign), new Choice(new Character('0'), digit));
+            var fraction = new Sequence(new Optional(dot), digit);
             this.pattern = number;
         }
 

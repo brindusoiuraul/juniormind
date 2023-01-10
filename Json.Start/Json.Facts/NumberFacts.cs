@@ -65,7 +65,7 @@ namespace Json.Facts
             Assert.True(number.Match("-0").Success());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckIfNumberIsFractionalShouldReturnTrue()
         {
             var number = new Number();
