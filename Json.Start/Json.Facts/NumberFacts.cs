@@ -16,14 +16,14 @@ namespace Json.Facts
             Assert.True(number.Match("0").Success());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckIfContainsLettersShouldReturnFalse()
         {
             var number = new Number();
             Assert.False(number.Match("a").Success());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckIfNumberCanHaveASingleDigitShouldReturnTrue()
         {
             var number = new Number();
