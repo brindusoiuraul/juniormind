@@ -14,7 +14,8 @@ namespace Json
         {
             var sign = new Any("-+");
             var digit = new Range('1', '9');
-            this.pattern = new Sequence(new Optional(sign), new Choice(new Character('0'), digit));
+            var number = new Sequence(new Optional(sign), new Choice(new Character('0'), digit));
+            this.pattern = number;
         }
 
         public IMatch Match(string text)

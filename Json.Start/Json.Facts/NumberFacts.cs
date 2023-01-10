@@ -58,7 +58,7 @@ namespace Json.Facts
             Assert.True(number.Match("-26").Success());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckIfNumberCanBeMinusZeroShouldReturnTrue()
         {
             var number = new Number();
