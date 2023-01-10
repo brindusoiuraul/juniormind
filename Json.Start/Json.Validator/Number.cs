@@ -12,7 +12,7 @@ namespace Json
 
         public Number()
         {
-            throw new NotImplementedException();
+            this.pattern = new Character('0');
         }
 
         public IMatch Match(string text)

@@ -9,7 +9,7 @@ namespace Json.Facts
 {
     public class NumberFacts
     {
-        [Fact(Skip="Test Locked")]
+        [Fact]
         public void CheckForZeroShouldReturnTrue()
         {
             var number = new Number();
