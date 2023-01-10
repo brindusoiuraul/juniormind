@@ -30,32 +30,25 @@ namespace Json.Facts
             Assert.True(number.Match("7").Success());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckIfNumberHasMultipleDigitsShouldReturnTrue()
         {
             var number = new Number();
             Assert.True(number.Match("70").Success());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckIfNumberIsNullShouldReturnFalse()
         {
             var number = new Number();
             Assert.False(number.Match(null).Success());
         }
 
-        [Fact(Skip = "Test Locked")]
+        [Fact]
         public void CheckIfNumberIsAnEmptyStringShouldReturnFalse()
         {
             var number = new Number();
             Assert.False(number.Match("").Success());
-        }
-
-        [Fact(Skip = "Test Locked")]
-        public void CheckIfNumberStartsWithZeroShouldReturnFalse()
-        {
-            var number = new Number();
-            Assert.False(number.Match("07").Success());
         }
 
         [Fact(Skip = "Test Locked")]

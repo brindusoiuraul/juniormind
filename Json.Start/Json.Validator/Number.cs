@@ -12,7 +12,8 @@ namespace Json
 
         public Number()
         {
-            this.pattern = new Range('0', '9');
+            var digit = new Range('1', '9');
+            this.pattern = new Choice(new Character('0'), digit);
         }
 
         public IMatch Match(string text)
