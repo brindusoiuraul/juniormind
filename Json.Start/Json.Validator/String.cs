@@ -14,7 +14,8 @@ namespace Json
         {
             var doubleQuote = new Character('"');
             var lowerCaseLetter = new Range('a', 'z');
-            var letters = new OneOrMore(lowerCaseLetter);
+            var upperCaseLetter = new Range('A', 'Z');
+            var letters = new OneOrMore(new Choice(lowerCaseLetter, upperCaseLetter));
             this.pattern = new Sequence(doubleQuote, letters, doubleQuote);
         }
 

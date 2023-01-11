@@ -16,6 +16,13 @@ namespace Json.Facts
             Assert.True(jsonString.Match(Quoted("xyz")).Success());
         }
 
+        [Fact]
+        public void CheckForCorrectJSONStringUsingJustUpperCaseLetters()
+        {
+            var jsonString = new StringJson();
+            Assert.True(jsonString.Match(Quoted("XYZ")).Success());
+        }
+
         public string Quoted(string text)
             => $"\"{text}\"";
     }
