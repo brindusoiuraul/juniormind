@@ -12,7 +12,10 @@ namespace Json
 
         public StringJson()
         {
-            throw new NotImplementedException();
+            var doubleQuote = new Character('"');
+            var lowerCaseLetter = new Range('a', 'z');
+            var letters = new OneOrMore(lowerCaseLetter);
+            this.pattern = new Sequence(doubleQuote, letters, doubleQuote);
         }
 
         public IMatch Match(string text)
