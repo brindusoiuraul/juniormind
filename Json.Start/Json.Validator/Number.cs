@@ -18,20 +18,20 @@ namespace Json
             var digit = new Range('1', '9');
 
             var number = new Sequence(
-                new Optional(sign),
+                new OptionalJson(sign),
                 new Choice(
                     new Character('0'),
                     new OneOrMore(digit)));
 
-            var fraction = new Optional(
+            var fraction = new OptionalJson(
                 new Sequence(
                     dot,
                     new OneOrMore(digit)));
 
-            var exponent = new Optional(
+            var exponent = new OptionalJson(
                     new Sequence(
                         exp,
-                        new Optional(sign),
+                        new OptionalJson(sign),
                         new OneOrMore(digit)));
 
             this.pattern = new Sequence(number, fraction, exponent);

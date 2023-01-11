@@ -9,8 +9,8 @@ namespace Json.Facts
 {
     public class OptionalFacts
     {
-        Optional a = new Optional(new Character('a'));
-        Optional sign = new Optional(new Character('-'));
+        OptionalJson a = new OptionalJson(new Character('a'));
+        OptionalJson sign = new OptionalJson(new Character('-'));
 
         [Fact]
         public void CheckWhenIsOnlyOnePatternPresentShouldRemainBC()

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    public class List : IPattern
+    public class StringJson : IPattern
     {
         readonly IPattern pattern;
 
-        public List(IPattern element, IPattern separator)
+        public StringJson()
         {
-            this.pattern = new OptionalJson(new Sequence(element, new Many(new Sequence(separator, element))));
+            throw new NotImplementedException();
         }
 
         public IMatch Match(string text)

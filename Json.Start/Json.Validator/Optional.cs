@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    public class Optional : IPattern
+    public class OptionalJson : IPattern
     {
         readonly IPattern pattern;
 
-        public Optional(IPattern pattern)
+        public OptionalJson(IPattern pattern)
         {
             this.pattern = pattern;
         }
