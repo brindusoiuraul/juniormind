@@ -31,7 +31,7 @@ namespace Json
             var exponent = new Optional(
                     new Sequence(
                         exp,
-                        sign,
+                        new Optional(sign),
                         new OneOrMore(digit)));
 
             this.pattern = new Sequence(number, fraction, exponent);
