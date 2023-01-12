@@ -33,10 +33,10 @@ namespace Json
             var allowedChars = new Choice(
                 new Range(' ', '!'),
                 new Range('#', '['),
-                new Range(']', Convert.ToChar(char.MaxValue)),
+                new Range(']', char.MaxValue),
                 escapedChars);
 
-            this.pattern = new Sequence(doubleQuote, new OptionalJson(new Many(allowedChars)), doubleQuote);
+            this.pattern = new Sequence(doubleQuote, new Many(allowedChars), doubleQuote);
         }
 
         public IMatch Match(string text)
