@@ -79,6 +79,13 @@ namespace Json.Facts
             Assert.True(jsonString.Match(Quoted("\u1234")).Success());
         }
 
+        [Fact]
+        public void CanContainLargeUnicodeCharactersShouldReturnTrue()
+        {
+            var jsonString = new StringJson();
+            Assert.True(jsonString.Match(Quoted("⛅⚾")).Success());
+        }
+
         public string Quoted(string text)
             => $"\"{text}\"";
     }

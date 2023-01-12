@@ -14,8 +14,6 @@ namespace Json
         {
             var doubleQuote = new Character('"');
             var digit = new Range('0', '9');
-            var lowerCaseLetter = new Range('a', 'z');
-            var upperCaseLetter = new Range('A', 'Z');
 
             var hexChar = new Choice(
                 digit,
@@ -26,11 +24,17 @@ namespace Json
                 new Character('u'),
                 new Sequence(hexChar, hexChar, hexChar, hexChar));
 
-            var letters = new OneOrMore(new Choice(lowerCaseLetter, upperCaseLetter));
+            var escapedChars = new Sequence(
+                new Character('\\'),
+                new Choice(
+                    new Any("\\bnrft/"),
+                    hexSeq));
 
-            var escapedChars = new Sequence(new Character('\\'), hexSeq);
-
-            var allowedChars = new Choice(escapedChars, letters);
+            var allowedChars = new Choice(
+                new Range(' ', '!'),
+                new Range('#', '['),
+                new Range(']', Convert.ToChar(char.MaxValue)),
+                escapedChars);
 
             this.pattern = new Sequence(doubleQuote, new OptionalJson(new Many(allowedChars)), doubleQuote);
         }
