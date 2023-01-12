@@ -9,8 +9,8 @@ namespace Json.Facts
 {
     public class TextFacts
     {
-        Text True = new Text("true");
-        Text empty = new Text("");
+        TextJson True = new TextJson("true");
+        TextJson empty = new TextJson("");
 
         [Fact]
         public void CheckWhenTextIsTheSameAsPrefixShouldReturnTrue()

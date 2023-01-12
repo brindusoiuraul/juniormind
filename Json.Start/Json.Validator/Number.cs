@@ -15,24 +15,25 @@ namespace Json
             var sign = new Any("-+");
             var exp = new Any("eE");
             var dot = new Character('.');
-            var digit = new Range('1', '9');
+            var digit = new Range('0', '9');
+            var digits = new OneOrMore(digit);
 
             var number = new Sequence(
                 new OptionalJson(sign),
                 new Choice(
                     new Character('0'),
-                    new OneOrMore(digit)));
+                    digits));
 
             var fraction = new OptionalJson(
                 new Sequence(
                     dot,
-                    new OneOrMore(digit)));
+                    digits));
 
             var exponent = new OptionalJson(
                     new Sequence(
                         exp,
                         new OptionalJson(sign),
-                        new OneOrMore(digit)));
+                        digits));
 
             this.pattern = new Sequence(number, fraction, exponent);
         }

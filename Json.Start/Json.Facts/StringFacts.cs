@@ -65,6 +65,20 @@ namespace Json.Facts
             Assert.True(jsonString.Match(Quoted(string.Empty)).Success());
         }
 
+        [Fact]
+        public void CheckForControlCharsShouldReturnFalse()
+        {
+            var jsonString = new StringJson();
+            Assert.False(jsonString.Match(Quoted("a\nb\rc")).Success());
+        }
+
+        [Fact]
+        public void CheckForHexCharsShouldReturnTrue()
+        {
+            var jsonString = new StringJson();
+            Assert.True(jsonString.Match(Quoted("\u1234")).Success());
+        }
+
         public string Quoted(string text)
             => $"\"{text}\"";
     }

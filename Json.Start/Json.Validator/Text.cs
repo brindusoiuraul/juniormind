@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Json
 {
-    public class Text : IPattern
+    public class TextJson : IPattern
     {
         readonly string prefix;
 
-        public Text(string prefix)
+        public TextJson(string prefix)
         {
             this.prefix = prefix;
         }
