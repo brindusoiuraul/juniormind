@@ -77,5 +77,19 @@ namespace Json.Facts
 
             Assert.True(hex.Match("A9").Success());
         }
+
+        [Fact]
+        public void AddNewRangePatternInChoiceShouldReturnTrue()
+        {
+            Choice hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'F'),
+                    new Range('A', 'F')));
+
+            hex.Add(new Range('x', 'z'));
+
+            Assert.True(hex.Match("yfa").Success());
+        }
     }
 }
