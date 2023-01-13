@@ -12,7 +12,17 @@ namespace Json
 
         public Value()
         {
-            this.pattern = new StringJson();
+            StringJson jsonString = new StringJson();
+            Number jsonNumber = new Number();
+
+            var value = new Choice(
+                jsonString,
+                jsonNumber,
+                new TextJson("true"),
+                new TextJson("false"),
+                new TextJson("null"));
+
+            this.pattern = value;
         }
 
         public IMatch Match(string text)
