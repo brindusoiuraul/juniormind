@@ -121,6 +121,17 @@ namespace Json.Facts
             Assert.True(jsonObject.Match("{ \"An Fabricatie\":1999 }").Success());
         }
 
+        [Fact]
+        public void CheckMoreComplexValidJsonObjectShouldReturnTrue()
+        {
+            var json = new Value();
+            Assert.True(json.Match(
+                "{\"servlet-name\": \"cofaxEmail\"," +
+                "\"servlet-class\": \"org.cofax.cds.EmailServlet\"," +
+                "\"init-param\": {\"mailHost\": \"mail1\"," +
+                "\"mailHostOverride\": \"mail2\"}}").Success());
+        }
+
         public string Quoted(string text)
             => $"\"{text}\"";
     }

@@ -38,7 +38,10 @@ namespace Json
                 new Choice(members, whiteSpace),
                 new Character('}'));
 
-            this.pattern = objectJson;
+            value.Add(array);
+            value.Add(objectJson);
+
+            this.pattern = value;
         }
 
         public IMatch Match(string text)
