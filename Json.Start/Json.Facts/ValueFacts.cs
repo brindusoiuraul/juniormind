@@ -94,10 +94,24 @@ namespace Json.Facts
         }
 
         [Fact]
-        public void CheckForValidElementsShouldReturnTrue()
+        public void CheckForValidArrayWithANumberShouldReturnTrue()
         {
-            var jsonElements = new Value();
-            Assert.True(jsonElements.Match(" true , false ").Success());
+            var jsonArray = new Value();
+            Assert.True(jsonArray.Match("[ 785 ]").Success());
+        }
+
+        [Fact]
+        public void CheckForValidArrayWithMultipleNumbersShouldReturnTrue()
+        {
+            var jsonArray = new Value();
+            Assert.True(jsonArray.Match("[ 555, 888, 314 ]").Success());
+        }
+
+        [Fact]
+        public void CheckForInvalidArrayShouldreturnFalse()
+        {
+            var jsonArray = new Value();
+            Assert.False(jsonArray.Match("[ 555 23]").Success());
         }
 
         public string Quoted(string text)

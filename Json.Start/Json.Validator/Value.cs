@@ -25,8 +25,15 @@ namespace Json
             var whiteSpace = new Many(new Any("\n\r\t "));
             var element = new Sequence(whiteSpace, value, whiteSpace);
             var elements = new List(element, new Character(','));
+            var member = new Sequence(whiteSpace, jsonString, new Character(':'), element);
+            var members = new List(member, new Character(','));
 
-            this.pattern = elements;
+            var array = new Sequence(
+                new Character('['),
+                new Choice(elements, whiteSpace),
+                new Character(']'));
+
+            this.pattern = array;
         }
 
         public IMatch Match(string text)
