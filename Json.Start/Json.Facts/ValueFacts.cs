@@ -79,6 +79,20 @@ namespace Json.Facts
             Assert.False(jsonNullValue.Match("nul").Success());
         }
 
+        [Fact]
+        public void CheckForValidElementShouldReturnTrue()
+        {
+            var jsonElement = new Value();
+            Assert.True(jsonElement.Match(Quoted(" element\u12E5 ")).Success());
+        }
+
+        [Fact]
+        public void CheckForInvalidElementShouldReturnFalse()
+        {
+            var jsonElement = new Value();
+            Assert.False(jsonElement.Match(" element").Success());
+        }
+
         public string Quoted(string text)
             => $"\"{text}\"";
     }

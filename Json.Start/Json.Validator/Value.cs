@@ -22,7 +22,10 @@ namespace Json
                 new TextJson("false"),
                 new TextJson("null"));
 
-            this.pattern = value;
+            var whiteSpace = new Many(new Any("\n\r\t "));
+            var element = new Sequence(whiteSpace, value, whiteSpace);
+
+            this.pattern = element;
         }
 
         public IMatch Match(string text)
