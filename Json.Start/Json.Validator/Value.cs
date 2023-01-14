@@ -33,7 +33,12 @@ namespace Json
                 new Choice(elements, whiteSpace),
                 new Character(']'));
 
-            this.pattern = array;
+            var objectJson = new Sequence(
+                new Character('{'),
+                new Choice(members, whiteSpace),
+                new Character('}'));
+
+            this.pattern = objectJson;
         }
 
         public IMatch Match(string text)

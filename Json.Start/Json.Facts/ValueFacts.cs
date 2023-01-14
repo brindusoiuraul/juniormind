@@ -114,6 +114,13 @@ namespace Json.Facts
             Assert.False(jsonArray.Match("[ 555 23]").Success());
         }
 
+        [Fact]
+        public void CheckForValidObjectShouldReturnTrue()
+        {
+            var jsonObject = new Value();
+            Assert.True(jsonObject.Match("{ \"An Fabricatie\":1999 }").Success());
+        }
+
         public string Quoted(string text)
             => $"\"{text}\"";
     }
