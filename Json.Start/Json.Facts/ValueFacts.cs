@@ -93,6 +93,13 @@ namespace Json.Facts
             Assert.False(jsonElement.Match(" element").Success());
         }
 
+        [Fact]
+        public void CheckForValidElementsShouldReturnTrue()
+        {
+            var jsonElements = new Value();
+            Assert.True(jsonElements.Match(" true , false ").Success());
+        }
+
         public string Quoted(string text)
             => $"\"{text}\"";
     }

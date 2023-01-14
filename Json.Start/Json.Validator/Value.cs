@@ -24,8 +24,9 @@ namespace Json
 
             var whiteSpace = new Many(new Any("\n\r\t "));
             var element = new Sequence(whiteSpace, value, whiteSpace);
+            var elements = new List(element, new Character(','));
 
-            this.pattern = element;
+            this.pattern = elements;
         }
 
         public IMatch Match(string text)
