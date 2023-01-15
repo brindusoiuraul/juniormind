@@ -6,13 +6,7 @@ namespace Json
     {
         static void Main(string[] args)
         {
-            string? filePath = Console.ReadLine() ?? "Lipsa input";
-
-            if (filePath == "Lipsa input")
-            {
-                Console.WriteLine("Introduceti filepath-ul!");
-                return;
-            }
+            string? filePath = Console.ReadLine() ?? "";
 
             string jsonText = System.IO.File.ReadAllText(filePath);
 
