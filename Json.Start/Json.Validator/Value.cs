@@ -30,18 +30,18 @@ namespace Json
 
             var array = new Sequence(
                 new Character('['),
-                new Choice(elements, whiteSpace),
+                elements,
                 new Character(']'));
 
             var objectJson = new Sequence(
                 new Character('{'),
-                new Choice(members, whiteSpace),
+                members,
                 new Character('}'));
 
             value.Add(array);
             value.Add(objectJson);
 
-            this.pattern = value;
+            this.pattern = element;
         }
 
         public IMatch Match(string text)
