@@ -31,11 +31,13 @@ namespace Json
             var array = new Sequence(
                 new Character('['),
                 elements,
+                whiteSpace,
                 new Character(']'));
 
             var objectJson = new Sequence(
                 new Character('{'),
                 members,
+                whiteSpace,
                 new Character('}'));
 
             value.Add(array);
