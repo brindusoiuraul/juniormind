@@ -6,9 +6,7 @@ namespace Json
     {
         static void Main(string[] args)
         {
-            string? filePath = Console.ReadLine() ?? "";
-
-            string jsonText = System.IO.File.ReadAllText(filePath);
+            string jsonText = System.IO.File.ReadAllText(args[0]);
 
             Value jsonValue = new Value();
 
