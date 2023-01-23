@@ -11,7 +11,7 @@ namespace Command_Validator
         readonly string argument;
         readonly string value;
 
-        public Command(string command, string value)
+        public Command(string command, string value = "none")
         {
             this.argument = command;
             this.value = value;
