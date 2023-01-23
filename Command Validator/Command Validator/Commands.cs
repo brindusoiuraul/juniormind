@@ -14,5 +14,10 @@ namespace Command_Validator
         {
             this.commands = commands;
         }
+
+        public Command[] GetCommands()
+        {
+            return this.commands;
+        }
     }
 }
