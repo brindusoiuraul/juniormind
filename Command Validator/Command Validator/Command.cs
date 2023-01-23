@@ -16,5 +16,15 @@ namespace Command_Validator
             this.argument = command;
             this.value = value;
         }
+
+        public string GetArgument()
+        {
+            return this.argument;
+        }
+
+        public string GetValue()
+        {
+            return this.value;
+        }
     }
 }

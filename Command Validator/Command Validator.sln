@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Command Validator", "Command Validator\Command Validator.csproj", "{537899B0-9569-48D6-897C-FD9D33E4F6C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Command Validator", "Command Validator\Command Validator.csproj", "{537899B0-9569-48D6-897C-FD9D33E4F6C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandValidatorFacts", "CommandValidatorFacts\CommandValidatorFacts.csproj", "{D7EBFC77-E308-40F0-8DDA-39111D32F230}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{537899B0-9569-48D6-897C-FD9D33E4F6C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{537899B0-9569-48D6-897C-FD9D33E4F6C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{537899B0-9569-48D6-897C-FD9D33E4F6C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7EBFC77-E308-40F0-8DDA-39111D32F230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7EBFC77-E308-40F0-8DDA-39111D32F230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7EBFC77-E308-40F0-8DDA-39111D32F230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7EBFC77-E308-40F0-8DDA-39111D32F230}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
