@@ -10,11 +10,13 @@ namespace Command_Validator
     {
         readonly string argument;
         readonly string value;
+        readonly string alias;
 
-        public Command(string command, string value = "none")
+        public Command(string command, string value = "none", string alias = "none")
         {
             this.argument = command;
             this.value = value;
+            this.alias = alias;
         }
 
         public string GetArgument()
@@ -25,6 +27,11 @@ namespace Command_Validator
         public string GetValue()
         {
             return this.value;
+        }
+
+        public string GetAlias()
+        {
+            return this.alias;
         }
     }
 }

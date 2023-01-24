@@ -18,5 +18,14 @@ namespace Command_Validator
             Assert.Equal("--message", command.GetArgument());
             Assert.Equal("abc", command.GetValue());
         }
+
+        [Fact]
+        public void CheckForArgumentAlias()
+        {
+            Command command = new Command("--message", "abc", "-m");
+            Assert.Equal("--message", command.GetArgument());
+            Assert.Equal("abc", command.GetValue());
+            Assert.Equal("-m", command.GetAlias());
+        }
     }
 }
