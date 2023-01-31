@@ -38,5 +38,15 @@ namespace ArgumentsValidator
             string[] args = { "--ammend", "--name", "raul" };
             Assert.True(validator.Validate(args));
         }
+
+        [Fact]
+        public void CheckForVerbArgumentValueShouldReturnTrue()
+        {
+            IPattern[] patterns = { new Verb(), new Argument(), new Value()};
+            var validator = new Validator(patterns);
+
+            string[] args = { "git", "--message", "abc" };
+            Assert.True(validator.Validate(args));
+        }
     }
 }
