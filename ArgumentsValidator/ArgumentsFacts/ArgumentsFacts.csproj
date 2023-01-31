@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ArgumentsValidator\ArgumentsValidator.csproj" />
+  </ItemGroup>
+
 </Project>
