@@ -28,5 +28,15 @@ namespace ArgumentsValidator
             string[] args = { "--name", "--raul" };
             Assert.False(validator.Validate(args));
         }
+
+        [Fact]
+        public void CheckForTwoArgumentsAndOneWithAValueShouldReturnTrue()
+        {
+            IPattern[] patterns = { new Argument(), new Argument(), new Value() };
+            var validator = new Validator(patterns);
+
+            string[] args = { "--ammend", "--name", "raul" };
+            Assert.True(validator.Validate(args));
+        }
     }
 }
