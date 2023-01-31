@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace ArgumentsValidator
 {
-    public class Character : IPattern
+    public class OptionalJson : IPattern
     {
-        readonly char pattern;
+        readonly IPattern pattern;
 
-        public Character(char pattern)
+        public OptionalJson(IPattern pattern)
         {
             this.pattern = pattern;
         }
 
         public IMatch Match(string text)
         {
-            return
-                !string.IsNullOrEmpty(text) && text[0] == pattern ?
-                new Match(true, text[1..]) :
-                new Match(false, text);
+            return new Match(true, pattern.Match(text).RemainingText());
         }
     }
 }

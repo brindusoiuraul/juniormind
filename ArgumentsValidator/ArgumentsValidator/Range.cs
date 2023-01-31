@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace ArgumentsValidator
 {
-    public class Character : IPattern
+    public class Range : IPattern
     {
-        readonly char pattern;
+        readonly char start;
+        readonly char end;
 
-        public Character(char pattern)
+        public Range(char start, char end)
         {
-            this.pattern = pattern;
+            this.start = start;
+            this.end = end;
         }
 
         public IMatch Match(string text)
         {
             return
-                !string.IsNullOrEmpty(text) && text[0] == pattern ?
+                !string.IsNullOrEmpty(text) && text[0] >= start && text[0] <= end ?
                 new Match(true, text[1..]) :
                 new Match(false, text);
         }
