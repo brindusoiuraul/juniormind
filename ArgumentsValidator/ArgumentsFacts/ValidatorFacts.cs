@@ -9,44 +9,22 @@ namespace ArgumentsValidator
 {
     public class ValidatorFacts
     {
-        [Fact]
-        public void CheckForValidFormatShouldReturnTrue()
+       [Fact]
+       public void CheckForCorrectPatternShouldReturnTrue()
         {
-            IPattern[] patterns = { new Argument(), new Value() };
-            var validator = new Validator(patterns);
+            var validator = new Validator();
+            string[] args = { "commit", "--message", "abc" };
 
-            string[] args = { "--name", "raul" };
             Assert.True(validator.Validate(args));
         }
 
         [Fact]
-        public void CheckForInvalidFormatShouldReturnFalse()
+        public void CheckForIncorrectPatternShouldReturnFalse()
         {
-            IPattern[] patterns = { new Argument(), new Value() };
-            var validator = new Validator(patterns);
+            var validator = new Validator();
+            string[] args = { "--message", "commit", "abc" };
 
-            string[] args = { "--name", "--raul" };
             Assert.False(validator.Validate(args));
-        }
-
-        [Fact]
-        public void CheckForTwoArgumentsAndOneWithAValueShouldReturnTrue()
-        {
-            IPattern[] patterns = { new Argument(), new Argument(), new Value() };
-            var validator = new Validator(patterns);
-
-            string[] args = { "--ammend", "--name", "raul" };
-            Assert.True(validator.Validate(args));
-        }
-
-        [Fact]
-        public void CheckForVerbArgumentValueShouldReturnTrue()
-        {
-            IPattern[] patterns = { new Verb(), new Argument(), new Value()};
-            var validator = new Validator(patterns);
-
-            string[] args = { "git", "--message", "abc" };
-            Assert.True(validator.Validate(args));
         }
     }
 }

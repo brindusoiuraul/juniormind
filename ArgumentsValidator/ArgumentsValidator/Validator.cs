@@ -10,9 +10,9 @@ namespace ArgumentsValidator
     {
         readonly IPattern[] patterns;
 
-        public Validator(IPattern[] patterns)
+        public Validator()
         {
-            this.patterns = patterns;
+            this.patterns = SetPatterns();
         }
 
         public bool Validate(string[] args)
@@ -31,6 +31,11 @@ namespace ArgumentsValidator
             }
 
             return true;
+        }
+
+        private IPattern[] SetPatterns()
+        {
+            return new IPattern[] { new Verb(), new Argument(), new Value() };
         }
     }
 }
