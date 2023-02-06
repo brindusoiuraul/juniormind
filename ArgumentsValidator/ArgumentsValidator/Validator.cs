@@ -12,7 +12,11 @@ namespace ArgumentsValidator
 
         public Validator()
         {
-            this.patterns = SetPatterns();
+            var verb = new Verb();
+            var argument = new Argument();
+            var value = new Value();
+
+            this.patterns = new IPattern[] { verb, argument, value };
         }
 
         public bool Validate(string[] args)
@@ -31,11 +35,6 @@ namespace ArgumentsValidator
             }
 
             return true;
-        }
-
-        private IPattern[] SetPatterns()
-        {
-            return new IPattern[] { new Verb(), new Argument(), new Value() };
         }
     }
 }
