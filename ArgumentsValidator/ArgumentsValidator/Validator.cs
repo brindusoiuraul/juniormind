@@ -21,7 +21,7 @@ namespace ArgumentsValidator
 
         public bool Validate(string[] args)
         {
-            if (args == null || args.Length < patterns.Length || args.Length > patterns.Length)
+            if (args == null || args.Length > patterns.Length)
             {
                 return false;
             }
