@@ -12,7 +12,7 @@ namespace ArgumentsValidator
 
         public Value()
         {
-            this.pattern = new OneOrMore(new Range('a', 'z'));
+            this.pattern = new OneOrMore(new Choice(new Range('a', 'z'), new Range('0', '9')));
         }
 
         public ICheck CheckArg(string[] arguments)
