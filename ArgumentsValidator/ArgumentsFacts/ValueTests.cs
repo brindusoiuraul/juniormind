@@ -17,5 +17,13 @@ namespace ArgumentsValidator
             Assert.True(value.CheckArg(args).Success());
             Assert.Equal(new string[0], value.CheckArg(args).RemainingArguments());
         }
+
+        [Fact]
+        public void CheckForIncorrectValueShouldReturnFalse()
+        {
+            Value value = new Value();
+            string[] args = { "" };
+            Assert.False(value.CheckArg(args).Success());
+        }
     }
 }
