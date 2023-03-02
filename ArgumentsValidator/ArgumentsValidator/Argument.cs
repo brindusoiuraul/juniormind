@@ -10,13 +10,13 @@ namespace ArgumentsValidator
     {
         readonly string name;
         readonly string? alias;
-        readonly string? value;
+        readonly List<OptionArg>? options;
 
-        public Argument(string name, string? value = null, string? alias = null)
+        public Argument(string name, string? alias = null, List<OptionArg>? options = null)
         {
             this.name = name;
             this.alias = alias;
-            this.value = value;
+            this.options = options;
         }
     }
 }

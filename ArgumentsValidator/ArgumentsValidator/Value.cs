@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace ArgumentsValidator
 {
-    public class Verb
+    public class Value
     {
         readonly string name;
-        readonly List<Argument> arguments;
 
-        public Verb(string name, List<Argument> arguments)
+        public Value(string name)
         {
             this.name = name;
-            this.arguments = arguments;
         }
     }
 }
