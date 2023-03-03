@@ -1,13 +1,12 @@
 using Xunit;
 
-namespace ArgumentsValidatorFacts
+namespace ArgumentsValidator
 {
     public class VerbTests
     {
         [Fact]
-        public void Test()
+        public void CheckForValidVerbShouldReturnTrue()
         {
-
         }
     }
 }

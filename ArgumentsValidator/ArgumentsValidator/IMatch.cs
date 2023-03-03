@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace ArgumentsValidator
 {
-    public class Value
+    public interface IMatch
     {
-        readonly string? name;
+        public bool Success();
 
-        public Value(string? name = null)
-        {
-            this.name = name;
-        }
+        public string[] RemainingArgs();
     }
 }
