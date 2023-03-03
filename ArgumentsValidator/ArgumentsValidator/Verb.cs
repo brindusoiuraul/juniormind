@@ -19,7 +19,20 @@ namespace ArgumentsValidator
 
         public IMatch Match(string[] args)
         {
-            throw new NotImplementedException();
+            if (args[0] != name)
+            {
+                return new Match(false, args);
+            }
+
+            foreach (Argument argument in arguments)
+            {
+                if (argument.Match(args[1..]).Success())
+                {
+                    return new Match(true, args[1..]);
+                }
+            }
+
+            return new Match(false, args);
         }
     }
 }

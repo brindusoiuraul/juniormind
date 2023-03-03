@@ -10,18 +10,21 @@ namespace ArgumentsValidator
     {
         readonly string name;
         readonly string? alias;
-        readonly List<OptionArg>? options;
 
-        public Argument(string name, string? alias = null, List<OptionArg>? options = null)
+        public Argument(string name, string? alias = null)
         {
             this.name = "--" + name;
             this.alias = "-" + alias;
-            this.options = options;
         }
 
         public IMatch Match(string[] args)
         {
-            throw new NotImplementedException();
+            if (name != args[0] && alias != args[0])
+            {
+                return new Match(false, args);
+            }
+
+            return new Match(true, args[1..]);
         }
     }
 }
