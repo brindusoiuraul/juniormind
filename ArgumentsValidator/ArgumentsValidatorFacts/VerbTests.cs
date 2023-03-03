@@ -21,5 +21,14 @@ namespace ArgumentsValidator
 
             Assert.True(verb.Match(commands).Success());
         }
+
+        [Fact]
+        public void CheckForInvalidVerbWithIncorrectArgumentName()
+        {
+            Verb verb = new Verb("commit", new Argument("message", "m"));
+            string[] commands = { "commit", "-message" };
+
+            Assert.False(verb.Match(commands).Success());
+        }
     }
 }
