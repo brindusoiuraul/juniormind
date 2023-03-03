@@ -15,7 +15,7 @@ namespace ArgumentsValidator
             this.verb = verb;
         }
 
-        public bool Match(string[] args)
+        public IMatch Match(string[] args)
         {
             return verb.Match(args);
         }

@@ -17,24 +17,9 @@ namespace ArgumentsValidator
             this.arguments = arguments;
         }
 
-        public bool Match(string[] args)
+        public IMatch Match(string[] args)
         {
-            if (args[0] != name)
-            {
-                return false;
-            }
-
-            args = args[1..];
-
-            foreach (Argument argument in arguments)
-            {
-                if (argument.Match(args))
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            throw new NotImplementedException();
         }
     }
 }

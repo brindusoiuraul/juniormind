@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace ArgumentsValidator
 {
-    public class Value
+    public class Value : IArgument
     {
         readonly string? name;
 
         public Value(string? name = null)
         {
             this.name = name;
+        }
+
+        public IMatch Match(string[] args)
+        {
+            throw new NotImplementedException();
         }
     }
 }

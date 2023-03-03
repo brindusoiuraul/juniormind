@@ -19,9 +19,9 @@ namespace ArgumentsValidator
             this.options = options;
         }
 
-        public bool Match(string[] args)
+        public IMatch Match(string[] args)
         {
-
+            throw new NotImplementedException();
         }
     }
 }

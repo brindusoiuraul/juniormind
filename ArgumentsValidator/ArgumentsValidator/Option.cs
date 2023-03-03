@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArgumentsValidator
 {
-    public class OptionArg
+    public class OptionArg : IArgument
     {
         readonly string name;
         readonly List<Value>? values;
@@ -15,6 +15,11 @@ namespace ArgumentsValidator
         {
             this.name = name;
             this.values = values;
+        }
+
+        public IMatch Match(string[] args)
+        {
+            throw new NotImplementedException();
         }
     }
 }
