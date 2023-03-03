@@ -50,5 +50,14 @@ namespace ArgumentsValidator
             Assert.True(verb.Match(commands).Success());
             Assert.True(verb.Match(commands2).Success());
         }
+
+        [Fact]
+        public void CheckForValidVerbWithOneArgumentWithNoAliasShouldReturnTrue()
+        {
+            Verb verb = new Verb("commit", new Argument("message"));
+            string[] commands = { "commit", "--message" };
+
+            Assert.True(verb.Match(commands).Success());
+        }
     }
 }
