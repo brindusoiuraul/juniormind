@@ -26,6 +26,11 @@ namespace ArgumentsValidator
                 return new Match(false, args);
             }
 
+            if (options.Length == 0 && args[1..].Length > 0)
+            {
+                return new Match(false, args);
+            }
+
             if (options.Length > 0)
             {
                 foreach (IArgument option in options)
@@ -36,11 +41,6 @@ namespace ArgumentsValidator
                     }
                 }
 
-                return new Match(false, args);
-            }
-
-            if (options.Length == 0 && args[1..].Length > 0)
-            {
                 return new Match(false, args);
             }
 
