@@ -32,14 +32,19 @@ namespace ArgumentsValidator
                 {
                     if (option.Match(args[1..]).Success())
                     {
-                        return new Match(true, args[1..]);
+                        return option.Match(args[1..]);
                     }
                 }
 
                 return new Match(false, args);
             }
 
-            return new Match(true, args[1..]);
+            if (options.Length == 0 && args[1..].Length > 0)
+            {
+                return new Match(false, args);
+            }
+
+            return new Match(true, args);
         }
     }
 }
