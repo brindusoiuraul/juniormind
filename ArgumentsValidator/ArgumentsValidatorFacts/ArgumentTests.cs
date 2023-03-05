@@ -121,5 +121,49 @@ namespace ArgumentsValidator
             Assert.False(argument.Match(command).Success());
             Assert.False(argument.Match(secondCommand).Success());
         }
+
+        [Fact]
+        public void CheckForValidArgumentWithValueShouldReturnTrue()
+        {
+            Argument argument = new Argument("message", "m", new Value());
+            string[] command = { "--message", "abc" };
+
+            Assert.True(argument.Match(command).Success());
+        }
+
+        [Fact]
+        public void CheckForValidNumberWithPredefinedValueShouldReturnTrue()
+        {
+            Argument argument = new Argument("color", "c", new Value("blue"));
+            string[] command = { "--color", "blue" };
+
+            Assert.True(argument.Match(command).Success());
+        }
+
+        [Fact]
+        public void CheckForValidArgumentWithMultiplePredefinedValues()
+        {
+            Argument argument = new Argument("color", "c", new Value("red"), new Value("green"), new Value("blue"));
+            string[] command = { "--color", "green" };
+            string[] secondCommand = { "--color", "lightgreen" };
+
+            Assert.True(argument.Match(command).Success());
+            Assert.False(argument.Match(secondCommand).Success());
+        }
+
+        [Fact]
+        public void CheckMoreComplexArgument()
+        {
+            Argument argument = new Argument("message", "m", new Value(), new Argument("setcolor", "s", new Value("red"), new Value("green"), new Value("blue")));
+
+            string[] command = { "--message", "abc" };
+            Assert.True(argument.Match(command).Success());
+
+            string[] secondCommand = { "--message", "abc", "--setcolor", "green" };
+            Assert.True(argument.Match(secondCommand).Success());
+
+            string[] thirdCommand = { "--message", "--setcolor", "white" };
+            Assert.False(argument.Match(thirdCommand).Success());
+        }
     }
 }
