@@ -28,7 +28,7 @@ namespace ArgumentsValidator
             {
                 if (argument.Match(args[1..]).Success())
                 {
-                    return argument.Match(args[1..]);
+                    return new Match(true, args[1..]);
                 }
             }
 
