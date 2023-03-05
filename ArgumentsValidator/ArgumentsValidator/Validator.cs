@@ -8,16 +8,24 @@ namespace ArgumentsValidator
 {
     public class Validator : IArgument
     {
-        readonly Verb verb;
+        readonly Verb[] verbs;
 
-        public Validator(Verb verb)
+        public Validator(params Verb[] verbs)
         {
-            this.verb = verb;
+            this.verbs = verbs;
         }
 
         public IMatch Match(string[] args)
         {
-            return verb.Match(args);
+            foreach (Verb verb in verbs)
+            {
+                if (verb.Match(args).Success())
+                {
+                    return verb.Match(args);
+                }
+            }
+
+            return new Match(false, args);
         }
     }
 }
