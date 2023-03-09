@@ -18,6 +18,7 @@ namespace IntArray
         public void CountTest()
         {
             IntArray intArray = new IntArray();
+
             intArray.Add(1);
             intArray.Add(2);
             intArray.Add(3);
@@ -29,6 +30,7 @@ namespace IntArray
         public void ElementTest()
         {
             IntArray intArray = new IntArray();
+
             intArray.Add(1);
             intArray.Add(2);
             intArray.Add(3);
@@ -36,6 +38,19 @@ namespace IntArray
             intArray.Add(5);
 
             Assert.Equal(4, intArray.Element(3));
+        }
+
+        [Fact]
+        public void SetElementTest()
+        {
+            IntArray intArray = new IntArray();
+
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+
+            intArray.SetElement(1, 5);
+            Assert.Equal(5, intArray.Element(1));
         }
     }
 }

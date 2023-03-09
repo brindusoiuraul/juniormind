@@ -33,7 +33,7 @@ namespace IntArray
 
         public void SetElement(int index, int element)
         {
-            throw new NotImplementedException();
+            intArray[index] = element;
         }
 
         public bool Contains(int element)
