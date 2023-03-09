@@ -8,21 +8,22 @@ namespace IntArray
 {
     public class IntArray
     {
-        readonly int[] intArray;
+        int[] intArray;
 
         public IntArray()
         {
-            this.intArray = new int[1];
+            this.intArray = new int[0];
         }
 
         public void Add(int element)
         {
+            Array.Resize(ref intArray, intArray.Length + 1);
             intArray[^1] = element;
         }
 
         public int Count()
         {
-            throw new NotImplementedException();
+            return intArray.Length;
         }
 
         public int Element(int index)
