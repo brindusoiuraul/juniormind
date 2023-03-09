@@ -43,7 +43,15 @@ namespace IntArray
 
         public int IndexOf(int element)
         {
-            throw new NotImplementedException();
+            for (int index = 0; index < intArray.Length; index++)
+            {
+                if (intArray[index] == element)
+                {
+                    return index;
+                }
+            }
+
+            return -1;
         }
 
         public void Insert(int index, int element)

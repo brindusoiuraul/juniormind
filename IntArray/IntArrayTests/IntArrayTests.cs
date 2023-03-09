@@ -64,5 +64,18 @@ namespace IntArray
 
             Assert.True(intArray.Contains(2));
         }
+
+        [Fact]
+        public void IndexOfTest()
+        {
+            IntArray intArray = new IntArray();
+
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+
+            Assert.Equal(1, intArray.IndexOf(2));
+            Assert.Equal(-1, intArray.IndexOf(6));
+        }
     }
 }
