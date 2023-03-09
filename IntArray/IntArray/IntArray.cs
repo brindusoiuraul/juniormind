@@ -38,7 +38,7 @@ namespace IntArray
 
         public bool Contains(int element)
         {
-            throw new NotImplementedException();
+            return intArray.Contains(element);
         }
 
         public int IndexOf(int element)

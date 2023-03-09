@@ -52,5 +52,17 @@ namespace IntArray
             intArray.SetElement(1, 5);
             Assert.Equal(5, intArray.Element(1));
         }
+
+        [Fact]
+        public void ContainsTest()
+        {
+            IntArray intArray = new IntArray();
+
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+
+            Assert.True(intArray.Contains(2));
+        }
     }
 }
