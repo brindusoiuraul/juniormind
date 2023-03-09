@@ -24,5 +24,18 @@ namespace IntArray
 
             Assert.Equal(3, intArray.Count());
         }
+
+        [Fact]
+        public void ElementTest()
+        {
+            IntArray intArray = new IntArray();
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+            intArray.Add(4);
+            intArray.Add(5);
+
+            Assert.Equal(4, intArray.Element(3));
+        }
     }
 }

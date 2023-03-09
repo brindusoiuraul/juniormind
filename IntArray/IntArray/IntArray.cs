@@ -28,7 +28,7 @@ namespace IntArray
 
         public int Element(int index)
         {
-            throw new NotImplementedException();
+            return intArray[index];
         }
 
         public void SetElement(int index, int element)
