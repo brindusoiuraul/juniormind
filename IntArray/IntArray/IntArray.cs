@@ -8,14 +8,16 @@ namespace IntArray
 {
     public class IntArray
     {
+        readonly int[] intArray;
+
         public IntArray()
         {
-            throw new NotImplementedException();
+            this.intArray = new int[1];
         }
 
         public void Add(int element)
         {
-            throw new NotImplementedException();
+            intArray[^1] = element;
         }
 
         public int Count()
