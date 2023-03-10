@@ -77,5 +77,22 @@ namespace IntArray
             Assert.Equal(1, intArray.IndexOf(2));
             Assert.Equal(-1, intArray.IndexOf(6));
         }
+
+        [Fact]
+        public void InsertTest()
+        {
+            IntArray intArray = new IntArray();
+
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+
+            intArray.Insert(1, 5);
+
+            Assert.Equal(1, intArray.Element(0));
+            Assert.Equal(5, intArray.Element(1));
+            Assert.Equal(2, intArray.Element(2));
+            Assert.Equal(3, intArray.Element(3));
+        }
     }
 }

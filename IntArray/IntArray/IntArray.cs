@@ -56,7 +56,14 @@ namespace IntArray
 
         public void Insert(int index, int element)
         {
-            throw new NotImplementedException();
+            Array.Resize(ref intArray, intArray.Length + 1);
+
+            for (int intArrayIndex = intArray.Length - 1; intArrayIndex > index; intArrayIndex--)
+            {
+                intArray[intArrayIndex] = intArray[intArrayIndex - 1];
+            }
+
+            intArray[index] = element;
         }
 
         public void Clear()
