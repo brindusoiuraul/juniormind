@@ -68,7 +68,7 @@ namespace IntArray
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            Array.Resize(ref intArray, 0);
         }
 
         public void Remove(int element)
