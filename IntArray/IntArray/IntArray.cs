@@ -38,7 +38,15 @@ namespace IntArray
 
         public bool Contains(int element)
         {
-            return intArray.Contains(element);
+            foreach (var number in intArray)
+            {
+                if (number == element)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public int IndexOf(int element)
@@ -58,10 +66,7 @@ namespace IntArray
         {
             Array.Resize(ref intArray, intArray.Length + 1);
 
-            for (int intArrayIndex = intArray.Length - 1; intArrayIndex > index; intArrayIndex--)
-            {
-                intArray[intArrayIndex] = intArray[intArrayIndex - 1];
-            }
+            ShiftRight(index);
 
             intArray[index] = element;
         }
@@ -77,11 +82,7 @@ namespace IntArray
             {
                 if (intArray[index] == element)
                 {
-                    for (int secondIndex = index; secondIndex < intArray.Length - 1; secondIndex++)
-                    {
-                        intArray[secondIndex] = intArray[secondIndex + 1];
-                    }
-
+                    ShiftLeft(index);
                     break;
                 }
             }
@@ -91,12 +92,24 @@ namespace IntArray
 
         public void RemoveAt(int index)
         {
-            for (int intArrayIndex = index; intArrayIndex < intArray.Length - 1; intArrayIndex++)
+            ShiftLeft(index);
+            Array.Resize(ref intArray, intArray.Length - 1);
+        }
+
+        private void ShiftLeft(int startIndex)
+        {
+            for (int intArrayIndex = startIndex; intArrayIndex < intArray.Length - 1; intArrayIndex++)
             {
                 intArray[intArrayIndex] = intArray[intArrayIndex + 1];
             }
+        }
 
-            Array.Resize(ref intArray, intArray.Length - 1);
+        private void ShiftRight(int index)
+        {
+            for (int intArrayIndex = intArray.Length - 1; intArrayIndex > index; intArrayIndex--)
+            {
+                intArray[intArrayIndex] = intArray[intArrayIndex - 1];
+            }
         }
     }
 }
