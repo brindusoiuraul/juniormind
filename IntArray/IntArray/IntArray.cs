@@ -73,12 +73,30 @@ namespace IntArray
 
         public void Remove(int element)
         {
-            throw new NotImplementedException();
+            for (int index = 0; index < intArray.Length; index++)
+            {
+                if (intArray[index] == element)
+                {
+                    for (int secondIndex = index; secondIndex < intArray.Length - 1; secondIndex++)
+                    {
+                        intArray[secondIndex] = intArray[secondIndex + 1];
+                    }
+
+                    break;
+                }
+            }
+
+            Array.Resize(ref intArray, intArray.Length - 1);
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            for (int intArrayIndex = index; intArrayIndex < intArray.Length - 1; intArrayIndex++)
+            {
+                intArray[intArrayIndex] = intArray[intArrayIndex + 1];
+            }
+
+            Array.Resize(ref intArray, intArray.Length - 1);
         }
     }
 }
