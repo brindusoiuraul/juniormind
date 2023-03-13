@@ -38,15 +38,7 @@ namespace IntArray
 
         public bool Contains(int element)
         {
-            foreach (var number in intArray)
-            {
-                if (number == element)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return IndexOf(element) != -1;
         }
 
         public int IndexOf(int element)
@@ -78,10 +70,7 @@ namespace IntArray
 
         public void Remove(int element)
         {
-            if (IndexOf(element) != -1)
-            {
-                ShiftLeft(IndexOf(element));
-            }
+            ShiftLeft(IndexOf(element));
 
             Array.Resize(ref intArray, intArray.Length - 1);
         }
