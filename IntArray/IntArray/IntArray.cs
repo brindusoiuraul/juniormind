@@ -57,9 +57,7 @@ namespace IntArray
         public void Insert(int index, int element)
         {
             Array.Resize(ref intArray, intArray.Length + 1);
-
             ShiftRight(index);
-
             intArray[index] = element;
         }
 
@@ -71,7 +69,6 @@ namespace IntArray
         public void Remove(int element)
         {
             ShiftLeft(IndexOf(element));
-
             Array.Resize(ref intArray, intArray.Length - 1);
         }
 
