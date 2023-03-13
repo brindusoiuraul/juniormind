@@ -78,13 +78,9 @@ namespace IntArray
 
         public void Remove(int element)
         {
-            for (int index = 0; index < intArray.Length; index++)
+            if (IndexOf(element) != -1)
             {
-                if (intArray[index] == element)
-                {
-                    ShiftLeft(index);
-                    break;
-                }
+                ShiftLeft(IndexOf(element));
             }
 
             Array.Resize(ref intArray, intArray.Length - 1);
