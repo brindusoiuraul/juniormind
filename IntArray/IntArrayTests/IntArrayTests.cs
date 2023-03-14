@@ -113,7 +113,7 @@ namespace IntArray
         }
 
         [Fact]
-        public void RemoveTests()
+        public void ValidRemoveTest()
         {
             IntArray intArray = new IntArray();
 
@@ -121,10 +121,22 @@ namespace IntArray
             intArray.Add(2);
             intArray.Add(3);
 
-            intArray.Remove(2);
+            Assert.True(intArray.Remove(2));
 
             Assert.Equal(3, intArray.Element(1));
             Assert.Equal(2, intArray.Count());
+        }
+
+        [Fact]
+        public void InvalidRemoveTestShouldReturnFalse()
+        {
+            IntArray intArray = new IntArray();
+
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+
+            Assert.False(intArray.Remove(6));
         }
 
         [Fact]

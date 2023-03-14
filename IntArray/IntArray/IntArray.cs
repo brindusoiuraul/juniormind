@@ -66,10 +66,19 @@ namespace IntArray
             Array.Resize(ref intArray, 0);
         }
 
-        public void Remove(int element)
+        public bool Remove(int element)
         {
-            ShiftLeft(IndexOf(element));
+            int index = IndexOf(element);
+
+            if (index == -1)
+            {
+                return false;
+            }
+
+            ShiftLeft(index);
             Array.Resize(ref intArray, intArray.Length - 1);
+
+            return true;
         }
 
         public void RemoveAt(int index)
