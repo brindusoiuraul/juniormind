@@ -75,8 +75,7 @@ namespace IntArray
                 return false;
             }
 
-            ShiftLeft(index);
-            Array.Resize(ref intArray, intArray.Length - 1);
+            RemoveAt(index);
 
             return true;
         }
