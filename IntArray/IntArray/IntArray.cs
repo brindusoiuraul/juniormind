@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IntArray
 {
@@ -12,18 +8,29 @@ namespace IntArray
 
         public IntArray()
         {
-            this.intArray = new int[0];
+            intArray = new int[4];
         }
 
         public void Add(int element)
         {
-            Array.Resize(ref intArray, intArray.Length + 1);
-            intArray[^1] = element;
+            if (Count() == intArray.Length - 1)
+            {
+                Array.Resize(ref intArray, intArray.Length * 2);
+            }
+
+            intArray[Count()] = element;
         }
 
         public int Count()
         {
-            return intArray.Length;
+            int count = 0;
+
+            while (count < intArray.Length && intArray[count] != 0)
+            {
+                count++;
+            }
+
+            return count;
         }
 
         public int Element(int index)
