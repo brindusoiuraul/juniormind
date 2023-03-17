@@ -5,6 +5,7 @@ namespace IntArray
     public class IntArray
     {
         int[] intArray;
+        private int numberOfElements;
 
         public IntArray()
         {
@@ -13,24 +14,13 @@ namespace IntArray
 
         public void Add(int element)
         {
-            if (Count() == intArray.Length - 1)
-            {
-                Array.Resize(ref intArray, intArray.Length * 2);
-            }
-
-            intArray[Count()] = element;
+            numberOfElements++;
+            Insert(Count() - 1, element);
         }
 
         public int Count()
         {
-            int count = 0;
-
-            while (count < intArray.Length && intArray[count] != 0)
-            {
-                count++;
-            }
-
-            return count;
+            return numberOfElements;
         }
 
         public int Element(int index)
@@ -63,14 +53,19 @@ namespace IntArray
 
         public void Insert(int index, int element)
         {
-            Array.Resize(ref intArray, intArray.Length + 1);
+            if (Count() == intArray.Length)
+            {
+                Array.Resize(ref intArray, intArray.Length * 2);
+            }
+
             ShiftRight(index);
-            intArray[index] = element;
+            SetElement(index, element);
         }
 
         public void Clear()
         {
-            Array.Resize(ref intArray, 0);
+            numberOfElements = 0;
+            Array.Resize(ref intArray, 4);
         }
 
         public bool Remove(int element)
@@ -90,6 +85,7 @@ namespace IntArray
         public void RemoveAt(int index)
         {
             ShiftLeft(index);
+            numberOfElements--;
             Array.Resize(ref intArray, intArray.Length - 1);
         }
 
