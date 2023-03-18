@@ -70,7 +70,6 @@ namespace IntArray
             }
 
             RemoveAt(index);
-
             return true;
         }
 
