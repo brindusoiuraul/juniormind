@@ -37,7 +37,7 @@ namespace IntArray
             intArray.Add(4);
             intArray.Add(5);
 
-            Assert.Equal(4, intArray.Element(3));
+            Assert.Equal(4, intArray[3]);
         }
 
         [Fact]
@@ -49,8 +49,8 @@ namespace IntArray
             intArray.Add(2);
             intArray.Add(3);
 
-            intArray.SetElement(1, 5);
-            Assert.Equal(5, intArray.Element(1));
+            intArray[1] = 5;
+            Assert.Equal(5, intArray[1]);
         }
 
         [Fact]
@@ -89,10 +89,10 @@ namespace IntArray
 
             intArray.Insert(1, 5);
 
-            Assert.Equal(1, intArray.Element(0));
-            Assert.Equal(5, intArray.Element(1));
-            Assert.Equal(2, intArray.Element(2));
-            Assert.Equal(3, intArray.Element(3));
+            Assert.Equal(1, intArray[0]);
+            Assert.Equal(5, intArray[1]);
+            Assert.Equal(2, intArray[2]);
+            Assert.Equal(3, intArray[3]);
         }
 
         [Fact]
@@ -104,9 +104,9 @@ namespace IntArray
             intArray.Add(2);
             intArray.Add(3);
 
-            Assert.Equal(1, intArray.Element(0));
-            Assert.Equal(2, intArray.Element(1));
-            Assert.Equal(3, intArray.Element(2));
+            Assert.Equal(1, intArray[0]);
+            Assert.Equal(2, intArray[1]);
+            Assert.Equal(3, intArray[2]);
 
             intArray.Clear();
             Assert.Equal(0, intArray.Count);
@@ -123,7 +123,7 @@ namespace IntArray
 
             Assert.True(intArray.Remove(2));
 
-            Assert.Equal(3, intArray.Element(1));
+            Assert.Equal(3, intArray[1]);
             Assert.Equal(2, intArray.Count);
         }
 
@@ -150,7 +150,7 @@ namespace IntArray
 
             intArray.Remove(1);
 
-            Assert.Equal(3, intArray.Element(1));
+            Assert.Equal(3, intArray[1]);
             Assert.Equal(2, intArray.Count);
         }
     }

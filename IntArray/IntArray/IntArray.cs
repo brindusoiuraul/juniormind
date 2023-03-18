@@ -13,20 +13,16 @@ namespace IntArray
 
         public int Count { get; private set; }
 
+        public int this[int index]
+        {
+            get => intArray[index];
+            set => intArray[index] = value;
+        }
+
         public void Add(int element)
         {
             Count++;
             Insert(Count - 1, element);
-        }
-
-        public int Element(int index)
-        {
-            return intArray[index];
-        }
-
-        public void SetElement(int index, int element)
-        {
-            intArray[index] = element;
         }
 
         public bool Contains(int element)
@@ -55,7 +51,7 @@ namespace IntArray
             }
 
             ShiftRight(index);
-            SetElement(index, element);
+            intArray[index] = element;
         }
 
         public void Clear()
