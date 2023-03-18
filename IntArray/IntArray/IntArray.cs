@@ -5,22 +5,18 @@ namespace IntArray
     public class IntArray
     {
         int[] intArray;
-        private int numberOfElements;
 
         public IntArray()
         {
             intArray = new int[4];
         }
 
+        public int Count { get; private set; }
+
         public void Add(int element)
         {
-            numberOfElements++;
-            Insert(Count() - 1, element);
-        }
-
-        public int Count()
-        {
-            return numberOfElements;
+            Count++;
+            Insert(Count - 1, element);
         }
 
         public int Element(int index)
@@ -53,7 +49,7 @@ namespace IntArray
 
         public void Insert(int index, int element)
         {
-            if (Count() == intArray.Length)
+            if (Count == intArray.Length)
             {
                 Array.Resize(ref intArray, intArray.Length * 2);
             }
@@ -64,7 +60,7 @@ namespace IntArray
 
         public void Clear()
         {
-            numberOfElements = 0;
+            Count = 0;
             Array.Resize(ref intArray, 4);
         }
 
@@ -85,7 +81,7 @@ namespace IntArray
         public void RemoveAt(int index)
         {
             ShiftLeft(index);
-            numberOfElements--;
+            Count--;
             Array.Resize(ref intArray, intArray.Length - 1);
         }
 

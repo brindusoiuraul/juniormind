@@ -8,10 +8,10 @@ namespace IntArray
         public void AddElementTest()
         {
             IntArray intArray = new IntArray();
-            Assert.Equal(0, intArray.Count());
+            Assert.Equal(0, intArray.Count);
 
             intArray.Add(1);
-            Assert.Equal(1, intArray.Count());
+            Assert.Equal(1, intArray.Count);
         }
 
         [Fact]
@@ -23,7 +23,7 @@ namespace IntArray
             intArray.Add(2);
             intArray.Add(3);
 
-            Assert.Equal(3, intArray.Count());
+            Assert.Equal(3, intArray.Count);
         }
 
         [Fact]
@@ -109,7 +109,7 @@ namespace IntArray
             Assert.Equal(3, intArray.Element(2));
 
             intArray.Clear();
-            Assert.Equal(0, intArray.Count());
+            Assert.Equal(0, intArray.Count);
         }
 
         [Fact]
@@ -124,7 +124,7 @@ namespace IntArray
             Assert.True(intArray.Remove(2));
 
             Assert.Equal(3, intArray.Element(1));
-            Assert.Equal(2, intArray.Count());
+            Assert.Equal(2, intArray.Count);
         }
 
         [Fact]
@@ -151,7 +151,7 @@ namespace IntArray
             intArray.Remove(1);
 
             Assert.Equal(3, intArray.Element(1));
-            Assert.Equal(2, intArray.Count());
+            Assert.Equal(2, intArray.Count);
         }
     }
 }
