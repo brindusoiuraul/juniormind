@@ -9,5 +9,10 @@ namespace IntArray
 {
     public class SortedIntArrayTests
     {
+        [Fact]
+        public void CheckForValidSortedIntArray()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -4,14 +4,14 @@ namespace IntArray
 {
     public class IntArray
     {
-        protected int[] intArray;
+        private int[] intArray;
 
         public IntArray()
         {
             intArray = new int[4];
         }
 
-        public int Count { get; private set; }
+        public int Count { get; protected set; }
 
         public int this[int index]
         {
@@ -19,7 +19,7 @@ namespace IntArray
             set => intArray[index] = value;
         }
 
-        public void Add(int element)
+        public virtual void Add(int element)
         {
             Count++;
             Insert(Count - 1, element);
