@@ -4,7 +4,7 @@ namespace IntArray
 {
     public class IntArray
     {
-        int[] intArray;
+        protected int[] intArray;
 
         public IntArray()
         {
