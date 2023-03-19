@@ -13,7 +13,7 @@ namespace IntArray
 
         public int Count { get; protected set; }
 
-        public int this[int index]
+        public virtual int this[int index]
         {
             get => intArray[index];
             set => intArray[index] = value;

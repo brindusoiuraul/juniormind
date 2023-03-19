@@ -10,9 +10,11 @@ namespace IntArray
     public class SortedIntArrayTests
     {
         [Fact]
-        public void CheckForValidSortedIntArray()
+        public void CheckIfElementsAreAssigned()
         {
-            throw new NotImplementedException();
+            var array = new SortedIntArray();
+            array[0] = 1;
+            Assert.Equal(1, array[0]);
         }
     }
 }
