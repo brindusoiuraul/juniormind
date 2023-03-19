@@ -21,8 +21,7 @@ namespace IntArray
 
         public virtual void Add(int element)
         {
-            Count++;
-            Insert(Count - 1, element);
+            Insert(Count, element);
         }
 
         public bool Contains(int element)
@@ -45,6 +44,7 @@ namespace IntArray
 
         public virtual void Insert(int index, int element)
         {
+            Count++;
             EnlargeArray();
             ShiftRight(index);
             intArray[index] = element;

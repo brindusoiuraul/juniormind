@@ -16,12 +16,12 @@ namespace IntArray
 
         public override void Add(int element)
         {
-            Count++;
-            this.Insert(Count - 1, element);
+            Insert(Count, element);
         }
 
         public override void Insert(int index, int element)
         {
+            Count++;
             EnlargeArray();
             ShiftRight(index);
             base[index] = element;
