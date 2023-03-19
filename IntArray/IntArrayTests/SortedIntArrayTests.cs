@@ -31,5 +31,22 @@ namespace IntArray
             Assert.Equal(4, array[2]);
             Assert.Equal(5, array[3]);
         }
+
+        [Fact]
+        public void CheckIfElementsAreSortedAfterChangingAnElement()
+        {
+            var array = new SortedIntArray();
+            array.Add(5);
+            array.Add(2);
+            array.Add(4);
+            array.Add(4);
+
+            array[1] = 8;
+
+            Assert.Equal(2, array[0]);
+            Assert.Equal(4, array[1]);
+            Assert.Equal(5, array[2]);
+            Assert.Equal(8, array[3]);
+        }
     }
 }

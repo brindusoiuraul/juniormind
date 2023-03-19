@@ -10,6 +10,7 @@ namespace IntArray
             set
             {
                 base[index] = value;
+                Sort();
             }
         }
 
