@@ -19,7 +19,7 @@ namespace IntArray
             set => intArray[index] = value;
         }
 
-        public virtual void Add(int element)
+        public void Add(int element)
         {
             Count++;
             Insert(Count - 1, element);
