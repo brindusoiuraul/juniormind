@@ -18,6 +18,13 @@ namespace IntArray
         {
             Count++;
             this.Insert(Count - 1, element);
+        }
+
+        public override void Insert(int index, int element)
+        {
+            EnlargeArray();
+            ShiftRight(index);
+            base[index] = element;
             Sort();
         }
 

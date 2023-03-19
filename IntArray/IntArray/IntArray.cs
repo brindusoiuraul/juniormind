@@ -43,13 +43,9 @@ namespace IntArray
             return -1;
         }
 
-        public void Insert(int index, int element)
+        public virtual void Insert(int index, int element)
         {
-            if (Count == intArray.Length)
-            {
-                Array.Resize(ref intArray, intArray.Length * 2);
-            }
-
+            EnlargeArray();
             ShiftRight(index);
             intArray[index] = element;
         }
@@ -80,19 +76,29 @@ namespace IntArray
             Array.Resize(ref intArray, intArray.Length - 1);
         }
 
+        protected void EnlargeArray()
+        {
+            if (Count < intArray.Length)
+            {
+                return;
+            }
+
+            Array.Resize(ref intArray, intArray.Length * 2);
+        }
+
+        protected void ShiftRight(int index)
+        {
+            for (int intArrayIndex = intArray.Length - 1; intArrayIndex > index; intArrayIndex--)
+            {
+                intArray[intArrayIndex] = intArray[intArrayIndex - 1];
+            }
+        }
+
         private void ShiftLeft(int startIndex)
         {
             for (int intArrayIndex = startIndex; intArrayIndex < intArray.Length - 1; intArrayIndex++)
             {
                 intArray[intArrayIndex] = intArray[intArrayIndex + 1];
-            }
-        }
-
-        private void ShiftRight(int index)
-        {
-            for (int intArrayIndex = intArray.Length - 1; intArrayIndex > index; intArrayIndex--)
-            {
-                intArray[intArrayIndex] = intArray[intArrayIndex - 1];
             }
         }
     }
