@@ -31,10 +31,7 @@ namespace IntArray
                 return;
             }
 
-            Count++;
-            EnlargeArray();
-            ShiftRight(index);
-            base[index] = element;
+            base.Insert(index, element);
         }
 
         private void Sort()
@@ -97,22 +94,12 @@ namespace IntArray
                 return true;
             }
 
-            if (index == 0 && element < base[index + 1])
+            if ((index == 0 && element < base[index + 1]) || (index == Count && element > base[index - 1]))
             {
                 return true;
             }
 
-            if (index == Count && element > base[index - 1])
-            {
-                return true;
-            }
-
-            if (element > base[index - 1] && element < base[index + 1])
-            {
-                return true;
-            }
-
-            return false;
+            return element > base[index - 1] && element < base[index + 1];
         }
     }
 }
