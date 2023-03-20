@@ -40,8 +40,8 @@ namespace IntArray
 
             Assert.Equal(2, array[0]);
             Assert.Equal(4, array[1]);
-            Assert.Equal(5, array[2]);
-            Assert.Equal(8, array[3]);
+            Assert.Equal(4, array[2]);
+            Assert.Equal(5, array[3]);
         }
 
         [Fact]

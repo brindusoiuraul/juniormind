@@ -9,8 +9,12 @@ namespace IntArray
             get => base[index];
             set
             {
+                if (!CanReplace(index, value))
+                {
+                    return;
+                }
+
                 base[index] = value;
-                Sort();
             }
         }
 
@@ -84,6 +88,31 @@ namespace IntArray
         private bool CanInsert(int index, int element)
         {
             return base[index] >= element;
+        }
+
+        private bool CanReplace(int index, int element)
+        {
+            if (Count < 2)
+            {
+                return true;
+            }
+
+            if (index == 0 && element < base[index + 1])
+            {
+                return true;
+            }
+
+            if (index == Count && element > base[index - 1])
+            {
+                return true;
+            }
+
+            if (element > base[index - 1] && element < base[index + 1])
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
