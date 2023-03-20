@@ -16,16 +16,21 @@ namespace IntArray
 
         public override void Add(int element)
         {
-            Insert(Count, element);
+            base.Insert(Count, element);
+            Sort();
         }
 
         public override void Insert(int index, int element)
         {
+            if (!CanInsert(index, element))
+            {
+                return;
+            }
+
             Count++;
             EnlargeArray();
             ShiftRight(index);
             base[index] = element;
-            Sort();
         }
 
         private void Sort()
@@ -74,6 +79,11 @@ namespace IntArray
             int temp = base[firstIndex];
             base[firstIndex] = base[secondIndex];
             base[secondIndex] = temp;
+        }
+
+        private bool CanInsert(int index, int element)
+        {
+            return base[index] >= element;
         }
     }
 }
