@@ -85,14 +85,7 @@ namespace IntArray
         private bool CanModify(int firstIndex, int secondIndex, int element) =>
             ElementOrDefault(firstIndex, element) <= element && element <= ElementOrDefault(secondIndex, element);
 
-        private int ElementOrDefault(int index, int value)
-        {
-            if (index < 0 || index >= Count)
-            {
-                return value;
-            }
-
-            return base[index];
-        }
+        private int ElementOrDefault(int index, int value) =>
+            index < 0 || index >= Count ? value : base[index];
     }
 }
