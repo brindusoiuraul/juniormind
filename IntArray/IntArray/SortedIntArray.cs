@@ -9,7 +9,7 @@ namespace IntArray
             get => base[index];
             set
             {
-                if (!CanReplace(index, value))
+                if (ElementOrDefault(index - 1, value) > value || value > ElementOrDefault(index + 1, value))
                 {
                     return;
                 }
@@ -26,7 +26,7 @@ namespace IntArray
 
         public override void Insert(int index, int element)
         {
-            if (!CanInsert(index, element))
+            if (ElementOrDefault(index - 1, element) > element || element > ElementOrDefault(index, element))
             {
                 return;
             }
@@ -82,24 +82,14 @@ namespace IntArray
             base[secondIndex] = temp;
         }
 
-        private bool CanInsert(int index, int element)
+        private int ElementOrDefault(int index, int value)
         {
-            return base[index] >= element;
-        }
-
-        private bool CanReplace(int index, int element)
-        {
-            if (Count < 2)
+            if (index < 0 || index >= Count)
             {
-                return true;
+                return value;
             }
 
-            if ((index == 0 && element < base[index + 1]) || (index == Count && element > base[index - 1]))
-            {
-                return true;
-            }
-
-            return element > base[index - 1] && element < base[index + 1];
+            return base[index];
         }
     }
 }
