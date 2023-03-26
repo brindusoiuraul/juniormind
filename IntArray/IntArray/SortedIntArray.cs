@@ -75,12 +75,8 @@ namespace IntArray
             Heapify(size, largest);
         }
 
-        private void Swap(int firstIndex, int secondIndex)
-        {
-            int temp = base[firstIndex];
-            base[firstIndex] = base[secondIndex];
-            base[secondIndex] = temp;
-        }
+        private void Swap(int firstIndex, int secondIndex) =>
+            (base[firstIndex], base[secondIndex]) = (base[secondIndex], base[firstIndex]);
 
         private bool CanModify(int firstIndex, int secondIndex, int element) =>
             ElementOrDefault(firstIndex, element) <= element && element <= ElementOrDefault(secondIndex, element);
