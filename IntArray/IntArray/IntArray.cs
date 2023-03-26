@@ -19,15 +19,9 @@ namespace IntArray
             set => intArray[index] = value;
         }
 
-        public virtual void Add(int element)
-        {
-            Insert(Count, element);
-        }
+        public virtual void Add(int element) => Insert(Count, element);
 
-        public bool Contains(int element)
-        {
-            return IndexOf(element) != -1;
-        }
+        public bool Contains(int element) => IndexOf(element) != -1;
 
         public int IndexOf(int element)
         {
