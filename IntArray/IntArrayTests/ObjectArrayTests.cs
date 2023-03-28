@@ -70,5 +70,39 @@ namespace IntArray
             Assert.Equal("Raul", objectArray[1]);
             Assert.Equal("Alexandru", objectArray[2]);
         }
+
+        [Fact]
+        public void CheckForClearMethod()
+        {
+            ObjectArray objectArray = new ObjectArray();
+
+            objectArray.Add(5);
+            objectArray.Add(15.34);
+            objectArray.Add("Raul");
+            objectArray.Add('c');
+
+            Assert.Equal(4, objectArray.Count);
+
+            objectArray.Clear();
+
+            Assert.Equal(0, objectArray.Count);
+        }
+
+        [Fact]
+        public void CheckForRemoveMethod()
+        {
+            ObjectArray objectArray = new ObjectArray();
+
+            objectArray.Add(5);
+            objectArray.Add(15.34);
+            objectArray.Add("Raul");
+            objectArray.Add('c');
+
+            objectArray.Remove("Raul");
+
+            Assert.Equal(5, objectArray[0]);
+            Assert.Equal(15.34, objectArray[1]);
+            Assert.Equal('c', objectArray[2]);
+        }
     }
 }
