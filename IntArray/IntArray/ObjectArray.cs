@@ -10,5 +10,7 @@ namespace IntArray
         {
             objectArray = new object[4];
         }
+
+        public int Count { get; set; }
     }
 }
