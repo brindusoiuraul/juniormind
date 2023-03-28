@@ -80,7 +80,7 @@ namespace IntArray
             Array.Resize(ref intArray, intArray.Length * 2);
         }
 
-        protected void ShiftRight(int index)
+        private void ShiftRight(int index)
         {
             for (int intArrayIndex = intArray.Length - 1; intArrayIndex > index; intArrayIndex--)
             {
