@@ -43,5 +43,17 @@ namespace IntArray
             Assert.True(objectArray.Contains("Mihai"));
             Assert.False(objectArray.Contains(223));
         }
+
+        [Fact]
+        public void CheckForIndexOfMethod()
+        {
+            ObjectArray objectArray = new ObjectArray();
+
+            objectArray.Add(124);
+            objectArray.Add(45.3);
+
+            Assert.Equal(0, objectArray.IndexOf(124));
+            Assert.Equal(-1, objectArray.IndexOf("Raul"));
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace IntArray
         {
             for (int index = 0; index < Count; index++)
             {
-                if (objectArray[index] == element)
+                if (objectArray[index].Equals(element))
                 {
                     return index;
                 }
