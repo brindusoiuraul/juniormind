@@ -104,5 +104,22 @@ namespace IntArray
             Assert.Equal(15.34, objectArray[1]);
             Assert.Equal('c', objectArray[2]);
         }
+        
+        [Fact]
+        public void CheckForRemoveAt()
+        {
+            ObjectArray objectArray = new ObjectArray();
+
+            objectArray.Add(5);
+            objectArray.Add(15.34);
+            objectArray.Add("Raul");
+            objectArray.Add('c');
+
+            objectArray.RemoveAt(2);
+
+            Assert.Equal(5, objectArray[0]);
+            Assert.Equal(15.34, objectArray[1]);
+            Assert.Equal('c', objectArray[2]);
+        }
     }
 }
