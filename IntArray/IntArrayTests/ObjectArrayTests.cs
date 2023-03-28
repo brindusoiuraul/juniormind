@@ -13,7 +13,7 @@ namespace IntArray
         }
 
         [Fact]
-        public void CheckForAddMethodWithDifferentDataTypes()
+        public void CheckForAddMethodAndGetAndSetWithDifferentDataTypes()
         {
             ObjectArray objectArray = new ObjectArray();
 
@@ -26,6 +26,22 @@ namespace IntArray
             Assert.Equal(15.34, objectArray[1]);
             Assert.Equal("Raul", objectArray[2]);
             Assert.Equal('c', objectArray[3]);
+
+            objectArray[2] = "Alex";
+            Assert.Equal("Alex", objectArray[2]);
+        }
+
+        [Fact]
+        public void CheckForContainsMethod()
+        {
+            ObjectArray objectArray = new ObjectArray();
+
+            objectArray.Add("Mihai");
+            objectArray.Add(105.33);
+            objectArray.Add('x');
+
+            Assert.True(objectArray.Contains("Mihai"));
+            Assert.False(objectArray.Contains(223));
         }
     }
 }
