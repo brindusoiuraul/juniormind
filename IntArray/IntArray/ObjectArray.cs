@@ -12,5 +12,11 @@ namespace IntArray
         }
 
         public int Count { get; set; }
+
+        public object this[int index]
+        {
+            get => objectArray[index];
+            set => objectArray[index] = value;
+        }
     }
 }
