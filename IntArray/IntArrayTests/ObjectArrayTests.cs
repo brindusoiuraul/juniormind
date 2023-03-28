@@ -55,5 +55,20 @@ namespace IntArray
             Assert.Equal(0, objectArray.IndexOf(124));
             Assert.Equal(-1, objectArray.IndexOf("Raul"));
         }
+
+        [Fact]
+        public void CheckForInsertMethod()
+        {
+            ObjectArray objectArray = new ObjectArray();
+
+            objectArray.Add(1);
+            objectArray.Add("Alexandru");
+
+            objectArray.Insert(1, "Raul");
+
+            Assert.Equal(1, objectArray[0]);
+            Assert.Equal("Raul", objectArray[1]);
+            Assert.Equal("Alexandru", objectArray[2]);
+        }
     }
 }
