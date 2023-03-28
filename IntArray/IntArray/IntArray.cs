@@ -25,7 +25,7 @@ namespace IntArray
 
         public int IndexOf(int element)
         {
-            for (int index = 0; index < intArray.Length; index++)
+            for (int index = 0; index < Count; index++)
             {
                 if (intArray[index] == element)
                 {
