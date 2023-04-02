@@ -14,9 +14,7 @@ namespace IntArray
             ObjectArray = list;
         }
 
-        object IEnumerator.Current => Current;
-
-        public object Current => position > -1 ? ObjectArray[position] : "invalid";
+        object IEnumerator.Current => ObjectArray[position];
 
         public bool MoveNext()
         {
