@@ -19,7 +19,6 @@ namespace IntArray
         public bool MoveNext()
         {
             position++;
-            return position < ObjectArray.Length;
         }
 
         public void Reset()
