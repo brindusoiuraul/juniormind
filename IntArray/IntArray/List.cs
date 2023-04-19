@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace IntArray
 {
-    public class ListCollection<T> : IEnumerable
+    public class List<T> : IEnumerable<T>
     {
         private T[] list;
 
-        public ListCollection()
+        public List()
         {
             list = new T[4];
         }
