@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IntArray
+namespace Colectii
 {
     public class IntArray
     {

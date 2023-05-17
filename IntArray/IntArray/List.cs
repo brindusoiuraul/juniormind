@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace IntArray
+namespace Colectii
 {
     public class List<T> : IEnumerable<T>
     {
