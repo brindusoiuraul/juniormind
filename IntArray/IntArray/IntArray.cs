@@ -80,7 +80,7 @@ namespace Colectii
             Array.Resize(ref intArray, intArray.Length * 2);
         }
 
-        private void ShiftRight(int index)
+        protected void ShiftRight(int index)
         {
             for (int intArrayIndex = intArray.Length - 1; intArrayIndex > index; intArrayIndex--)
             {
