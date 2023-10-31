@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections;
 
 namespace IntArray
 {
-    public class ObjectCollection : IEnumerable
+    public class ObjectArray
     {
         private object[] objectArray;
 
-        public ObjectCollection()
+        public ObjectArray()
         {
             objectArray = new object[4];
         }
@@ -18,16 +17,6 @@ namespace IntArray
         {
             get => objectArray[index];
             set => objectArray[index] = value;
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        public ObjectEnumerator GetEnumerator()
-        {
-            return new ObjectEnumerator(objectArray);
         }
 
         public void Add(object element) => Insert(Count, element);

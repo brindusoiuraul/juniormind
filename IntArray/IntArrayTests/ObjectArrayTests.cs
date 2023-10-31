@@ -8,14 +8,14 @@ namespace IntArray
         [Fact]
         public void TestForCountWhenTheArrayHasNoElements()
         {
-            ObjectCollection objectArray = new ObjectCollection();
+            ObjectArray objectArray = new ObjectArray();
             Assert.Equal(0, objectArray.Count);
         }
 
         [Fact]
         public void CheckForAddMethodAndGetAndSetWithDifferentDataTypes()
         {
-            ObjectCollection objectArray = new ObjectCollection();
+            ObjectArray objectArray = new ObjectArray();
 
             objectArray.Add(5);
             objectArray.Add(15.34);
@@ -34,7 +34,7 @@ namespace IntArray
         [Fact]
         public void CheckForContainsMethod()
         {
-            ObjectCollection objectArray = new ObjectCollection();
+            ObjectArray objectArray = new ObjectArray();
 
             objectArray.Add("Mihai");
             objectArray.Add(105.33);
@@ -47,7 +47,7 @@ namespace IntArray
         [Fact]
         public void CheckForIndexOfMethod()
         {
-            ObjectCollection objectArray = new ObjectCollection();
+            ObjectArray objectArray = new ObjectArray();
 
             objectArray.Add(124);
             objectArray.Add(45.3);
@@ -59,7 +59,7 @@ namespace IntArray
         [Fact]
         public void CheckForInsertMethod()
         {
-            ObjectCollection objectArray = new ObjectCollection();
+            ObjectArray objectArray = new ObjectArray();
 
             objectArray.Add(1);
             objectArray.Add("Alexandru");
@@ -74,7 +74,7 @@ namespace IntArray
         [Fact]
         public void CheckForClearMethod()
         {
-            ObjectCollection objectArray = new ObjectCollection();
+            ObjectArray objectArray = new ObjectArray();
 
             objectArray.Add(5);
             objectArray.Add(15.34);
@@ -91,7 +91,7 @@ namespace IntArray
         [Fact]
         public void CheckForRemoveMethod()
         {
-            ObjectCollection objectArray = new ObjectCollection();
+            ObjectArray objectArray = new ObjectArray();
 
             objectArray.Add(5);
             objectArray.Add(15.34);
@@ -108,7 +108,7 @@ namespace IntArray
         [Fact]
         public void CheckForRemoveAt()
         {
-            ObjectCollection objectArray = new ObjectCollection();
+            ObjectArray objectArray = new ObjectArray();
 
             objectArray.Add(5);
             objectArray.Add(15.34);
@@ -120,16 +120,6 @@ namespace IntArray
             Assert.Equal(5, objectArray[0]);
             Assert.Equal(15.34, objectArray[1]);
             Assert.Equal('c', objectArray[2]);
-        }
-
-        [Fact]
-        public void CheckIfItIsIterable()
-        {
-            ObjectCollection objectArray = new ObjectCollection { "Raul", 21, 'R' };
-
-            Assert.Equal("Raul", objectArray[0]);
-            Assert.Equal(21, objectArray[1]);
-            Assert.Equal('R', objectArray[2]);
         }
     }
 }
