@@ -20,12 +20,14 @@ namespace IntArray
             set => objectArray[index] = value;
         }
 
-        public IEnumerator GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            for (int index = 0; index < Count; index++)
-            {
-                yield return this[index];
-            }
+            return GetEnumerator();
+        }
+
+        public ObjectEnumerator GetEnumerator()
+        {
+            return new ObjectEnumerator(objectArray);
         }
 
         public void Add(object element) => Insert(Count, element);
