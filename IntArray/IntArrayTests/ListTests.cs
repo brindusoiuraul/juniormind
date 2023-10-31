@@ -7,14 +7,14 @@ namespace IntArray
         [Fact]
         public void TestForCountWhenTheArrayHasNoElements()
         {
-            var list = new List<int>();
+            var list = new ListCollection<int>();
             Assert.Equal(0, list.Count);
         }
 
         [Fact]
         public void CheckForAddMethodAndGetAndSetWithIntDataType()
         {
-            var list = new List<int>
+            var list = new ListCollection<int>
             {
                 [0] = 8,
                 [1] = 15,
@@ -34,7 +34,7 @@ namespace IntArray
         [Fact]
         public void CheckForContainsMethod()
         {
-            var list = new List<string> { "Andrei", "Mihai", "Ionel" };
+            var list = new ListCollection<string> { "Andrei", "Mihai", "Ionel" };
 
             Assert.True(list.Contains("Mihai"));
             Assert.False(list.Contains("George"));
@@ -43,7 +43,7 @@ namespace IntArray
         [Fact]
         public void CheckForIndexOfMethod()
         {
-            var list = new List<char> { 'a', 'e', 'i', 'o', 'u' };
+            var list = new ListCollection<char> { 'a', 'e', 'i', 'o', 'u' };
 
             Assert.Equal(0, list.IndexOf('a'));
             Assert.Equal(-1, list.IndexOf('c'));
@@ -52,7 +52,7 @@ namespace IntArray
         [Fact]
         public void CheckForInsertMethod()
         {
-            var list = new List<double> { 12.35, 16.72 };
+            var list = new ListCollection<double> { 12.35, 16.72 };
 
             list.Insert(1, 13.55);
 
@@ -64,7 +64,7 @@ namespace IntArray
         [Fact]
         public void CheckForClearMethod()
         {
-            var list = new List<int> { 1, 2, 3, 4 };
+            var list = new ListCollection<int> { 1, 2, 3, 4 };
 
             Assert.Equal(4, list.Count);
 
@@ -76,7 +76,7 @@ namespace IntArray
         [Fact]
         public void CheckForRemoveMethod()
         {
-            var list = new List<string> { "Alin", "George", "Andreea", "Ioana" };
+            var list = new ListCollection<string> { "Alin", "George", "Andreea", "Ioana" };
 
             list.Remove("George");
 
@@ -88,7 +88,7 @@ namespace IntArray
         [Fact]
         public void CheckForRemoveAt()
         {
-            var list = new List<char> { 'w', 'x', 'y', 'z' };
+            var list = new ListCollection<char> { 'w', 'x', 'y', 'z' };
 
             list.RemoveAt(2);
 
@@ -100,7 +100,7 @@ namespace IntArray
         [Fact]
         public void CheckIfItIsIterable()
         {
-            var objectArray = new List<int> { 13, 21, 18 };
+            var objectArray = new ListCollection<int> { 13, 21, 18 };
 
             Assert.Equal(13, objectArray[0]);
             Assert.Equal(21, objectArray[1]);
