@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace Colectii
+namespace IntArray
 {
     public class SortedListTests
     {

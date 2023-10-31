@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Colectii
+namespace IntArray
 {
     public class ListTests
     {

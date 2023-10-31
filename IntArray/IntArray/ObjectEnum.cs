@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Colectii
+namespace IntArray
 {
     public class ObjectEnumerator : IEnumerator
     {
