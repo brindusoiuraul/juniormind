@@ -4,7 +4,7 @@ using Xunit;
 
 namespace IntArray
 {
-    public class ObjectArrayTests
+    public class ObjectCollectionTests
     {
         [Fact]
         public void TestForCountWhenTheArrayHasNoElements()
