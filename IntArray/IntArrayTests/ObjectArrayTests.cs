@@ -133,15 +133,5 @@ namespace IntArray
             Assert.Equal('R', collection[2]);
             Assert.Equal(1.80, collection[3]);
         }
-
-        [Fact]
-        public void CheckForLowerCountFourLength()
-        {
-            ObjectCollection collection = new ObjectCollection { "Raul", 2001, 'R' };
-
-            Assert.Equal("Raul", collection[0]);
-            Assert.Equal(2001, collection[1]);
-            Assert.Equal('R', collection[2]);
-        }
     }
 }

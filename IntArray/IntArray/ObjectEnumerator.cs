@@ -19,7 +19,7 @@ namespace IntArray
 
         public object Current
         {
-            get { return objectCollection[position]; }
+            get => objectCollection[position];
         }
 
         public bool MoveNext()
