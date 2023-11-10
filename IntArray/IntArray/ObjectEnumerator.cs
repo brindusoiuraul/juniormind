@@ -9,20 +9,23 @@ namespace IntArray
 {
     public class ObjectEnumerator : IEnumerator
     {
-        readonly object[] objectCollection;
+        readonly ObjectCollection objectCollection;
         int position = -1;
 
-        public ObjectEnumerator(object[] objects)
+        public ObjectEnumerator(ObjectCollection objects)
         {
-            this.objectCollection = objects;
+            objectCollection = objects;
         }
 
-        public object? Current => position > -1 ? objectCollection[position] : null;
+        public object Current
+        {
+            get { return objectCollection[position]; }
+        }
 
         public bool MoveNext()
         {
             position++;
-            return position < objectCollection.Length;
+            return position < objectCollection.Count;
         }
 
         public void Reset()

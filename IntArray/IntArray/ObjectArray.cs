@@ -12,7 +12,7 @@ namespace IntArray
             objectArray = new object[4];
         }
 
-        public int Count { get; set; }
+        public int Count { get; private set; }
 
         public object this[int index]
         {
@@ -27,7 +27,7 @@ namespace IntArray
 
         public ObjectEnumerator GetEnumerator()
         {
-            return new ObjectEnumerator(objectArray);
+            return new ObjectEnumerator(this);
         }
 
         public void Add(object element) => Insert(Count, element);

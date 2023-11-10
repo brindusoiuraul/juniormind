@@ -124,7 +124,7 @@ namespace IntArray
         }
 
         [Fact]
-        public void CheckForPublicAdd()
+        public void CheckForSameCountSameLength()
         {
             ObjectCollection collection = new ObjectCollection { "Raul", 2001, 'R', 1.80 };
 
@@ -132,6 +132,16 @@ namespace IntArray
             Assert.Equal(2001, collection[1]);
             Assert.Equal('R', collection[2]);
             Assert.Equal(1.80, collection[3]);
+        }
+
+        [Fact]
+        public void CheckForLowerCountFourLength()
+        {
+            ObjectCollection collection = new ObjectCollection { "Raul", 2001, 'R' };
+
+            Assert.Equal("Raul", collection[0]);
+            Assert.Equal(2001, collection[1]);
+            Assert.Equal('R', collection[2]);
         }
     }
 }
