@@ -15,5 +15,15 @@ namespace IntArrayTests
             List<int> list = new List<int>();
             Assert.Equal(0, list.Count);
         }
+
+        [Fact]
+        public void CheckForElements()
+        {
+            List<int> list = new List<int>() { 1, 2, 3 };
+
+            Assert.Equal(1, list[0]);
+            Assert.Equal(2, list[1]);
+            Assert.Equal(3, list[2]);
+        }
     }
 }
