@@ -15,7 +15,7 @@ namespace IntArray
 
         public int Count { get; private set; }
 
-        public T this[int index]
+        public virtual T this[int index]
         {
             get => objectArray[index];
             set => objectArray[index] = value;
@@ -34,7 +34,7 @@ namespace IntArray
             return GetEnumerator();
         }
 
-        public void Add(T element) => Insert(Count, element);
+        public virtual void Add(T element) => Insert(Count, element);
 
         public bool Contains(T element) => IndexOf(element) != -1;
 
@@ -51,7 +51,7 @@ namespace IntArray
             return -1;
         }
 
-        public void Insert(int index, T element)
+        public virtual void Insert(int index, T element)
         {
             Count++;
             EnlargeArray();
