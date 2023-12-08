@@ -14,10 +14,31 @@ namespace IntArray
         {
             var list = new SortedList<int> { 5, 1, 4, 3 };
 
-            Assert.Equal(1, list[0]);
-            Assert.Equal(3, list[1]);
-            Assert.Equal(4, list[2]);
-            Assert.Equal(5, list[3]);
+            string listFormed = "";
+
+            foreach (var item in list)
+            {
+                listFormed += item.ToString();
+            }
+
+            Assert.Equal("1345", listFormed);
+        }
+
+        [Fact]
+        public void CheckForAdd()
+        {
+            var list = new SortedList<int>() { 4, 1, 3 };
+
+            list.Add(5);
+
+            string listFormed = "";
+
+            foreach (var item in list)
+            {
+                listFormed += item.ToString();
+            }
+
+            Assert.Equal("1345", listFormed);
         }
     }
 }

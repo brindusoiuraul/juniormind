@@ -22,7 +22,7 @@ namespace IntArray
 
         public override void Add(T element)
         {
-            this.Insert(Count, element);
+            base.Insert(Count, element);
             Sort();
         }
 
@@ -81,7 +81,7 @@ namespace IntArray
             (base[firstIndex], base[secondIndex]) = (base[secondIndex], base[firstIndex]);
 
         private bool CanModify(int firstIndex, int secondIndex, T element) =>
-            ElementOrDefault(firstIndex, element).CompareTo(element) >= 0 && element.CompareTo(ElementOrDefault(secondIndex, element)) <= 0;
+            ElementOrDefault(firstIndex, element).CompareTo(element) <= 0 && element.CompareTo(ElementOrDefault(secondIndex, element)) <= 0;
 
         private T ElementOrDefault(int index, T value) =>
             index < 0 || index >= Count ? value : base[index];
