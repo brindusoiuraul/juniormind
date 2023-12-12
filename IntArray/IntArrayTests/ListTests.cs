@@ -25,5 +25,18 @@ namespace IntArrayTests
             Assert.Equal(2, list[1]);
             Assert.Equal(3, list[2]);
         }
+
+        [Fact]
+        public void TestForCopyTo()
+        {
+            var list = new List<int>() { 1, 2, 3, 4, 5 };
+            var emptyList = new int[3];
+
+            list.CopyTo(emptyList, 2);
+
+            Assert.Equal(3, emptyList[0]);
+            Assert.Equal(4, emptyList[1]);
+            Assert.Equal(5, emptyList[2]);
+        }
     }
 }

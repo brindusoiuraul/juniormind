@@ -61,6 +61,11 @@ namespace IntArray
             objectArray[index] = item;
         }
 
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Clear()
         {
             Count = 0;
