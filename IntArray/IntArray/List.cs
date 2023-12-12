@@ -103,6 +103,16 @@ namespace IntArray
 
         public void RemoveAt(int index)
         {
+            if (index < 0 || index >= Count)
+            {
+                throw new ArgumentOutOfRangeException($"{index} is not a valid index in the collection");
+            }
+
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException("The collection is Read-Only");
+            }
+
             ShiftLeft(index);
             Count--;
             Array.Resize(ref objectArray, objectArray.Length - 1);
