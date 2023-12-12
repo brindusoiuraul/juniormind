@@ -37,5 +37,12 @@ namespace IntArrayTests
             Assert.Equal("Raul", testArray[0]);
             Assert.Equal("Alexandru", testArray[1]);
         }
+
+        [Fact]
+        public void CheckForInsertException()
+        {
+            List<int> numbers = new List<int> { 1, 2, 3 };
+            Assert.Throws<ArgumentOutOfRangeException>(() => numbers.Insert(-1, 4));
+        }
     }
 }

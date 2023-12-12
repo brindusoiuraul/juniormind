@@ -55,6 +55,11 @@ namespace IntArray
 
         public virtual void Insert(int index, T item)
         {
+            if (index < 0 || index >= Count)
+            {
+                throw new ArgumentOutOfRangeException($"{index} is not a valid index in the collection");
+            }
+
             Count++;
             EnlargeArray();
             ShiftRight(index);
