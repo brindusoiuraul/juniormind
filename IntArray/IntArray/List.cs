@@ -36,15 +36,15 @@ namespace IntArray
             return GetEnumerator();
         }
 
-        public virtual void Add(T element) => Insert(Count, element);
+        public virtual void Add(T item) => Insert(Count, item);
 
-        public bool Contains(T element) => IndexOf(element) != -1;
+        public bool Contains(T item) => IndexOf(item) != -1;
 
-        public int IndexOf(T element)
+        public int IndexOf(T item)
         {
             for (int index = 0; index < Count; index++)
             {
-                if (objectArray[index].Equals(element))
+                if (objectArray[index].Equals(item))
                 {
                     return index;
                 }
@@ -53,12 +53,12 @@ namespace IntArray
             return -1;
         }
 
-        public virtual void Insert(int index, T element)
+        public virtual void Insert(int index, T item)
         {
             Count++;
             EnlargeArray();
             ShiftRight(index);
-            objectArray[index] = element;
+            objectArray[index] = item;
         }
 
         public void Clear()
@@ -67,9 +67,9 @@ namespace IntArray
             Array.Resize(ref objectArray, 4);
         }
 
-        public bool Remove(T element)
+        public bool Remove(T item)
         {
-            int index = IndexOf(element);
+            int index = IndexOf(item);
 
             if (index == -1)
             {
