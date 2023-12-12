@@ -60,6 +60,11 @@ namespace IntArray
                 throw new ArgumentOutOfRangeException($"{index} is not a valid index in the collection");
             }
 
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException("The collection is Read-Only");
+            }
+
             Count++;
             EnlargeArray();
             ShiftRight(index);
