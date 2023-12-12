@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace IntArray
 {
-    public class List<T> : IEnumerable<T>
+    public class List<T> : IList<T>
     {
         private T[] objectArray;
 
@@ -14,6 +14,8 @@ namespace IntArray
         }
 
         public int Count { get; private set; }
+
+        public bool IsReadOnly { get; }
 
         public virtual T this[int index]
         {
