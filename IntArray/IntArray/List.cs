@@ -106,6 +106,11 @@ namespace IntArray
 
         public void Clear()
         {
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException("The collection is Read-Only");
+            }
+
             Count = 0;
             Array.Resize(ref objectArray, 4);
         }
