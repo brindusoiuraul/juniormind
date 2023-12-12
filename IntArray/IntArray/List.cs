@@ -132,6 +132,11 @@ namespace IntArray
 
         public bool Remove(T item)
         {
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException("The collection is Read-Only");
+            }
+
             int index = IndexOf(item);
 
             if (index == -1)
