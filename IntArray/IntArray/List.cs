@@ -63,7 +63,13 @@ namespace IntArray
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            int copyArrayIndex = 0;
+
+            for (int currentObjectArrayIndex = arrayIndex; currentObjectArrayIndex < Count; currentObjectArrayIndex++)
+            {
+                array[copyArrayIndex] = objectArray[currentObjectArrayIndex];
+                copyArrayIndex++;
+            }
         }
 
         public void Clear()
