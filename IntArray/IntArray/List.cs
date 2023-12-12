@@ -19,8 +19,30 @@ namespace IntArray
 
         public virtual T this[int index]
         {
-            get => objectArray[index];
-            set => objectArray[index] = value;
+            get
+            {
+                if (index < 0 || index >= Count)
+                {
+                    throw new ArgumentOutOfRangeException($"{index} is not a valid index in the collection.");
+                }
+
+                return objectArray[index];
+            }
+
+            set
+            {
+                if (index < 0 || index >= Count)
+                {
+                    throw new ArgumentOutOfRangeException($"{index} is not a valid index in the collection.");
+                }
+
+                if (IsReadOnly)
+                {
+                    throw new NotSupportedException("The collection is Read-Only");
+                }
+
+                objectArray[index] = value;
+            }
         }
 
         public IEnumerator<T> GetEnumerator()
