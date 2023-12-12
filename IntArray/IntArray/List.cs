@@ -95,6 +95,21 @@ namespace IntArray
 
         public void CopyTo(T[] array, int arrayIndex)
         {
+            if (array == null)
+            {
+                throw new ArgumentNullException($"{array} Given array cannot be null.");
+            }
+
+            if (arrayIndex < 0)
+            {
+                throw new ArgumentOutOfRangeException($"{arrayIndex}; Index must be greater than 0.");
+            }
+
+            if (Count > array.Length - arrayIndex)
+            {
+                throw new ArgumentException("Insufficient space");
+            }
+
             int copyArrayIndex = 0;
 
             for (int currentObjectArrayIndex = arrayIndex; currentObjectArrayIndex < Count; currentObjectArrayIndex++)
