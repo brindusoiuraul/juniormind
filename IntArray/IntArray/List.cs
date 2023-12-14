@@ -21,26 +21,11 @@ namespace IntArray
         {
             get
             {
-                if (index < 0 || index >= Count)
-                {
-                    throw new ArgumentOutOfRangeException($"{index} is not a valid index in the collection.");
-                }
-
                 return objectArray[index];
             }
 
             set
             {
-                if (index < 0 || index >= Count)
-                {
-                    throw new ArgumentOutOfRangeException($"{index} is not a valid index in the collection.");
-                }
-
-                if (IsReadOnly)
-                {
-                    throw new NotSupportedException("The collection is Read-Only");
-                }
-
                 objectArray[index] = value;
             }
         }
@@ -77,16 +62,6 @@ namespace IntArray
 
         public virtual void Insert(int index, T item)
         {
-            if (index < 0 || index >= Count)
-            {
-                throw new ArgumentOutOfRangeException($"{index} is not a valid index in the collection");
-            }
-
-            if (IsReadOnly)
-            {
-                throw new NotSupportedException("The collection is Read-Only");
-            }
-
             Count++;
             EnlargeArray();
             ShiftRight(index);
@@ -95,21 +70,6 @@ namespace IntArray
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            if (array == null)
-            {
-                throw new ArgumentNullException($"{array} Given array cannot be null.");
-            }
-
-            if (arrayIndex < 0)
-            {
-                throw new ArgumentOutOfRangeException($"{arrayIndex}; Index must be greater than 0.");
-            }
-
-            if (Count > array.Length - arrayIndex)
-            {
-                throw new ArgumentException("Insufficient space");
-            }
-
             int copyArrayIndex = 0;
 
             for (int currentObjectArrayIndex = arrayIndex; currentObjectArrayIndex < Count; currentObjectArrayIndex++)
@@ -121,22 +81,12 @@ namespace IntArray
 
         public void Clear()
         {
-            if (IsReadOnly)
-            {
-                throw new NotSupportedException("The collection is Read-Only");
-            }
-
             Count = 0;
             Array.Resize(ref objectArray, 4);
         }
 
         public bool Remove(T item)
         {
-            if (IsReadOnly)
-            {
-                throw new NotSupportedException("The collection is Read-Only");
-            }
-
             int index = IndexOf(item);
 
             if (index == -1)
@@ -150,16 +100,6 @@ namespace IntArray
 
         public void RemoveAt(int index)
         {
-            if (index < 0 || index >= Count)
-            {
-                throw new ArgumentOutOfRangeException($"{index} is not a valid index in the collection");
-            }
-
-            if (IsReadOnly)
-            {
-                throw new NotSupportedException("The collection is Read-Only");
-            }
-
             ShiftLeft(index);
             Count--;
             Array.Resize(ref objectArray, objectArray.Length - 1);
