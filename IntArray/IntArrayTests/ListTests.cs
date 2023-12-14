@@ -45,5 +45,13 @@ namespace IntArrayTests
 
             Assert.Throws<ArgumentOutOfRangeException>(() => testList[3]);
         }
+
+        [Fact]
+        public void CheckForExceptionWhenIndexIsSmallerThanZero()
+        {
+            List<int> testList = new List<int>() { 4, 5, 6 };
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => testList[-1]);
+        }
     }
 }

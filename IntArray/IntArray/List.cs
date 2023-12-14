@@ -21,7 +21,7 @@ namespace IntArray
         {
             get
             {
-                if (index >= Count)
+                if (index < 0 || index >= Count)
                 {
                     throw new ArgumentOutOfRangeException(nameof(index), "Index should be less than the number of the elements");
                 }
