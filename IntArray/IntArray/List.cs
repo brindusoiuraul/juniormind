@@ -21,20 +21,14 @@ namespace IntArray
         {
             get
             {
-                if (index < 0 || index >= Count)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(index), "Index is outside the range");
-                }
+                CheckForIndexOutsideBounds(index);
 
                 return objectArray[index];
             }
 
             set
             {
-                if (index < 0 || index >= Count)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(index), "Index is outside the range");
-                }
+                CheckForIndexOutsideBounds(index);
 
                 objectArray[index] = value;
             }
@@ -139,6 +133,16 @@ namespace IntArray
             {
                 objectArray[objectArrayIndex] = objectArray[objectArrayIndex + 1];
             }
+        }
+
+        private void CheckForIndexOutsideBounds(int index)
+        {
+            if (index >= 0 && index < Count)
+            {
+                return;
+            }
+
+            throw new ArgumentOutOfRangeException(nameof(index), "Index is outside the range");
         }
     }
 }
