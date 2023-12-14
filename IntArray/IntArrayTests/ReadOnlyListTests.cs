@@ -142,5 +142,16 @@ namespace IntArray
             Assert.Equal(2, emptyNumberList[1]);
             Assert.Equal(3, emptyNumberList[2]);
         }
+
+        [Fact]
+        public void CopyToShouldThrowExceptionWhenArrayIsNull()
+        {
+            ReadOnlyList<int> readOnlyNumbers = new ReadOnlyList<int>(new[] { 1, 2, 3 });
+
+            int[] emptyNumberList = null;
+
+            var exception = Assert.Throws<ArgumentNullException>(() => readOnlyNumbers.CopyTo(emptyNumberList, 0));
+            Assert.Equal("Array is null", exception.Message);
+        }
     }
 }

@@ -35,6 +35,11 @@ namespace IntArray
 
         public void CopyTo(T[] array, int arrayIndex)
         {
+            if (array == null)
+            {
+                throw new ArgumentNullException(Convert.ToString(null), "Array is null");
+            }
+
             int currentCopyArrayIndex = 0;
 
             for (int index = arrayIndex; index < Count; index++)
