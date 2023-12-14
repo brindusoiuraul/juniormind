@@ -69,10 +69,7 @@ namespace IntArray
             throw new NotImplementedException();
         }
 
-        public void RemoveAt(int index)
-        {
-            throw new NotImplementedException();
-        }
+        public void RemoveAt(int index) => throw new NotSupportedException();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }

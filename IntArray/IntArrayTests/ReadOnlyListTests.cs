@@ -95,5 +95,16 @@ namespace IntArray
 
             Assert.False(readOnlyEyeColors.Contains("yellow"));
         }
+
+        [Fact]
+        public void RemoveAtException()
+        {
+            double[] lengths = new double[] { 21.4, 33.5, 44.7 };
+
+            ReadOnlyList<double> readOnlyLengths = new ReadOnlyList<double>(lengths);
+
+            var exception = Assert.Throws<NotSupportedException>(() => readOnlyLengths.RemoveAt(1));
+            Assert.Equal("Cannot alter the list (The list is Read-Only)!!!", exception.Message);
+        }
     }
 }
