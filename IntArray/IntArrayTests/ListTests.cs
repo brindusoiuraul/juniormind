@@ -129,6 +129,17 @@ namespace IntArray
         }
 
         [Fact]
+        public void CheckForCopyToWhenArrayIndexIsBiggerThanCount()
+        {
+            List<string> nameList = new List<string> { "Raul", "Alexandru" };
+
+            string[] newArray = new string[2];
+
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => nameList.CopyTo(newArray, 5));
+            Assert.Equal("Given index must be positive. (Parameter '5')", exception.Message);
+        }
+
+        [Fact]
         public void CheckForWhenTheCollectionItemsAreMoreThanTheSpaceOfTheArray()
         {
             List<string> nameList = new List<string>() { "Brindusoiu", "Raul", "Alexandru" };
