@@ -124,7 +124,6 @@ namespace IntArray
 
         public void RemoveAt(int index)
         {
-            CheckForNotSupportedException();
             CheckForIndexOutsideBounds(index);
 
             ShiftLeft(index);
