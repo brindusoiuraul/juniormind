@@ -29,10 +29,7 @@ namespace IntArray
 
         public void Add(T item) => throw new NotSupportedException(exceptionMessage);
 
-        public void Clear()
-        {
-            throw new NotImplementedException();
-        }
+        public void Clear() => throw new NotSupportedException(exceptionMessage);
 
         public bool Contains(T item)
         {

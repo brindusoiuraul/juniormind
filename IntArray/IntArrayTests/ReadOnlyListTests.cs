@@ -44,5 +44,16 @@ namespace IntArray
             var exception = Assert.Throws<NotSupportedException>(() => readOnlyHeights.Add(1.65f));
             Assert.Equal("Cannot alter the list (The list is Read-Only)!!!", exception.Message);
         }
+
+        [Fact]
+        public void ClearShouldThrowNotSupportedException()
+        {
+            double[] lengths = new double[] { 21.4, 33.5, 44.7 };
+
+            ReadOnlyList<double> readOnlyLengths = new ReadOnlyList<double>(lengths);
+
+            var exception = Assert.Throws<NotSupportedException>(() => readOnlyLengths.Clear());
+            Assert.Equal("Cannot alter the list (The list is Read-Only)!!!", exception.Message);
+        }
     }
 }
