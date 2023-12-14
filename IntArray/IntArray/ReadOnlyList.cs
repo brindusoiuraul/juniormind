@@ -46,6 +46,11 @@ namespace IntArray
                 throw new ArgumentOutOfRangeException(nameof(arrayIndex), "Index is outside the range");
             }
 
+            if (Count > array.Length - arrayIndex)
+            {
+                throw new ArgumentException("Not enough space.");
+            }
+
             int currentCopyArrayIndex = 0;
 
             for (int index = arrayIndex; index < Count; index++)
