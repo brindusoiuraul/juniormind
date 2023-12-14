@@ -163,7 +163,16 @@ namespace IntArray
         {
             List<int> numberList = new List<int>() { 1, 2, 3 };
 
-            var exception = Assert.Throws<NotSupportedException>(() => numberList[1] = 3);
+            var exception = Assert.Throws<NotSupportedException>(() => numberList.Insert(1, 3));
+            Assert.Equal("The list is Read-Only.", exception.Message);
+        }
+
+        [Fact]
+        public void CheckForRemoveAtWhenTheListIsReadOnly()
+        {
+            List<int> numberList = new List<int>() { 4, 5, 6 };
+
+            var exception = Assert.Throws<NotSupportedException>(() => numberList.RemoveAt(1));
             Assert.Equal("The list is Read-Only.", exception.Message);
         }
     }
