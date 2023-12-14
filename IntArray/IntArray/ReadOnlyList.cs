@@ -9,14 +9,14 @@ namespace IntArray
 {
     public class ReadOnlyList<T> : IList<T>
     {
-        private readonly T[] readOnlyList;
+        private readonly IList<T> readOnlyList;
 
-        public ReadOnlyList(T[] readOnlyList)
+        public ReadOnlyList(IList<T> readOnlyList)
         {
             this.readOnlyList = readOnlyList;
         }
 
-        public int Count => throw new NotImplementedException();
+        public int Count { get => readOnlyList.Count; }
 
         public bool IsReadOnly => throw new NotImplementedException();
 
