@@ -117,5 +117,16 @@ namespace IntArray
             var exception = Assert.Throws<NotSupportedException>(() => readOnlyColors.Remove("green"));
             Assert.Equal("Cannot alter the list (The list is Read-Only)!!!", exception.Message);
         }
+
+        [Fact]
+        public void InsertShouldThrowNotSupportedException()
+        {
+            string[] colors = new string[] { "red", "green", "blue" };
+
+            ReadOnlyList<string> readOnlyColors = new ReadOnlyList<string>(colors);
+
+            var exception = Assert.Throws<NotSupportedException>(() => readOnlyColors.Insert(1, "yellow"));
+            Assert.Equal("Cannot alter the list (The list is Read-Only)!!!", exception.Message);
+        }
     }
 }

@@ -59,10 +59,7 @@ namespace IntArray
             return -1;
         }
 
-        public void Insert(int index, T item)
-        {
-            throw new NotImplementedException();
-        }
+        public void Insert(int index, T item) => throw new NotSupportedException(exceptionMessage);
 
         public bool Remove(T item) => throw new NotSupportedException(exceptionMessage);
 
