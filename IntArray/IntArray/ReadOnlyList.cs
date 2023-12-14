@@ -40,7 +40,10 @@ namespace IntArray
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (int index = 0; index < Count; index++)
+            {
+                yield return readOnlyList[index];
+            }
         }
 
         public int IndexOf(T item)
@@ -71,9 +74,6 @@ namespace IntArray
             throw new NotImplementedException();
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
