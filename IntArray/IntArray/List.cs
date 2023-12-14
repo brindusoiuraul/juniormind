@@ -110,10 +110,7 @@ namespace IntArray
 
         public void RemoveAt(int index)
         {
-            if (index < 0 || index > Count)
-            {
-                throw new ArgumentOutOfRangeException(nameof(index), "Index is outside the range");
-            }
+            CheckForIndexOutsideBounds(index);
 
             ShiftLeft(index);
             Count--;
