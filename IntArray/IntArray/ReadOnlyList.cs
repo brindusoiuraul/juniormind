@@ -64,12 +64,9 @@ namespace IntArray
             throw new NotImplementedException();
         }
 
-        public bool Remove(T item)
-        {
-            throw new NotImplementedException();
-        }
+        public bool Remove(T item) => throw new NotSupportedException(exceptionMessage);
 
-        public void RemoveAt(int index) => throw new NotSupportedException();
+        public void RemoveAt(int index) => throw new NotSupportedException(exceptionMessage);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
