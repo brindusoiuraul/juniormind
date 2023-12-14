@@ -55,5 +55,25 @@ namespace IntArray
             var exception = Assert.Throws<NotSupportedException>(() => readOnlyLengths.Clear());
             Assert.Equal("Cannot alter the list (The list is Read-Only)!!!", exception.Message);
         }
+
+        [Fact]
+        public void IndexOfShouldReturnMinusOneElementIsMissing()
+        {
+            string[] eyeColors = new string[] { "green", "blue", "brown" };
+
+            ReadOnlyList<string> readOnlyEyeColors = new ReadOnlyList<string>(eyeColors);
+
+            Assert.Equal(-1, readOnlyEyeColors.IndexOf("yellow"));
+        }
+
+        [Fact]
+        public void IndexOfShouldReturnIndexElementIsFound()
+        {
+            string[] eyeColors = new string[] { "green", "blue", "brown" };
+
+            ReadOnlyList<string> readOnlyEyeColors = new ReadOnlyList<string>(eyeColors);
+
+            Assert.Equal(1, readOnlyEyeColors.IndexOf("blue"));
+        }
     }
 }

@@ -48,7 +48,15 @@ namespace IntArray
 
         public int IndexOf(T item)
         {
-            throw new NotImplementedException();
+            for (int index = 0; index < Count; index++)
+            {
+                if (readOnlyList[index].Equals(item))
+                {
+                    return index;
+                }
+            }
+
+            return -1;
         }
 
         public void Insert(int index, T item)
