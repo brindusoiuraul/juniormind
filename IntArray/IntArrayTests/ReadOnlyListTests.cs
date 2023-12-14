@@ -33,5 +33,16 @@ namespace IntArray
             var exception = Assert.Throws<NotSupportedException>(() => readOnlyColors[1] = "violet");
             Assert.Equal("Cannot alter the list (The list is Read-Only)!!!", exception.Message);
         }
+
+        [Fact]
+        public void TryToAddElementsToTheListShouldThrowNotSupportedException()
+        {
+            float[] heights = new float[] { 1.86f, 1.75f, 1.92f };
+           
+            ReadOnlyList<float> readOnlyHeights = new ReadOnlyList<float>(heights);
+
+            var exception = Assert.Throws<NotSupportedException>(() => readOnlyHeights.Add(1.65f));
+            Assert.Equal("Cannot alter the list (The list is Read-Only)!!!", exception.Message);
+        }
     }
 }

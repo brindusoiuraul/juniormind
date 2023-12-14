@@ -26,10 +26,7 @@ namespace IntArray
             set => throw new NotSupportedException("Cannot alter the list (The list is Read-Only)!!!");
         }
 
-        public void Add(T item)
-        {
-            throw new NotImplementedException();
-        }
+        public void Add(T item) => throw new NotSupportedException("Cannot alter the list (The list is Read-Only)!!!");
 
         public void Clear()
         {
