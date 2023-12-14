@@ -96,5 +96,14 @@ namespace IntArray
             var exception = Assert.Throws<ArgumentOutOfRangeException>(() =>  nameList.RemoveAt(5));
             Assert.Equal("Index is outside the range (Parameter 'index')", exception.Message);
         }
+
+        [Fact]
+        public void CheckForRemoveAtWhenIndexIsLessThanZero()
+        {
+            List<string> nameList = new List<string>() { "Raul", "Andrei" };
+
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => nameList.RemoveAt(-1));
+            Assert.Equal("Index is outside the range (Parameter 'index')", exception.Message);
+        }
     }
 }
