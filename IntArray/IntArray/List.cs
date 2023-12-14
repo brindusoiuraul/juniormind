@@ -66,6 +66,11 @@ namespace IntArray
 
         public virtual void Insert(int index, T item)
         {
+            if (index >= Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index is outside the range");
+            }
+
             Count++;
             EnlargeArray();
             ShiftRight(index);

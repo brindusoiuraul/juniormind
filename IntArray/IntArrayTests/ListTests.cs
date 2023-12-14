@@ -68,5 +68,12 @@ namespace IntArrayTests
             List<int> testList = new List<int> { 7, 8, 9 };
             Assert.Throws<ArgumentOutOfRangeException>(() => testList[-2] = 0);
         }
+
+        [Fact]
+        public void CheckForIndexGreaterThanCount()
+        {
+            List<string> testList = new List<string>() { "Raul", "Alexandru" };
+            Assert.Throws<ArgumentOutOfRangeException>(() => testList.Insert(4, "Andrei"));
+        }
     }
 }
