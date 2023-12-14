@@ -53,5 +53,12 @@ namespace IntArrayTests
 
             Assert.Throws<ArgumentOutOfRangeException>(() => testList[-1]);
         }
+
+        [Fact]
+        public void CheckForSetWhenIndexIsBiggerThanCount()
+        {
+            List<int> testList = new List<int> { 7, 8, 9 };
+            Assert.Throws<ArgumentOutOfRangeException>(() => testList[4] = 0);
+        }
     }
 }

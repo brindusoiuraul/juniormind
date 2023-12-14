@@ -23,7 +23,7 @@ namespace IntArray
             {
                 if (index < 0 || index >= Count)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(index), "Index should be less than the number of the elements");
+                    throw new ArgumentOutOfRangeException(nameof(index), "Index is outside the range");
                 }
 
                 return objectArray[index];
@@ -31,6 +31,11 @@ namespace IntArray
 
             set
             {
+                if (index >= Count)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(index), "Index is outside the range");
+                }
+
                 objectArray[index] = value;
             }
         }
