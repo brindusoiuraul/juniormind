@@ -127,5 +127,15 @@ namespace IntArray
             var exception = Assert.Throws<ArgumentOutOfRangeException>(() => nameList.CopyTo(newArray, -1));
             Assert.Equal("Given index must be positive. (Parameter '-1')", exception.Message);
         }
+
+        [Fact]
+        public void CheckForWhenTheCollectionItemsAreMoreThanTheSpaceOfTheArray()
+        {
+            List<string> nameList = new List<string>() { "Brindusoiu", "Raul", "Alexandru" };
+            string[] newArray = new string[2];
+
+            var exception = Assert.Throws<ArgumentException>(() => nameList.CopyTo(newArray, 0));
+            Assert.Equal("Not enough space.", exception.Message);
+        }
     }
 }

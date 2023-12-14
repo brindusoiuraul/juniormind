@@ -90,6 +90,11 @@ namespace IntArray
                 throw new ArgumentOutOfRangeException(Convert.ToString(arrayIndex), "Given index must be positive.");
             }
 
+            if (Count > array.Length - arrayIndex)
+            {
+                throw new ArgumentException("Not enough space.");
+            }
+
             int copyArrayIndex = 0;
 
             for (int currentObjectArrayIndex = arrayIndex; currentObjectArrayIndex < Count; currentObjectArrayIndex++)
