@@ -110,6 +110,11 @@ namespace IntArray
 
         public void RemoveAt(int index)
         {
+            if (index > Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index is outside the range");
+            }
+
             ShiftLeft(index);
             Count--;
             Array.Resize(ref objectArray, objectArray.Length - 1);
