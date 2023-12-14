@@ -21,6 +21,11 @@ namespace IntArray
         {
             get
             {
+                if (index >= Count)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(index), "Index should be less than the number of the elements");
+                }
+
                 return objectArray[index];
             }
 

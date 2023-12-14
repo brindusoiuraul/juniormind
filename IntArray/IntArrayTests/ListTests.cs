@@ -37,5 +37,13 @@ namespace IntArrayTests
             Assert.Equal("Raul", testArray[0]);
             Assert.Equal("Alexandru", testArray[1]);
         }
+
+        [Fact]
+        public void CheckForExceptionWhenIndexIsBiggerThanCount()
+        {
+            List<int> testList = new List<int>() { 1, 2, 3 };
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => testList[3]);
+        }
     }
 }
