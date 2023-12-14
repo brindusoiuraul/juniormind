@@ -47,7 +47,11 @@ namespace IntArray
             return GetEnumerator();
         }
 
-        public virtual void Add(T item) => Insert(Count, item);
+        public virtual void Add(T item)
+        {
+            EnlargeArray();
+            objectArray[Count++] = item;
+        }
 
         public bool Contains(T item) => IndexOf(item) != -1;
 

@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
-namespace IntArrayTests
+namespace IntArray
 {
     public class ListTests
     {
@@ -44,7 +39,8 @@ namespace IntArrayTests
         {
             List<int> testList = new List<int>() { 1, 2, 3 };
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => testList[3]);
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => testList[3]);
+            Assert.Equal("Index is outside the range (Parameter 'index')", exception.Message);
         }
 
         [Fact]
@@ -52,35 +48,44 @@ namespace IntArrayTests
         {
             List<int> testList = new List<int>() { 4, 5, 6 };
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => testList[-1]);
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => testList[-1]);
+            Assert.Equal("Index is outside the range (Parameter 'index')", exception.Message);
         }
 
         [Fact]
         public void CheckForSetWhenIndexIsBiggerThanCount()
         {
             List<int> testList = new List<int> { 7, 8, 9 };
-            Assert.Throws<ArgumentOutOfRangeException>(() => testList[4] = 0);
+
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => testList[4] = 0);
+            Assert.Equal("Index is outside the range (Parameter 'index')", exception.Message);
         }
 
         [Fact]
         public void CheckForSetWhenWindexIsSmallerThanZero()
         {
             List<int> testList = new List<int> { 7, 8, 9 };
-            Assert.Throws<ArgumentOutOfRangeException>(() => testList[-2] = 0);
+
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => testList[-2] = 0);
+            Assert.Equal("Index is outside the range (Parameter 'index')", exception.Message);
         }
 
         [Fact]
         public void CheckForIndexGreaterThanCount()
         {
             List<string> testList = new List<string>() { "Raul", "Alexandru" };
-            Assert.Throws<ArgumentOutOfRangeException>(() => testList.Insert(4, "Andrei"));
+
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => testList.Insert(4, "Andrei"));
+            Assert.Equal("Index is outside the range (Parameter 'index')", exception.Message);
         }
 
         [Fact]
         public void CheckForIndexLessThanZero()
         {
             List<string> testList = new List<string>() { "Raul", "Alexandru" };
-            Assert.Throws<ArgumentOutOfRangeException>(() => testList.Insert(-1, "Andrei"));
+
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => testList.Insert(-1, "Andrei"));
+            Assert.Equal("Index is outside the range (Parameter 'index')", exception.Message);
         }
     }
 }
