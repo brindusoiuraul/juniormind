@@ -116,5 +116,16 @@ namespace IntArray
             var exception = Assert.Throws<ArgumentNullException>(() => nameList.CopyTo(newArray, 0));
             Assert.Equal("Array is null", exception.Message);
         }
+
+        [Fact]
+        public void CheckForCopyToWhenArrayIndexIsLessThanZero()
+        {
+            List<string> nameList = new List<string> { "Raul", "Alexandru" };
+
+            string[] newArray = new string[2];
+
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => nameList.CopyTo(newArray, -1));
+            Assert.Equal("Given index must be positive. (Parameter '-1')", exception.Message);
+        }
     }
 }

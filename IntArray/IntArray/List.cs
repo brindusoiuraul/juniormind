@@ -85,6 +85,11 @@ namespace IntArray
                 throw new ArgumentNullException(Convert.ToString(null), "Array is null");
             }
 
+            if (arrayIndex < 0)
+            {
+                throw new ArgumentOutOfRangeException(Convert.ToString(arrayIndex), "Given index must be positive.");
+            }
+
             int copyArrayIndex = 0;
 
             for (int currentObjectArrayIndex = arrayIndex; currentObjectArrayIndex < Count; currentObjectArrayIndex++)
