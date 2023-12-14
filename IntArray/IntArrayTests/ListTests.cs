@@ -125,7 +125,7 @@ namespace IntArray
             string[] newArray = new string[2];
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(() => nameList.CopyTo(newArray, -1));
-            Assert.Equal("Given index must be positive. (Parameter '-1')", exception.Message);
+            Assert.Equal("Index is outside the range (Parameter 'index')", exception.Message);
         }
 
         [Fact]
@@ -136,7 +136,7 @@ namespace IntArray
             string[] newArray = new string[2];
 
             var exception = Assert.Throws<ArgumentOutOfRangeException>(() => nameList.CopyTo(newArray, 5));
-            Assert.Equal("Given index must be positive. (Parameter '5')", exception.Message);
+            Assert.Equal("Index is outside the range (Parameter 'index')", exception.Message);
         }
 
         [Fact]
