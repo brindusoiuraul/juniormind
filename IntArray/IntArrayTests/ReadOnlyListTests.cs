@@ -128,5 +128,19 @@ namespace IntArray
             var exception = Assert.Throws<NotSupportedException>(() => readOnlyColors.Insert(1, "yellow"));
             Assert.Equal("Cannot alter the list (The list is Read-Only)!!!", exception.Message);
         }
+
+        [Fact]
+        public void CopyToShouldCopyContentToArray()
+        {
+            ReadOnlyList<int> readOnlyNumbers = new ReadOnlyList<int>(new[] { 1, 2, 3 });
+
+            int[] emptyNumberList = new int[3];
+
+            readOnlyNumbers.CopyTo(emptyNumberList, 0);
+
+            Assert.Equal(1, emptyNumberList[0]);
+            Assert.Equal(2, emptyNumberList[1]);
+            Assert.Equal(3, emptyNumberList[2]);
+        }
     }
 }

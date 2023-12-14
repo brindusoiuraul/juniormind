@@ -35,7 +35,13 @@ namespace IntArray
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            int currentCopyArrayIndex = 0;
+
+            for (int index = arrayIndex; index < Count; index++)
+            {
+                array[currentCopyArrayIndex] = readOnlyList[index];
+                currentCopyArrayIndex++;
+            }
         }
 
         public IEnumerator<T> GetEnumerator()
