@@ -31,7 +31,7 @@ namespace IntArray
 
             set
             {
-                if (index >= Count)
+                if (index < 0 || index >= Count)
                 {
                     throw new ArgumentOutOfRangeException(nameof(index), "Index is outside the range");
                 }

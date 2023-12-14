@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,13 @@ namespace IntArrayTests
         {
             List<int> testList = new List<int> { 7, 8, 9 };
             Assert.Throws<ArgumentOutOfRangeException>(() => testList[4] = 0);
+        }
+
+        [Fact]
+        public void CheckForSetWhenWindexIsSmallerThanZero()
+        {
+            List<int> testList = new List<int> { 7, 8, 9 };
+            Assert.Throws<ArgumentOutOfRangeException>(() => testList[-2] = 0);
         }
     }
 }
