@@ -20,20 +20,21 @@ namespace IntArray
             }
         }
 
-        public override void Add(T element)
+        public override void Add(T item)
         {
-            base.Insert(Count, element);
+            this.EnlargeArray();
+            base[Count++] = item;
             Sort();
         }
 
-        public override void Insert(int index, T element)
+        public override void Insert(int index, T item)
         {
-            if (!CanModify(index - 1, index, element))
+            if (!CanModify(index - 1, index, item))
             {
                 return;
             }
 
-            base.Insert(index, element);
+            base.Insert(index, item);
         }
 
         private void Sort()

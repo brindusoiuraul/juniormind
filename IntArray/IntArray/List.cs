@@ -13,7 +13,7 @@ namespace IntArray
             objectArray = new T[4];
         }
 
-        public int Count { get; private set; }
+        public int Count { get; protected set; }
 
         public bool IsReadOnly { get; }
 
@@ -115,7 +115,7 @@ namespace IntArray
             Array.Resize(ref objectArray, objectArray.Length - 1);
         }
 
-        private void EnlargeArray()
+        protected void EnlargeArray()
         {
             if (Count < objectArray.Length)
             {
