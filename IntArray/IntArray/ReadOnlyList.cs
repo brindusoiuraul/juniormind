@@ -23,7 +23,7 @@ namespace IntArray
         public T this[int index]
         {
             get => readOnlyList[index];
-            set => throw new NotImplementedException();
+            set => throw new NotSupportedException("Cannot alter the list (The list is Read-Only)!!!");
         }
 
         public void Add(T item)

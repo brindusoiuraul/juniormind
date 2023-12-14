@@ -22,5 +22,16 @@ namespace IntArray
             ReadOnlyList<string> readOnlyNames = new ReadOnlyList<string>(names);
             Assert.Equal("Alexandru", readOnlyNames[1]);
         }
+
+        [Fact]
+        public void SetIndexPropertyShouldThrowNotSupportedException()
+        {
+            string[] colors = new string[] { "red", "green", "blue" };
+
+            ReadOnlyList<string> readOnlyColors = new ReadOnlyList<string>(colors);
+
+            var exception = Assert.Throws<NotSupportedException>(() => readOnlyColors[1] = "violet");
+            Assert.Equal("Cannot alter the list (The list is Read-Only)!!!", exception.Message);
+        }
     }
 }
