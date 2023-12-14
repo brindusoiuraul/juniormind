@@ -85,5 +85,15 @@ namespace IntArray
 
             Assert.True(readOnlyEyeColors.Contains("blue"));
         }
+
+        [Fact]
+        public void ContainsShouldReturnFalse()
+        {
+            string[] eyeColors = new string[] { "green", "blue", "brown" };
+
+            ReadOnlyList<string> readOnlyEyeColors = new ReadOnlyList<string>(eyeColors);
+
+            Assert.False(readOnlyEyeColors.Contains("yellow"));
+        }
     }
 }
