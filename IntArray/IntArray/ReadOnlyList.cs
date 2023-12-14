@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,6 +39,11 @@ namespace IntArray
             if (array == null)
             {
                 throw new ArgumentNullException(Convert.ToString(null), "Array is null");
+            }
+
+            if (arrayIndex < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex), "Index is outside the range");
             }
 
             int currentCopyArrayIndex = 0;
