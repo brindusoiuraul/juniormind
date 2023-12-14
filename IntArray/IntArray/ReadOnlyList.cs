@@ -18,9 +18,13 @@ namespace IntArray
 
         public int Count { get => readOnlyList.Count; }
 
-        public bool IsReadOnly => throw new NotImplementedException();
+        public bool IsReadOnly => true;
 
-        public T this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public T this[int index]
+        {
+            get => readOnlyList[index];
+            set => throw new NotImplementedException();
+        }
 
         public void Add(T item)
         {
