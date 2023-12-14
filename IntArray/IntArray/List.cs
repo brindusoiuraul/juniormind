@@ -66,7 +66,7 @@ namespace IntArray
 
         public virtual void Insert(int index, T item)
         {
-            if (index >= Count)
+            if (index < 0 || index >= Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(index), "Index is outside the range");
             }

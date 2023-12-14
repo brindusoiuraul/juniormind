@@ -75,5 +75,12 @@ namespace IntArrayTests
             List<string> testList = new List<string>() { "Raul", "Alexandru" };
             Assert.Throws<ArgumentOutOfRangeException>(() => testList.Insert(4, "Andrei"));
         }
+
+        [Fact]
+        public void CheckForIndexLessThanZero()
+        {
+            List<string> testList = new List<string>() { "Raul", "Alexandru" };
+            Assert.Throws<ArgumentOutOfRangeException>(() => testList.Insert(-1, "Andrei"));
+        }
     }
 }
