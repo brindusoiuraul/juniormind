@@ -10,6 +10,7 @@ namespace IntArray
     public class ReadOnlyList<T> : IList<T>
     {
         private readonly IList<T> readOnlyList;
+        private readonly string exceptionMessage = "Cannot alter the list (The list is Read-Only)!!!";
 
         public ReadOnlyList(IList<T> readOnlyList)
         {
@@ -23,10 +24,10 @@ namespace IntArray
         public T this[int index]
         {
             get => readOnlyList[index];
-            set => throw new NotSupportedException("Cannot alter the list (The list is Read-Only)!!!");
+            set => throw new NotSupportedException(exceptionMessage);
         }
 
-        public void Add(T item) => throw new NotSupportedException("Cannot alter the list (The list is Read-Only)!!!");
+        public void Add(T item) => throw new NotSupportedException(exceptionMessage);
 
         public void Clear()
         {
