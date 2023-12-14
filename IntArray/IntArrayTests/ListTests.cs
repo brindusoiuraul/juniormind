@@ -157,5 +157,14 @@ namespace IntArray
             var exception = Assert.Throws<NotSupportedException>(() => numberList[1] = 1);
             Assert.Equal("The list is Read-Only.", exception.Message);
         }
+
+        [Fact]
+        public void CheckForInsertWhenTheListIsReadOnly()
+        {
+            List<int> numberList = new List<int>() { 1, 2, 3 };
+
+            var exception = Assert.Throws<NotSupportedException>(() => numberList[1] = 3);
+            Assert.Equal("The list is Read-Only.", exception.Message);
+        }
     }
 }
