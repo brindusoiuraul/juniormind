@@ -80,6 +80,11 @@ namespace IntArray
 
         public void CopyTo(T[] array, int arrayIndex)
         {
+            if (array == null)
+            {
+                throw new ArgumentNullException(Convert.ToString(null), "Array is null");
+            }
+
             int copyArrayIndex = 0;
 
             for (int currentObjectArrayIndex = arrayIndex; currentObjectArrayIndex < Count; currentObjectArrayIndex++)

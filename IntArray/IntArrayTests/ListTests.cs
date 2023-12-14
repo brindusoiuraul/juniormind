@@ -105,5 +105,16 @@ namespace IntArray
             var exception = Assert.Throws<ArgumentOutOfRangeException>(() => nameList.RemoveAt(-1));
             Assert.Equal("Index is outside the range (Parameter 'index')", exception.Message);
         }
+
+        [Fact]
+        public void CheckForCopyToWhenArrayIsNull()
+        {
+            List<string> nameList = new List<string> { "Raul", "Alexandru" };
+
+            string[] newArray = null;
+
+            var exception = Assert.Throws<ArgumentNullException>(() => nameList.CopyTo(newArray, 0));
+            Assert.Equal("Array is null", exception.Message);
+        }
     }
 }
