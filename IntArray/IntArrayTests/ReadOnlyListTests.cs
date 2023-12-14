@@ -164,5 +164,16 @@ namespace IntArray
             var exception = Assert.Throws<ArgumentOutOfRangeException>(() => readOnlyNumbers.CopyTo(emptyNumberList, -1));
             Assert.Equal("Index is outside the range (Parameter 'arrayIndex')", exception.Message);
         }
+
+        [Fact]
+        public void CopyToShouldThrowExceptionWhenArrayIndexIsTooBig()
+        {
+            ReadOnlyList<int> readOnlyNumbers = new ReadOnlyList<int>(new[] { 1, 2, 3 });
+
+            int[] emptyNumberList = new int[3];
+
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => readOnlyNumbers.CopyTo(emptyNumberList, 8));
+            Assert.Equal("Index is outside the range (Parameter 'arrayIndex')", exception.Message);
+        }
     }
 }

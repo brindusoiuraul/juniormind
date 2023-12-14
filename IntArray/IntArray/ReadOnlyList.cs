@@ -41,7 +41,7 @@ namespace IntArray
                 throw new ArgumentNullException(Convert.ToString(null), "Array is null");
             }
 
-            if (arrayIndex < 0)
+            if (arrayIndex < 0 || arrayIndex >= Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(arrayIndex), "Index is outside the range");
             }
