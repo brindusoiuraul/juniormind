@@ -31,10 +31,7 @@ namespace IntArray
 
         public void Clear() => throw new NotSupportedException(exceptionMessage);
 
-        public bool Contains(T item)
-        {
-            throw new NotImplementedException();
-        }
+        public bool Contains(T item) => readOnlyList.IndexOf(item) != -1;
 
         public void CopyTo(T[] array, int arrayIndex)
         {

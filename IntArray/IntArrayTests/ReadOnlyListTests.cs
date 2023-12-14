@@ -75,5 +75,15 @@ namespace IntArray
 
             Assert.Equal(1, readOnlyEyeColors.IndexOf("blue"));
         }
+
+        [Fact]
+        public void ContainsShouldReturnTrue()
+        {
+            string[] eyeColors = new string[] { "green", "blue", "brown" };
+
+            ReadOnlyList<string> readOnlyEyeColors = new ReadOnlyList<string>(eyeColors);
+
+            Assert.True(readOnlyEyeColors.Contains("blue"));
+        }
     }
 }
