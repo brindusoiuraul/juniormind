@@ -75,11 +75,6 @@ namespace IntArray
 
         public virtual void Insert(int index, T item)
         {
-            if (IsReadOnly)
-            {
-                throw new NotSupportedException("The list is Read-Only.");
-            }
-
             CheckForIndexOutsideBounds(index);
 
             Count++;
