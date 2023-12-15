@@ -104,6 +104,7 @@ namespace IntArray
 
         public void Clear()
         {
+            CheckForNotSupportedException();
             Count = 0;
             Array.Resize(ref objectArray, 4);
         }
