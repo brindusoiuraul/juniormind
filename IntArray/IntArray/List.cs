@@ -6,8 +6,6 @@ namespace IntArray
 {
     public class List<T> : IList<T>
     {
-        private bool isReadOnly;
-        private bool hasReadOnlyChanged;
         private T[] objectArray;
 
         public List()
@@ -17,20 +15,7 @@ namespace IntArray
 
         public int Count { get; protected set; }
 
-        public bool IsReadOnly
-        {
-            get => isReadOnly;
-            set
-            {
-                if (hasReadOnlyChanged)
-                {
-                    throw new NotSupportedException("The list is Read-Only.");
-                }
-
-                isReadOnly = value;
-                hasReadOnlyChanged = true;
-            }
-        }
+        public bool IsReadOnly { get; set; }
 
         public virtual T this[int index]
         {
