@@ -148,5 +148,16 @@ namespace IntArray
             var exception = Assert.Throws<ArgumentException>(() => nameList.CopyTo(newArray, 0));
             Assert.Equal("Not enough space.", exception.Message);
         }
+
+        [Fact]
+        public void TryToReplaceAnItemShouldThrowNotSupportedException()
+        {
+            List<int> numbers = new List<int>() { 1, 2, 3 };
+
+            numbers.IsReadOnly = true;
+
+            var exception = Assert.Throws<NotSupportedException>(() => numbers[1] = 1);
+            Assert.Equal("The list is Read-Only.", exception.Message);
+        }
     }
 }

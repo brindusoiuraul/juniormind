@@ -15,7 +15,7 @@ namespace IntArray
 
         public int Count { get; protected set; }
 
-        public bool IsReadOnly { get; }
+        public bool IsReadOnly { get; set; }
 
         public virtual T this[int index]
         {
@@ -28,6 +28,11 @@ namespace IntArray
 
             set
             {
+                if (IsReadOnly)
+                {
+                    throw new NotSupportedException("The list is Read-Only.");
+                }
+
                 CheckForIndexOutsideBounds(index);
 
                 objectArray[index] = value;
