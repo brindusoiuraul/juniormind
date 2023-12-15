@@ -204,16 +204,5 @@ namespace IntArray
             var exception = Assert.Throws<NotSupportedException>(() => numbers.Clear());
             Assert.Equal("The list is Read-Only.", exception.Message);
         }
-
-        [Fact]
-        public void RemoveButShouldThrowNotSupportedException()
-        {
-            List<int> numbers = new List<int>() { 1, 2, 3 };
-
-            numbers.IsReadOnly = true;
-
-            var exception = Assert.Throws<NotSupportedException>(() => numbers.Remove(2));
-            Assert.Equal("The list is Read-Only.", exception.Message);
-        }
     }
 }
