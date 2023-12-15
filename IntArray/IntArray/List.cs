@@ -28,8 +28,7 @@ namespace IntArray
 
             set
             {
-                CheckForNotSupportedException();
-                CheckForIndexOutsideBounds(index);
+                ThrowCommonExceptions(index);
 
                 objectArray[index] = value;
             }
@@ -71,8 +70,7 @@ namespace IntArray
 
         public virtual void Insert(int index, T item)
         {
-            CheckForNotSupportedException();
-            CheckForIndexOutsideBounds(index);
+            ThrowCommonExceptions(index);
 
             Count++;
             EnlargeArray();
@@ -124,8 +122,7 @@ namespace IntArray
 
         public void RemoveAt(int index)
         {
-            CheckForNotSupportedException();
-            CheckForIndexOutsideBounds(index);
+            ThrowCommonExceptions(index);
 
             ShiftLeft(index);
             Count--;
@@ -176,6 +173,12 @@ namespace IntArray
             }
 
             throw new NotSupportedException("The list is Read-Only.");
+        }
+
+        private void ThrowCommonExceptions(int index)
+        {
+            CheckForNotSupportedException();
+            CheckForIndexOutsideBounds(index);
         }
     }
 }
