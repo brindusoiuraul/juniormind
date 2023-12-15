@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using Xunit;
 
 namespace IntArray
@@ -168,6 +169,17 @@ namespace IntArray
             numbers.IsReadOnly = true;
 
             var exception = Assert.Throws<NotSupportedException>(() => numbers.Insert(1, 2));
+            Assert.Equal("The list is Read-Only.", exception.Message);
+        }
+
+        [Fact]
+        public void RemoveAtButShouldThrowNotSupportedException()
+        {
+            List<int> numbers = new List<int>() { 1, 2, 3 };
+
+            numbers.IsReadOnly = true;
+
+            var exception = Assert.Throws<NotSupportedException>(() => numbers.RemoveAt(1));
             Assert.Equal("The list is Read-Only.", exception.Message);
         }
     }
