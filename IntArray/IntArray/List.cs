@@ -49,6 +49,7 @@ namespace IntArray
 
         public virtual void Add(T item)
         {
+            CheckForNotSupportedException();
             EnlargeArray();
             objectArray[Count++] = item;
         }
