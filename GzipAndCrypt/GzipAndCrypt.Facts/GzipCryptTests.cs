@@ -1,10 +1,27 @@
+using System.Text;
+using Xunit;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace GzipAndCrypt
 {
     public class GzipCryptTests
     {
         [Fact]
-        public void Test()
+        public void CheckForStreamdWrite()
         {
+            MemoryStream stream = new MemoryStream();
+            GzipCrypt gzipCrypt = new GzipCrypt(stream);
+
+            gzipCrypt.Write("This is a test text.", false, false);
+
+            stream.Seek(0, SeekOrigin.Begin);
+
+            byte[] buffer = new byte[stream.Length];
+            stream.Read(buffer, 0, buffer.Length);
+
+            string content = Encoding.UTF8.GetString(buffer);
+
+            Assert.Equal("This is a test text.", content);
         }
     }
 }
