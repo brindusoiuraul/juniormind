@@ -23,5 +23,23 @@ namespace GzipAndCrypt
 
             Assert.Equal("This is a test text.", content);
         }
+
+        [Fact]
+        public void CheckForStreamWriteShouldNotBeEqual()
+        {
+            MemoryStream stream = new MemoryStream();
+            GzipCrypt gzipCrypt = new GzipCrypt(stream);
+
+            gzipCrypt.Write("Raul", false, false);
+
+            stream.Seek(0, SeekOrigin.Begin);
+
+            byte[] buffer = new byte[stream.Length];
+            stream.Read(buffer, 0, buffer.Length);
+
+            string content = Encoding.UTF8.GetString(buffer);
+
+            Assert.NotEqual("", content);
+        }
     }
 }
