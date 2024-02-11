@@ -61,5 +61,17 @@ namespace GzipAndCrypt
             var exception = Assert.Throws<NotSupportedException>(() => gzipCrypt.Write("This is a test text", false, false));
             Assert.Equal("The stream is ReadOnly.", exception.Message);
         }
+
+        [Fact]
+        public void CheckForWhenStreamIsDisposed()
+        {
+            MemoryStream stream = new MemoryStream(new byte[] { 1, 2, 3 }, false);
+            GzipCrypt gzipCrypt = new GzipCrypt(stream);
+
+            stream.Dispose();
+
+            var exception = Assert.Throws<ObjectDisposedException>(() => gzipCrypt.Write("This is a test text", false, false));
+            Assert.Equal("The stream is Disposed.\r\nObject name: 'stream'.", exception.Message);
+        }
     }
 }
