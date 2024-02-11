@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
+#pragma warning disable CA2201 // Do not raise reserved exception types
 
 namespace GzipAndCrypt
 {
@@ -23,9 +24,7 @@ namespace GzipAndCrypt
 
             if (!stream.CanWrite)
             {
-                #pragma warning disable CA2201 // Do not raise reserved exception types
                 throw new Exception("Stream does not support writing.");
-                #pragma warning restore CA2201 // Do not raise reserved exception types
             }
 
             byte[] textBytes = Encoding.UTF8.GetBytes(text);
