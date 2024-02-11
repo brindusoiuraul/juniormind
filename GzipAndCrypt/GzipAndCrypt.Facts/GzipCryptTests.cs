@@ -73,5 +73,18 @@ namespace GzipAndCrypt
             var exception = Assert.Throws<ObjectDisposedException>(() => gzipCrypt.Write("This is a test text", false, false));
             Assert.Equal("The stream is Disposed.\r\nObject name: 'stream'.", exception.Message);
         }
+
+        [Fact]
+        public void CheckForReadMethod()
+        {
+            MemoryStream stream = new MemoryStream();
+            GzipCrypt gzipCrypt = new GzipCrypt(stream);
+
+            gzipCrypt.Write("test", false, false);
+
+            string streamContent = gzipCrypt.Read(false, false);
+
+            Assert.Equal("test", streamContent);
+        }
     }
 }

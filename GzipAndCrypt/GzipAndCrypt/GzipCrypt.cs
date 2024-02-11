@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 
 namespace GzipAndCrypt
@@ -24,6 +25,16 @@ namespace GzipAndCrypt
 
             byte[] textBytes = Encoding.UTF8.GetBytes(text);
             stream.Write(textBytes, 0, textBytes.Length);
+        }
+
+        public string Read(bool compressed, bool encrypted)
+        {
+            stream.Seek(0, SeekOrigin.Begin);
+
+            byte[] buffer = new byte[stream.Length];
+            stream.Read(buffer, 0, buffer.Length);
+
+            return Encoding.UTF8.GetString(buffer);
         }
 
         private void CheckForReadAndWriteStreamExceptions()
