@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using Xunit;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -50,6 +50,16 @@ namespace GzipAndCrypt
 
             var exception = Assert.Throws<ArgumentNullException>(() => gzipCrypt.Write(null, false, false));
             Assert.Equal("Parameter cannot be null. (Parameter 'text')", exception.Message);
+        }
+
+        [Fact]
+        public void CheckForNotSupportedExceptionWhenStreamIsReadOnly()
+        {
+            MemoryStream stream = new MemoryStream(new byte[] { 1, 2, 3 }, false);
+            GzipCrypt gzipCrypt = new GzipCrypt(stream);
+
+            var exception = Assert.Throws<NotSupportedException>(() => gzipCrypt.Write("This is a test text", false, false));
+            Assert.Equal("The stream is ReadOnly.", exception.Message);
         }
     }
 }

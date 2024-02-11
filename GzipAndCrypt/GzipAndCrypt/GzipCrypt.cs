@@ -20,6 +20,11 @@ namespace GzipAndCrypt
                 throw new ArgumentNullException(nameof(text), "Parameter cannot be null.");
             }
 
+            if (!stream.CanWrite)
+            {
+                throw new NotSupportedException("The stream is ReadOnly.");
+            }
+
             byte[] textBytes = Encoding.UTF8.GetBytes(text);
             stream.Write(textBytes, 0, textBytes.Length);
         }
