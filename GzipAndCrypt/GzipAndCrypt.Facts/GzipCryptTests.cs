@@ -41,5 +41,15 @@ namespace GzipAndCrypt
 
             Assert.NotEqual("", content);
         }
+
+        [Fact]
+        public void CheckForWriteMethodEncodingArgumentException()
+        {
+            MemoryStream stream = new MemoryStream();
+            GzipCrypt gzipCrypt = new GzipCrypt(stream);
+
+            var exception = Assert.Throws<ArgumentNullException>(() => gzipCrypt.Write(null, false, false));
+            Assert.Equal("Parameter cannot be null. (Parameter 'text')", exception.Message);
+        }
     }
 }
