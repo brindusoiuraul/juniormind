@@ -21,7 +21,12 @@ namespace GzipAndCrypt
                 throw new ArgumentNullException(nameof(text), "Parameter cannot be null.");
             }
 
-            CheckForReadAndWriteStreamExceptions();
+            if (!stream.CanWrite)
+            {
+                #pragma warning disable CA2201 // Do not raise reserved exception types
+                throw new Exception("Stream does not support writing.");
+                #pragma warning restore CA2201 // Do not raise reserved exception types
+            }
 
             byte[] textBytes = Encoding.UTF8.GetBytes(text);
             stream.Write(textBytes, 0, textBytes.Length);
@@ -35,21 +40,6 @@ namespace GzipAndCrypt
             stream.Read(buffer, 0, buffer.Length);
 
             return Encoding.UTF8.GetString(buffer);
-        }
-
-        private void CheckForReadAndWriteStreamExceptions()
-        {
-            if (!stream.CanRead)
-            {
-                throw new ObjectDisposedException(nameof(stream), "The stream is Disposed.");
-            }
-
-            if (stream.CanWrite)
-            {
-                return;
-            }
-
-            throw new NotSupportedException("The stream is ReadOnly.");
         }
     }
 }

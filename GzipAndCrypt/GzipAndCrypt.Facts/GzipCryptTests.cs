@@ -58,8 +58,8 @@ namespace GzipAndCrypt
             MemoryStream stream = new MemoryStream(new byte[] { 1, 2, 3 }, false);
             GzipCrypt gzipCrypt = new GzipCrypt(stream);
 
-            var exception = Assert.Throws<NotSupportedException>(() => gzipCrypt.Write("This is a test text", false, false));
-            Assert.Equal("The stream is ReadOnly.", exception.Message);
+            var exception = Assert.Throws<Exception>(() => gzipCrypt.Write("This is a test text", false, false));
+            Assert.Equal("Stream does not support writing.", exception.Message);
         }
 
         [Fact]
@@ -70,8 +70,8 @@ namespace GzipAndCrypt
 
             stream.Dispose();
 
-            var exception = Assert.Throws<ObjectDisposedException>(() => gzipCrypt.Write("This is a test text", false, false));
-            Assert.Equal("The stream is Disposed.\r\nObject name: 'stream'.", exception.Message);
+            var exception = Assert.Throws<Exception>(() => gzipCrypt.Write("This is a test text", false, false));
+            Assert.Equal("Stream does not support writing.", exception.Message);
         }
 
         [Fact]
