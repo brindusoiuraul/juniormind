@@ -20,18 +20,25 @@ namespace GzipAndCrypt
                 throw new ArgumentNullException(nameof(text), "Parameter cannot be null.");
             }
 
+            CheckForReadAndWriteStreamExceptions();
+
+            byte[] textBytes = Encoding.UTF8.GetBytes(text);
+            stream.Write(textBytes, 0, textBytes.Length);
+        }
+
+        private void CheckForReadAndWriteStreamExceptions()
+        {
             if (!stream.CanRead)
             {
                 throw new ObjectDisposedException(nameof(stream), "The stream is Disposed.");
             }
 
-            if (!stream.CanWrite)
+            if (stream.CanWrite)
             {
-                throw new NotSupportedException("The stream is ReadOnly.");
+                return;
             }
 
-            byte[] textBytes = Encoding.UTF8.GetBytes(text);
-            stream.Write(textBytes, 0, textBytes.Length);
+            throw new NotSupportedException("The stream is ReadOnly.");
         }
     }
 }
