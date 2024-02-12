@@ -98,12 +98,5 @@ namespace GzipAndCrypt
             var exception = Assert.Throws<Exception>(() => gzipCrypt.Read(false, false));
             Assert.Equal("Stream does not support seeking.", exception.Message);
         }
-
-        [Fact]
-        public void CheckForCompression()
-        {
-            MemoryStream stream = new MemoryStream();
-            GzipCrypt gzCrypt = new GzipCrypt(stream);
-        }
     }
 }
