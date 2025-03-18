@@ -14,10 +14,18 @@ namespace GzipAndCrypt
         public void Write(Stream stream, string message, bool encrypt = false)
         {
             CheckForStreamValidation(stream);
+            ValidateData(message);
+
+            IData data = new PlainData();
+
+            if (encrypt)
+            {
+                data = new EncryptData(data);
+            }
 
             using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8, 1024, leaveOpen: true))
             {
-                writer.Write(message);
+                writer.Write(data.ProcessData(message));
                 writer.Flush();
 
                 stream.Position = 0;
@@ -37,31 +45,6 @@ namespace GzipAndCrypt
             }
 
             return readDataFromStream;
-        }
-
-        public string EncryptData(string data)
-        {
-            ValidateData(data);
-
-            byte[] keyBytes = SHA256.HashData(Encoding.UTF8.GetBytes("raul-decorator-pattern-project"));
-            byte[] iv = new byte[16];
-
-            using (Aes aes = Aes.Create())
-            {
-                aes.Key = keyBytes;
-                aes.IV = iv;
-
-                using (MemoryStream memoryStream = new MemoryStream())
-                {
-                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, aes.CreateEncryptor(), CryptoStreamMode.Write))
-                    {
-                        byte[] plainBytes = Encoding.UTF8.GetBytes(data);
-                        cryptoStream.Write(plainBytes, 0, plainBytes.Length);
-                        cryptoStream.FlushFinalBlock();
-                        return Convert.ToBase64String(memoryStream.ToArray());
-                    }
-                }
-            }
         }
 
         private void CheckForStreamValidation(Stream stream)
