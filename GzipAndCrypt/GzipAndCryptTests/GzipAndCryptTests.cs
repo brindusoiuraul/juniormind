@@ -199,5 +199,33 @@ namespace GzipAndCrypt
 
             Assert.Equal("testData", readData);
         }
+
+        [Fact]
+        public void CheckForReadWhenCompressIsTrue()
+        {
+            string message = "H4sIAAAAAAAACitJLS5xSSxJBABgmdc5CAAAAA==";
+
+            GzipAndCrypt gzipAndCrypt= new GzipAndCrypt();
+            MemoryStream memoryStream = new MemoryStream();
+            gzipAndCrypt.Write(memoryStream, message, false, false);
+
+            string readData = gzipAndCrypt.Read(memoryStream, false, true);
+
+            Assert.Equal("testData", readData);
+        }
+
+        [Fact]
+        public void CheckForWhenTextIsBothEncryptedAndCompressed()
+        {
+            string message = "testData";
+
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+            MemoryStream memoryStream = new MemoryStream();
+            gzipAndCrypt.Write(memoryStream, message, true, true);
+
+            string readData = gzipAndCrypt.Read(memoryStream, true, true);
+
+            Assert.Equal("testData", readData);
+        }
     }
 }

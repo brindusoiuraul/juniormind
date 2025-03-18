@@ -16,7 +16,7 @@ namespace GzipAndCrypt
             CheckForStreamValidation(stream);
             ValidateData(message);
 
-            IData data = SelectProcesses(encrypt, compress);
+            IData data = SelectProcessesForStreamWriting(encrypt, compress);
 
             using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8, 1024, leaveOpen: true))
             {
@@ -27,7 +27,7 @@ namespace GzipAndCrypt
             }
         }
 
-        public string Read(Stream stream, bool encrypted = false, bool compressd = false)
+        public string Read(Stream stream, bool encrypted = false, bool compressed = false)
         {
             CheckForStreamValidation(stream);
 
@@ -39,19 +39,27 @@ namespace GzipAndCrypt
                 reader.Close();
             }
 
+            return SelectProcessesForStreamReading(encrypted, compressed).ProcessData(readDataFromStream);
+        }
+
+        private IData SelectProcessesForStreamReading(bool encrypted, bool compressed)
+        {
             IData readData = new PlainData();
+
+            if (compressed)
+            {
+                readData = new DecompressData(readData);
+            }
 
             if (encrypted)
             {
                 readData = new DecryptData(readData);
             }
 
-            readDataFromStream = readData.ProcessData(readDataFromStream);
-
-            return readDataFromStream;
+            return readData;
         }
 
-        private IData SelectProcesses(bool encrypt, bool compress)
+        private IData SelectProcessesForStreamWriting(bool encrypt, bool compress)
         {
             IData data = new PlainData();
 

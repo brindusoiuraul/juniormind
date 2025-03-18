@@ -8,5 +8,14 @@ namespace GzipAndCrypt
 {
     public class DecompressDataTests
     {
+        [Fact]
+        public void CheckForDecompressStringShouldBeEqual()
+        {
+            string message = "H4sIAAAAAAAACitJLS5xSSxJBABgmdc5CAAAAA==";
+            var data = new PlainData();
+            var decompressedData = new DecompressData(data);
+
+            Assert.Equal("testData", decompressedData.ProcessData(message));
+        }
     }
 }
