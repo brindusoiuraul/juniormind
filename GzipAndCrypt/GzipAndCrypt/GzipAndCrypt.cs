@@ -6,7 +6,6 @@ namespace GzipAndCrypt
     {
         public GzipAndCrypt()
         {
-            throw new NotImplementedException();
         }
     }
 }
