@@ -12,6 +12,8 @@ namespace GzipAndCrypt
 
         public void Write(Stream stream, string message)
         {
+            CheckForStreamValidation(stream);
+
             using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8, 1024, leaveOpen: true))
             {
                 writer.Write(message);

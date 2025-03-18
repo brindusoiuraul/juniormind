@@ -124,5 +124,25 @@ namespace GzipAndCrypt
 
             Assert.NotEqual("testDat", gzipAndCrypt.Read(memoryStream));
         }
+
+        [Fact]
+        public void WriteMethodCheckForStreamValidation()
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+
+            string message = "testData";
+
+            memoryStream.Close();
+
+            var exception2 = Assert.Throws<ArgumentException>(() => gzipAndCrypt.Write(memoryStream, message));
+            Assert.Equal("Stream is not Readable. Please introduce a readable stream!", exception2.Message);
+
+            memoryStream = null;
+
+            var exception = Assert.Throws<ArgumentNullException>(() => gzipAndCrypt.Write(memoryStream, message));
+
+            Assert.Equal("Stream cannot be Null! (Parameter 'stream')", exception.Message);
+        }
     }
 }
