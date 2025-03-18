@@ -144,5 +144,25 @@ namespace GzipAndCrypt
 
             Assert.Equal("Stream cannot be Null! (Parameter 'stream')", exception.Message);
         }
+
+        [Fact]
+        public void CheckForWriteWhenEncryptIsFalseShouldReturnTrue()
+        {
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+            MemoryStream memoryStream = new MemoryStream();
+            gzipAndCrypt.Write(memoryStream, "testData");
+
+            Assert.NotEqual("2Wjlj68s5vo/CM0lZsVkPg==", gzipAndCrypt.Read(memoryStream));
+        }
+
+        [Fact]
+        public void CheckForWriteWhenEncryptIsTrueShouldBeEqual()
+        {
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+            MemoryStream memoryStream = new MemoryStream();
+            gzipAndCrypt.Write(memoryStream, "testData", true);
+
+            Assert.Equal("2Wjlj68s5vo/CM0lZsVkPg==", gzipAndCrypt.Read(memoryStream));
+        }
     }
 }
