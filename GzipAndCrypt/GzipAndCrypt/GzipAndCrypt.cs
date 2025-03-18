@@ -1,7 +1,10 @@
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
+using Microsoft.VisualStudio.TestPlatform.PlatformAbstractions.Interfaces;
 using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GzipAndCrypt
 {
@@ -18,13 +21,7 @@ namespace GzipAndCrypt
 
             IData data = SelectProcessesForStreamWriting(encrypt, compress);
 
-            using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8, 1024, leaveOpen: true))
-            {
-                writer.Write(data.ProcessData(message));
-                writer.Flush();
-
-                stream.Position = 0;
-            }
+            WriteToStream(stream, data, message);
         }
 
         public string Read(Stream stream, bool encrypted = false, bool compressed = false)
@@ -74,6 +71,17 @@ namespace GzipAndCrypt
             }
 
             return data;
+        }
+
+        private void WriteToStream(Stream stream, IData data, string message)
+        {
+            using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8, 1024, leaveOpen: true))
+            {
+                writer.Write(data.ProcessData(message));
+                writer.Flush();
+
+                stream.Position = 0;
+            }
         }
 
         private void CheckForStreamValidation(Stream stream)
