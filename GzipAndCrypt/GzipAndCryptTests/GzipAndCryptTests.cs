@@ -84,5 +84,19 @@ namespace GzipAndCrypt
 
             Assert.Equal("Stream is not Readable. Please introduce a readable stream!", exception.Message);
         }
+
+        [Fact]
+        public void ReadCheckForWhenStreamIsNullShouldThrowArgumentNullException()
+        {
+            MemoryStream memoryStream = new MemoryStream();
+
+            memoryStream = null;
+
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+
+            var exception = Assert.Throws<ArgumentNullException>(() => gzipAndCrypt.Read(memoryStream));
+
+            Assert.Equal("Stream cannot be Null! (Parameter 'stream')", exception.Message);
+        }
     }
 }
