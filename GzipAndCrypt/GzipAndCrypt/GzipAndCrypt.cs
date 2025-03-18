@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 
 namespace GzipAndCrypt
 {
@@ -7,6 +8,17 @@ namespace GzipAndCrypt
     {
         public GzipAndCrypt()
         {
+        }
+
+        public void Write(Stream stream, string message)
+        {
+            using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8, 1024, leaveOpen: true))
+            {
+                writer.Write(message);
+                writer.Flush();
+
+                stream.Position = 0;
+            }
         }
 
         public string Read(Stream stream)
