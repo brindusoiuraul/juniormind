@@ -12,5 +12,14 @@ namespace GzipAndCrypt
 
             Assert.Equal(testString, readTest.Read());
         }
+
+        [Fact]
+        public void TestForReturningASimpleStringShouldReturnFalse()
+        {
+            string testString = "tes";
+            GzipAndCrypt readTest = new GzipAndCrypt();
+
+            Assert.NotEqual(testString, readTest.Read());
+        }
     }
 }
