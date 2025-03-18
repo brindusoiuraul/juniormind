@@ -28,13 +28,7 @@ namespace GzipAndCrypt
         {
             CheckForStreamValidation(stream);
 
-            string readDataFromStream;
-
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                readDataFromStream = reader.ReadToEnd();
-                reader.Close();
-            }
+            ReadFromStream(stream, out string readDataFromStream);
 
             return SelectProcessesForStreamReading(encrypted, compressed).ProcessData(readDataFromStream);
         }
@@ -81,6 +75,15 @@ namespace GzipAndCrypt
                 writer.Flush();
 
                 stream.Position = 0;
+            }
+        }
+
+        private void ReadFromStream(Stream stream, out string readDataFromStream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                readDataFromStream = reader.ReadToEnd();
+                reader.Close();
             }
         }
 
