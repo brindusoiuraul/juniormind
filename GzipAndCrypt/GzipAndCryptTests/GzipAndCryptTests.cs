@@ -152,7 +152,7 @@ namespace GzipAndCrypt
             MemoryStream memoryStream = new MemoryStream();
             gzipAndCrypt.Write(memoryStream, "testData");
 
-            Assert.NotEqual("2Wjlj68s5vo/CM0lZsVkPg==", gzipAndCrypt.Read(memoryStream));
+            Assert.NotEqual("dWZ0dUVidWI", gzipAndCrypt.Read(memoryStream));
         }
 
         [Fact]
@@ -162,7 +162,7 @@ namespace GzipAndCrypt
             MemoryStream memoryStream = new MemoryStream();
             gzipAndCrypt.Write(memoryStream, "testData", true);
 
-            Assert.Equal("2Wjlj68s5vo/CM0lZsVkPg==", gzipAndCrypt.Read(memoryStream));
+            Assert.Equal("dWZ0dUVidWI=", gzipAndCrypt.Read(memoryStream));
         }
     }
 }

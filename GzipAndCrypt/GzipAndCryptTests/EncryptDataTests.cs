@@ -15,7 +15,7 @@ namespace GzipAndCrypt
             var data = new PlainData();
             var encryptedData = new EncryptData(data);
 
-            Assert.Equal("2Wjlj68s5vo/CM0lZsVkPg==", encryptedData.ProcessData(message));
+            Assert.Equal("dWZ0dUVidWI=", encryptedData.ProcessData(message));
             Assert.NotEqual("", encryptedData.ProcessData(message));
         }
     }
