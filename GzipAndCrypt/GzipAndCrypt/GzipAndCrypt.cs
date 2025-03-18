@@ -37,15 +37,8 @@ namespace GzipAndCrypt
         {
             IData readData = new PlainData();
 
-            if (compressed)
-            {
-                readData = new DecompressData(readData);
-            }
-
-            if (encrypted)
-            {
-                readData = new DecryptData(readData);
-            }
+            readData = compressed ? new DecompressData(readData) : readData;
+            readData = encrypted ? new DecryptData(readData) : readData;
 
             return readData;
         }
@@ -54,15 +47,8 @@ namespace GzipAndCrypt
         {
             IData data = new PlainData();
 
-            if (encrypt)
-            {
-                data = new EncryptData(data);
-            }
-
-            if (compress)
-            {
-                data = new CompressData(data);
-            }
+            data = encrypt ? new EncryptData(data) : data;
+            data = compress ? new CompressData(data) : data;
 
             return data;
         }
