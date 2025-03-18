@@ -7,5 +7,10 @@ namespace GzipAndCrypt
         public GzipAndCrypt()
         {
         }
+
+        public string Read()
+        {
+            return "test";
+        }
     }
 }
