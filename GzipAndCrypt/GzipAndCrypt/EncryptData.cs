@@ -14,10 +14,7 @@ namespace GzipAndCrypt
         {
         }
 
-        public override string ProcessData(string input)
-        {
-            return Encrypt(base.ProcessData(input));
-        }
+        public override string ProcessData(string input) => Encrypt(base.ProcessData(input));
 
         private string Encrypt(string input)
         {

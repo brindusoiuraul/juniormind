@@ -13,10 +13,7 @@ namespace GzipAndCrypt
         {
         }
 
-        public override string ProcessData(string input)
-        {
-            return Compress(base.ProcessData(input));
-        }
+        public override string ProcessData(string input) => Compress(base.ProcessData(input));
 
         private string Compress(string input)
         {
