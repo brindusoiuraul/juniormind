@@ -63,5 +63,26 @@ namespace GzipAndCrypt
 
             Assert.NotEqual("testDat", gzipAndCrypt.Read(memoryStream));
         }
+
+        [Fact]
+        public void ReadCheckForWhenStreamIsNotReadableShouldThrowArgumentException()
+        {
+            string message = "testData";
+            MemoryStream memoryStream = new MemoryStream();
+
+            using (StreamWriter writer = new StreamWriter(memoryStream, Encoding.UTF8, 1024))
+            {
+                writer.Write(message);
+                writer.Flush();
+
+                memoryStream.Position = 0;
+            }
+
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+
+            var exception = Assert.Throws<ArgumentException>(() => gzipAndCrypt.Read(memoryStream));
+
+            Assert.Equal("Stream is not Readable. Please introduce a readable stream!", exception.Message);
+        }
     }
 }
