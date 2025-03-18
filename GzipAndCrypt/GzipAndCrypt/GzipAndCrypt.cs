@@ -11,7 +11,7 @@ namespace GzipAndCrypt
         {
         }
 
-        public void Write(Stream stream, string message, bool encrypt = false)
+        public void Write(Stream stream, string message, bool encrypt = false, bool compress = false)
         {
             CheckForStreamValidation(stream);
             ValidateData(message);
