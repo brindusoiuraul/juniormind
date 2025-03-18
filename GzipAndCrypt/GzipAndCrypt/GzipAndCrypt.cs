@@ -23,6 +23,11 @@ namespace GzipAndCrypt
                 data = new EncryptData(data);
             }
 
+            if (compress)
+            {
+                data = new CompressData(data);
+            }
+
             using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8, 1024, leaveOpen: true))
             {
                 writer.Write(data.ProcessData(message));

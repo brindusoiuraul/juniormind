@@ -8,6 +8,6 @@ namespace GzipAndCrypt
 {
     public class PlainData : IData
     {
-        public string ProcessData(string data) => data;
+        public string ProcessData(string input) => input;
     }
 }

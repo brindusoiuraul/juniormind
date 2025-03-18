@@ -15,6 +15,6 @@ namespace GzipAndCrypt
             plainData = data;
         }
 
-        public virtual string ProcessData(string data) => plainData.ProcessData(data);
+        public virtual string ProcessData(string input) => plainData.ProcessData(input);
     }
 }

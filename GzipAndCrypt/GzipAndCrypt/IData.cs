@@ -8,6 +8,6 @@ namespace GzipAndCrypt
 {
     public interface IData
     {
-        public string ProcessData(string data);
+        public string ProcessData(string input);
     }
 }

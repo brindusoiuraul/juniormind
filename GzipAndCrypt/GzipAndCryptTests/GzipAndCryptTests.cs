@@ -164,5 +164,15 @@ namespace GzipAndCrypt
 
             Assert.Equal("dWZ0dUVidWI=", gzipAndCrypt.Read(memoryStream));
         }
+
+        [Fact]
+        public void CheckForWriteWhenEncryptAndCompressAreTrueShouldBeEqual()
+        {
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+            MemoryStream memoryStream = new MemoryStream();
+            gzipAndCrypt.Write(memoryStream, "testData", true, true);
+
+            Assert.Equal("H4sIAAAAAAAACksJjzJICQ3LTAn3tAUAV/neTgwAAAA=", gzipAndCrypt.Read(memoryStream));
+        }
     }
 }

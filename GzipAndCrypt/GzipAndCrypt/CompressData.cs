@@ -13,18 +13,22 @@ namespace GzipAndCrypt
         {
         }
 
-        public override string ProcessData(string data) => Convert.ToBase64String(CompressString(data));
-
-        private static byte[] CompressString(string text)
+        public override string ProcessData(string input)
         {
-            byte[] inputBytes = Encoding.UTF8.GetBytes(text);
+            return Compress(base.ProcessData(input));
+        }
 
-            using (MemoryStream outputStream = new MemoryStream())
-            using (GZipStream gzipStream = new GZipStream(outputStream, CompressionMode.Compress))
+        private string Compress(string input)
+        {
+            byte[] data = Encoding.UTF8.GetBytes(input);
+            using (var memoryStream = new MemoryStream())
             {
-                gzipStream.Write(inputBytes, 0, inputBytes.Length);
-                gzipStream.Flush();
-                return outputStream.ToArray();
+                using (var gzipStream = new GZipStream(memoryStream, CompressionMode.Compress))
+                {
+                    gzipStream.Write(data, 0, data.Length);
+                }
+
+                return Convert.ToBase64String(memoryStream.ToArray());
             }
         }
     }

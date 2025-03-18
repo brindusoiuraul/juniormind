@@ -14,7 +14,7 @@ namespace GzipAndCrypt
             IData data = new PlainData();
             data = new CompressData(data);
 
-            Assert.Equal("H4sIAAAAAAAACipJLS5xSSxJBAAAAP//", data.ProcessData("testData"));
+            Assert.Equal("H4sIAAAAAAAACitJLS5xSSxJBABgmdc5CAAAAA==", data.ProcessData("testData"));
         }
     }
 }

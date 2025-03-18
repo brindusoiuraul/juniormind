@@ -14,14 +14,14 @@ namespace GzipAndCrypt
         {
         }
 
-        public override string ProcessData(string data)
+        public override string ProcessData(string input)
         {
-            return Encrypt(base.ProcessData(data));
+            return Encrypt(base.ProcessData(input));
         }
 
-        private string Encrypt(string inputData)
+        private string Encrypt(string input)
         {
-            byte[] data = Encoding.UTF8.GetBytes(inputData);
+            byte[] data = Encoding.UTF8.GetBytes(input);
 
             for (int i = 0; i < data.Length; i++)
             {
