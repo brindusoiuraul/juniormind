@@ -16,17 +16,7 @@ namespace GzipAndCrypt
             CheckForStreamValidation(stream);
             ValidateData(message);
 
-            IData data = new PlainData();
-
-            if (encrypt)
-            {
-                data = new EncryptData(data);
-            }
-
-            if (compress)
-            {
-                data = new CompressData(data);
-            }
+            IData data = SelectProcesses(encrypt, compress);
 
             using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8, 1024, leaveOpen: true))
             {
@@ -50,6 +40,23 @@ namespace GzipAndCrypt
             }
 
             return readDataFromStream;
+        }
+
+        private IData SelectProcesses(bool encrypt, bool compress)
+        {
+            IData data = new PlainData();
+
+            if (encrypt)
+            {
+                data = new EncryptData(data);
+            }
+
+            if (compress)
+            {
+                data = new CompressData(data);
+            }
+
+            return data;
         }
 
         private void CheckForStreamValidation(Stream stream)
