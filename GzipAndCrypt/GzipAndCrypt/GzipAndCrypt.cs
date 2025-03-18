@@ -23,7 +23,7 @@ namespace GzipAndCrypt
 
         public string Read(Stream stream)
         {
-            CheckForReadExceptions(stream);
+            CheckForStreamValidation(stream);
 
             string readDataFromStream;
 
@@ -36,7 +36,7 @@ namespace GzipAndCrypt
             return readDataFromStream;
         }
 
-        private void CheckForReadExceptions(Stream stream)
+        private void CheckForStreamValidation(Stream stream)
         {
             if (stream == null)
             {

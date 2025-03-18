@@ -111,5 +111,18 @@ namespace GzipAndCrypt
 
             Assert.Equal("testData", gzipAndCrypt.Read(memoryStream));
         }
+
+        [Fact]
+        public void CheckForWriteMethodShouldReturnFalse()
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+
+            string message = "testData";
+
+            gzipAndCrypt.Write(memoryStream, message);
+
+            Assert.NotEqual("testDat", gzipAndCrypt.Read(memoryStream));
+        }
     }
 }
