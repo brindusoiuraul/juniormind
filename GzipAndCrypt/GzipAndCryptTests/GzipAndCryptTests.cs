@@ -144,5 +144,32 @@ namespace GzipAndCrypt
 
             Assert.Equal("Stream cannot be Null! (Parameter 'stream')", exception.Message);
         }
+
+        [Fact]
+        public void EncryptionTestShouldReturnTrue()
+        {
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+
+            string message = "testData";
+            string encryptedData = gzipAndCrypt.EncryptData(message);
+
+            Assert.Equal("2Wjlj68s5vo/CM0lZsVkPg==", encryptedData);
+            Assert.NotEqual("", encryptedData);
+        }
+
+        [Fact]
+        public void CheckIfDataToEncryptIsNullOrEmpty()
+        {
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+
+            string nullMessage = null;
+            string emptyMessage = "";
+
+            var nullMessageException = Assert.Throws<ArgumentException>(() => gzipAndCrypt.EncryptData(nullMessage));
+            Assert.Equal("Input text cannot be null or empty! (Parameter 'data')", nullMessageException.Message);
+
+            var emptyMessageException = Assert.Throws<ArgumentException>(() => gzipAndCrypt.EncryptData(emptyMessage));
+            Assert.Equal("Input text cannot be null or empty! (Parameter 'data')", emptyMessageException.Message);
+        }
     }
 }
