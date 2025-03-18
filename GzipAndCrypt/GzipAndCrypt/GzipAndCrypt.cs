@@ -11,15 +11,7 @@ namespace GzipAndCrypt
 
         public string Read(Stream stream)
         {
-            if (stream == null)
-            {
-                throw new ArgumentNullException(nameof(stream), "Stream cannot be Null!");
-            }
-
-            if (!stream.CanRead)
-            {
-                throw new ArgumentException("Stream is not Readable. Please introduce a readable stream!");
-            }
+            CheckForReadExceptions(stream);
 
             string readDataFromStream;
 
@@ -30,6 +22,21 @@ namespace GzipAndCrypt
             }
 
             return readDataFromStream;
+        }
+
+        private void CheckForReadExceptions(Stream stream)
+        {
+            if (stream == null)
+            {
+                throw new ArgumentNullException(nameof(stream), "Stream cannot be Null!");
+            }
+
+            if (stream.CanRead)
+            {
+                return;
+            }
+
+            throw new ArgumentException("Stream is not Readable. Please introduce a readable stream!");
         }
     }
 }
