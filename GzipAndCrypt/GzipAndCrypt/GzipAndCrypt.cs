@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace GzipAndCrypt
 {
@@ -8,9 +9,17 @@ namespace GzipAndCrypt
         {
         }
 
-        public string Read()
+        public string Read(Stream stream)
         {
-            return "test";
+            string readDataFromStream;
+
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                readDataFromStream = reader.ReadToEnd();
+                reader.Close();
+            }
+
+            return readDataFromStream;
         }
     }
 }
