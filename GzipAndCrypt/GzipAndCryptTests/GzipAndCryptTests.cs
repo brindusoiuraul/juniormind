@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 
 namespace GzipAndCrypt
@@ -183,6 +184,20 @@ namespace GzipAndCrypt
             gzipAndCrypt.Write(memoryStream, "testData", true, true);
 
             Assert.Equal("H4sIAAAAAAAACksJjzJICQ3LTAn3tAUAV/neTgwAAAA=", gzipAndCrypt.Read(memoryStream));
+        }
+
+        [Fact]
+        public void CheckForReadWhenEncryptIsTrue()
+        {
+            string message = "dWZ0dUVidWI=";
+
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+            MemoryStream memoryStream = new MemoryStream();
+            gzipAndCrypt.Write(memoryStream, message, false, false);
+
+            string readData = gzipAndCrypt.Read(memoryStream, true);
+
+            Assert.Equal("testData", readData);
         }
     }
 }

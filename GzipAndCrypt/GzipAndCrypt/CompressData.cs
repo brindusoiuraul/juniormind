@@ -18,6 +18,7 @@ namespace GzipAndCrypt
         private string Compress(string input)
         {
             byte[] data = Encoding.UTF8.GetBytes(input);
+
             using (var memoryStream = new MemoryStream())
             {
                 using (var gzipStream = new GZipStream(memoryStream, CompressionMode.Compress))

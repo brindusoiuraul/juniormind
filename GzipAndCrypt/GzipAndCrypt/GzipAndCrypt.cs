@@ -27,7 +27,7 @@ namespace GzipAndCrypt
             }
         }
 
-        public string Read(Stream stream)
+        public string Read(Stream stream, bool encrypt = false)
         {
             CheckForStreamValidation(stream);
 
@@ -38,6 +38,15 @@ namespace GzipAndCrypt
                 readDataFromStream = reader.ReadToEnd();
                 reader.Close();
             }
+
+            IData readData = new PlainData();
+
+            if (encrypt)
+            {
+                readData = new DecryptData(readData);
+            }
+
+            readDataFromStream = readData.ProcessData(readDataFromStream);
 
             return readDataFromStream;
         }
