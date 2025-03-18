@@ -166,6 +166,16 @@ namespace GzipAndCrypt
         }
 
         [Fact]
+        public void CheckForWriteWhenOnlyCompressIsTrueShouldBeEqual()
+        {
+            GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
+            MemoryStream memoryStream = new MemoryStream();
+            gzipAndCrypt.Write(memoryStream, "testData", false, true);
+
+            Assert.Equal("H4sIAAAAAAAACitJLS5xSSxJBABgmdc5CAAAAA==", gzipAndCrypt.Read(memoryStream));
+        }
+
+        [Fact]
         public void CheckForWriteWhenEncryptAndCompressAreTrueShouldBeEqual()
         {
             GzipAndCrypt gzipAndCrypt = new GzipAndCrypt();
