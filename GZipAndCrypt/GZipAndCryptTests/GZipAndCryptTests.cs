@@ -1,4 +1,4 @@
-namespace GZipAndCrypt
+﻿namespace GZipAndCrypt
 {
     public class GZipAndCryptTests
     {
@@ -69,6 +69,17 @@ namespace GZipAndCrypt
              GZipAndCrypt gZipAndCrypt = new GZipAndCrypt();
 
             Assert.Throws<ArgumentNullException>(() => gZipAndCrypt.Read(stream));
+        }
+
+        [Fact]
+        public void CompressionCheckShouldBeEqual()
+        {
+            MemoryStream stream = new MemoryStream();
+            GZipAndCrypt gZipAndCrypt = new GZipAndCrypt();
+
+            gZipAndCrypt.Write(stream, "testData", true, false);
+
+            Assert.Equal("�\b\0\0\0\0\0\0\n*I-.qI,I\0\0\0��\0`��9\b\0\0\0", gZipAndCrypt.Read(stream));
         }
     }
 }

@@ -17,7 +17,17 @@ namespace GZipAndCrypt
 
             ValidateInput(input);
 
-            WriteToStream(stream, input);
+            if (compress)
+            {
+                using var processedStream = new GZipStream(stream, CompressionMode.Compress, leaveOpen: true);
+                WriteToStream(processedStream, input);
+            }
+            else
+            {
+                WriteToStream(stream, input);
+            }
+
+            stream.Position = 0;
         }
 
         public string Read(Stream stream, bool compressed = false, bool encrypted = false)
@@ -34,8 +44,6 @@ namespace GZipAndCrypt
 
             stream.Write(dataBytes, 0, dataBytes.Length);
             stream.Flush();
-
-            stream.Position = 0;
         }
 
         private static void ValidateInput(string input)
