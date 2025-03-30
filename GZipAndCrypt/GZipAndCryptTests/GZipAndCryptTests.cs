@@ -104,5 +104,18 @@
 
             Assert.Equal("testData", gzipAndCrypt.Read(stream, compressed:false, encrypted:true));
         }
+
+        [Fact]
+        public void CheckForBothCompressedAndEncryptedShouldBeEqual()
+        {
+            MemoryStream stream = new MemoryStream();
+            GZipAndCrypt gzipAndCrypt = new GZipAndCrypt();
+
+            gzipAndCrypt.Write(stream, "testData", compress: true, encrypt: true);
+
+            stream.Seek(0, SeekOrigin.Begin);
+
+            Assert.Equal("testData", gzipAndCrypt.Read(stream, compressed: true, encrypted: true));
+        }
     }
 }
