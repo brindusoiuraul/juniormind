@@ -10,6 +10,8 @@ namespace GZipAndCrypt
 
             gzipAndCrypt.Write(stream, "testData");
 
+            stream.Seek(0, SeekOrigin.Begin);
+
             var reader = new StreamReader(stream);
 
             Assert.Equal("testData", reader.ReadToEnd());
@@ -50,6 +52,8 @@ namespace GZipAndCrypt
 
             gzipAndCrypt.Write(stream, "testData");
 
+            stream.Seek(0, SeekOrigin.Begin);
+
             Assert.Equal("testData", gzipAndCrypt.Read(stream));
         }
 
@@ -60,6 +64,19 @@ namespace GZipAndCrypt
             GZipAndCrypt gzipAndCrypt = new GZipAndCrypt();
 
             Assert.Throws<ArgumentNullException>(() => gzipAndCrypt.Read(stream));
+        }
+
+        [Fact]
+        public void CheckForCompressionInWriteMethodShouldBeEqual()
+        {
+            MemoryStream stream = new MemoryStream();
+            GZipAndCrypt gzipAndCrypt = new GZipAndCrypt();
+
+            gzipAndCrypt.Write(stream, "testData", compress:true);
+
+            stream.Seek(0, SeekOrigin.Begin);
+
+            Assert.Equal("testData", gzipAndCrypt.Read(stream));
         }
     }
 }

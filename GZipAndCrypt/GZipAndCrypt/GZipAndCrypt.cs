@@ -1,3 +1,4 @@
+using System.IO.Compression;
 using System.Text;
 
 namespace GZipAndCrypt
@@ -13,6 +14,11 @@ namespace GZipAndCrypt
             ArgumentNullException.ThrowIfNull(stream);
 
             ValidateInput(input);
+
+            if (compress)
+            {
+                stream = new GZipStream(stream, CompressionMode.Compress);
+            }
 
             WriteToStream(stream, input);
         }
@@ -30,7 +36,6 @@ namespace GZipAndCrypt
 
             stream.Write(dataBytes, 0, dataBytes.Length);
             stream.Flush();
-            stream.Seek(0, SeekOrigin.Begin);
         }
 
         private void ValidateInput(string input)
