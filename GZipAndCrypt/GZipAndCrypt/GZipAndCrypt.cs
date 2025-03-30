@@ -56,11 +56,16 @@ namespace GZipAndCrypt
             stream.Write(dataBytes, 0, dataBytes.Length);
             stream.Flush();
 
+            FlushCryptoStreamFinalBlock(stream);
+        }
+
+        private void FlushCryptoStreamFinalBlock(Stream stream)
+        {
             if (stream is CryptoStream encryptedStream)
             {
                 encryptedStream.FlushFinalBlock();
             }
-        }
+        } 
 
         private void ValidateInput(string input)
         {
