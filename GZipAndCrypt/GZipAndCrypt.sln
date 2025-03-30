@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GZipAndCrypt", "GZipAndCrypt\GZipAndCrypt.csproj", "{7B043FEE-EB88-466B-8DAB-D4C034F7923F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B043FEE-EB88-466B-8DAB-D4C034F7923F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B043FEE-EB88-466B-8DAB-D4C034F7923F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B043FEE-EB88-466B-8DAB-D4C034F7923F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B043FEE-EB88-466B-8DAB-D4C034F7923F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B4B1558-E64A-490C-B14D-D943035AA111}
+	EndGlobalSection
+EndGlobal
