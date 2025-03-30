@@ -17,18 +17,23 @@ namespace GZipAndCrypt
 
             ValidateInput(text);
 
-            byte[] dataBytes = Encoding.UTF8.GetBytes(text);
-
-            stream.Write(dataBytes, 0, dataBytes.Length);
-            stream.Flush();
-
-            stream.Position = 0;
+            WriteToStream(stream);
         }
 
         public string Read(Stream stream, bool compressed = false, bool encrypted = false)
         {
             using var reader = new StreamReader(stream);
             return reader.ReadToEnd();
+        }
+
+        private static void WriteToStream(Stream stream)
+        {
+            byte[] dataBytes = Encoding.UTF8.GetBytes(text);
+
+            stream.Write(dataBytes, 0, dataBytes.Length);
+            stream.Flush();
+
+            stream.Position = 0;
         }
 
         private static void ValidateInput(string input)
