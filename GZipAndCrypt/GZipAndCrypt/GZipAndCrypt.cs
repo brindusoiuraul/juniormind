@@ -27,6 +27,11 @@ namespace GZipAndCrypt
         {
             ArgumentNullException.ThrowIfNull(stream);
 
+            if (compressed)
+            {
+                stream = new GZipStream(stream, CompressionMode.Decompress);
+            }
+
             return new StreamReader(stream).ReadToEnd();
         }
 
