@@ -1,5 +1,4 @@
 using System.IO.Compression;
-using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -7,7 +6,7 @@ namespace GZipAndCrypt
 {
     public class GZipAndCrypt
     {
-        readonly System.Security.Cryptography.Aes AesEncryptor = System.Security.Cryptography.Aes.Create();
+        readonly Aes AesEncryptor = Aes.Create();
 
         public GZipAndCrypt()
         {
