@@ -33,5 +33,14 @@ namespace GZipAndCrypt
 
             Assert.Equal("testData", readData);
         }
+
+        [Fact]
+        public void CheckForWriteMethodWhenStreamIsNull()
+        {
+            MemoryStream stream = null;
+            GZipAndCrypt gzipAndCrypt = new GZipAndCrypt();
+
+            Assert.Throws<ArgumentNullException>(() => gzipAndCrypt.Write(stream, "testData"));
+        }
     }
 }

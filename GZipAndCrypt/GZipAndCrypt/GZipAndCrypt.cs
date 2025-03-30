@@ -12,6 +12,8 @@ namespace GZipAndCrypt
 
         public void Write(Stream stream, string text, bool compress = false, bool encrypt = false)
         {
+            ArgumentNullException.ThrowIfNull(stream);
+
             byte[] dataBytes = Encoding.UTF8.GetBytes(text);
 
             stream.Write(dataBytes, 0, dataBytes.Length);
