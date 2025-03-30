@@ -20,5 +20,18 @@ namespace GZipAndCrypt
 
             Assert.Equal("testData", readData);
         }
+
+        [Fact]
+        public void CheckForReadShouldBeEqual()
+        {
+            MemoryStream stream = new MemoryStream();
+            GZipAndCrypt gzipAndCrypt = new GZipAndCrypt();
+
+            gzipAndCrypt.Write(stream, "testData");
+
+            string readData = gzipAndCrypt.Read(stream);
+
+            Assert.Equal("testData", readData);
+        }
     }
 }
