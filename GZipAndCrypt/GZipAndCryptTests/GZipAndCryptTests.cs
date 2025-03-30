@@ -41,5 +41,16 @@ namespace GZipAndCrypt
 
             Assert.Throws<ArgumentException>(() => gzipAndCrypt.Write(stream, string.Empty));
         }
+
+        [Fact]
+        public void CheckForReadMethodShouldReturnTrue()
+        {
+            MemoryStream stream = new MemoryStream();
+            GZipAndCrypt gzipAndCrypt = new GZipAndCrypt();
+
+            gzipAndCrypt.Write(stream, "testData");
+
+            Assert.Equal("testData", gzipAndCrypt.Read(stream));
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace GZipAndCrypt
 
         public string Read(Stream stream, bool compressed = false, bool encrypted = false)
         {
-            throw new NotImplementedException();
+            return new StreamReader(stream).ReadToEnd();
         }
 
         private void WriteToStream(Stream stream, string input)
