@@ -14,16 +14,21 @@ namespace GZipAndCrypt
 
             ValidateInput(input);
 
-            byte[] dataBytes = Encoding.UTF8.GetBytes(input);
-
-            stream.Write(dataBytes, 0, dataBytes.Length);
-            stream.Flush();
-            stream.Seek(0, SeekOrigin.Begin);
+            WriteToStream(stream, input);
         }
 
         public string Read(Stream stream, bool compressed = false, bool encrypted = false)
         {
             throw new NotImplementedException();
+        }
+
+        private void WriteToStream(Stream stream, string input)
+        {
+            byte[] dataBytes = Encoding.UTF8.GetBytes(input);
+
+            stream.Write(dataBytes, 0, dataBytes.Length);
+            stream.Flush();
+            stream.Seek(0, SeekOrigin.Begin);
         }
 
         private void ValidateInput(string input)
