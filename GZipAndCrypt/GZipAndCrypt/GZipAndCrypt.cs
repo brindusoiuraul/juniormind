@@ -19,8 +19,8 @@ namespace GZipAndCrypt
 
             if (compress)
             {
-                using var processedStream = new GZipStream(stream, CompressionMode.Compress, leaveOpen: true);
-                WriteToStream(processedStream, input);
+                using var compressedStream = new GZipStream(stream, CompressionMode.Compress, leaveOpen: true);
+                WriteToStream(compressedStream, input);
             }
             else
             {
@@ -34,8 +34,18 @@ namespace GZipAndCrypt
         {
             ArgumentNullException.ThrowIfNull(stream);
 
-            using var reader = new StreamReader(stream);
-            return reader.ReadToEnd();
+            if (compressed)
+            {
+                using var deprocessedStream = new GZipStream(stream, CompressionMode.Decompress);
+
+                using var reader = new StreamReader(deprocessedStream);
+                return reader.ReadToEnd();
+            }
+            else
+            {
+                using var reader = new StreamReader(stream);
+                return reader.ReadToEnd();
+            }
         }
 
         private static void WriteToStream(Stream stream, string input)

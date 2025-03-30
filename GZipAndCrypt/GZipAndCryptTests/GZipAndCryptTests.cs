@@ -81,5 +81,16 @@
 
             Assert.Equal("�\b\0\0\0\0\0\0\n*I-.qI,I\0\0\0��\0`��9\b\0\0\0", gZipAndCrypt.Read(stream));
         }
+
+        [Fact]
+        public void DecompressionCheckShouldBeEqual()
+        {
+            MemoryStream stream = new MemoryStream();
+            GZipAndCrypt gZipAndCrypt = new GZipAndCrypt();
+
+            gZipAndCrypt.Write(stream, "testData", true, false);
+
+            Assert.Equal("testData", gZipAndCrypt.Read(stream, true, false));
+        }
     }
 }
