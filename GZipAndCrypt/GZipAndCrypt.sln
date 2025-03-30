@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35828.75 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GZipAndCrypt", "GZipAndCrypt\GZipAndCrypt.csproj", "{7B043FEE-EB88-466B-8DAB-D4C034F7923F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GZipAndCryptTests", "GZipAndCryptTests\GZipAndCryptTests.csproj", "{EDB85A99-43C8-4CA2-90CF-58B09469C81E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7B043FEE-EB88-466B-8DAB-D4C034F7923F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B043FEE-EB88-466B-8DAB-D4C034F7923F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B043FEE-EB88-466B-8DAB-D4C034F7923F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDB85A99-43C8-4CA2-90CF-58B09469C81E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDB85A99-43C8-4CA2-90CF-58B09469C81E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDB85A99-43C8-4CA2-90CF-58B09469C81E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDB85A99-43C8-4CA2-90CF-58B09469C81E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
