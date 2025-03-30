@@ -1,6 +1,7 @@
 using System.IO.Compression;
 using System.Security.Cryptography;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace GZipAndCrypt
 {
@@ -14,10 +15,7 @@ namespace GZipAndCrypt
         {
             ArgumentNullException.ThrowIfNull(stream);
 
-            if (string.IsNullOrEmpty(text))
-            {
-                throw new ArgumentException("Input text cannot be null or empty!", nameof(text));
-            }
+            ValidateInput(text);
 
             byte[] dataBytes = Encoding.UTF8.GetBytes(text);
 
@@ -31,6 +29,16 @@ namespace GZipAndCrypt
         {
             using var reader = new StreamReader(stream);
             return reader.ReadToEnd();
+        }
+
+        private static void ValidateInput(string input)
+        {
+            if (!string.IsNullOrEmpty(input))
+            {
+                return;
+            }
+
+            throw new ArgumentException("Input text cannot be null or empty!", nameof(input));
         }
     }
 }
