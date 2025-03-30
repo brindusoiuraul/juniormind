@@ -11,13 +11,13 @@ namespace GZipAndCrypt
         {
         }
 
-        public void Write(Stream stream, string text, bool compress = false, bool encrypt = false)
+        public void Write(Stream stream, string input, bool compress = false, bool encrypt = false)
         {
             ArgumentNullException.ThrowIfNull(stream);
 
-            ValidateInput(text);
+            ValidateInput(input);
 
-            WriteToStream(stream);
+            WriteToStream(stream, input);
         }
 
         public string Read(Stream stream, bool compressed = false, bool encrypted = false)
@@ -26,9 +26,9 @@ namespace GZipAndCrypt
             return reader.ReadToEnd();
         }
 
-        private static void WriteToStream(Stream stream)
+        private static void WriteToStream(Stream stream, string input)
         {
-            byte[] dataBytes = Encoding.UTF8.GetBytes(text);
+            byte[] dataBytes = Encoding.UTF8.GetBytes(input);
 
             stream.Write(dataBytes, 0, dataBytes.Length);
             stream.Flush();

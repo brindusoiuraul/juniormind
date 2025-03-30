@@ -59,7 +59,7 @@ namespace GZipAndCrypt
             GZipAndCrypt gzipAndCrypt = new GZipAndCrypt();
 
             var exception = Assert.Throws<ArgumentException>(() => gzipAndCrypt.Write(stream, ""));
-            Assert.Equal("Input text cannot be null or empty! (Parameter 'text')", exception.Message);
+            Assert.Equal("Input text cannot be null or empty! (Parameter 'input')", exception.Message);
         }
     }
 }
