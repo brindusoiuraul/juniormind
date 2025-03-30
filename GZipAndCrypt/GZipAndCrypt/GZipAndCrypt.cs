@@ -22,6 +22,8 @@ namespace GZipAndCrypt
 
         public string Read(Stream stream, bool compressed = false, bool encrypted = false)
         {
+            ArgumentNullException.ThrowIfNull(stream);
+
             using var reader = new StreamReader(stream);
             return reader.ReadToEnd();
         }
