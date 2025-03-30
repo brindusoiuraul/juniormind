@@ -14,6 +14,11 @@ namespace GZipAndCrypt
         {
             ArgumentNullException.ThrowIfNull(stream);
 
+            if (string.IsNullOrEmpty(text))
+            {
+                throw new ArgumentException("Input text cannot be null or empty!", nameof(text));
+            }
+
             byte[] dataBytes = Encoding.UTF8.GetBytes(text);
 
             stream.Write(dataBytes, 0, dataBytes.Length);

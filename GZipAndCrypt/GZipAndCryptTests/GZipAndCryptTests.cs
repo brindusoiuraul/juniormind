@@ -42,5 +42,24 @@ namespace GZipAndCrypt
 
             Assert.Throws<ArgumentNullException>(() => gzipAndCrypt.Write(stream, "testData"));
         }
+
+        [Fact]
+        public void CheckForWriteMethodWhenGivenDataIsNull()
+        {
+            MemoryStream stream = new MemoryStream();
+            GZipAndCrypt gzipAndCrypt = new GZipAndCrypt();
+
+            Assert.Throws<ArgumentException>(() => gzipAndCrypt.Write(stream, null));
+        }
+
+        [Fact]
+        public void CheckForWriteMethodWhenGivenDataIsEmpty()
+        {
+            MemoryStream stream = new MemoryStream();
+            GZipAndCrypt gzipAndCrypt = new GZipAndCrypt();
+
+            var exception = Assert.Throws<ArgumentException>(() => gzipAndCrypt.Write(stream, ""));
+            Assert.Equal("Input text cannot be null or empty! (Parameter 'text')", exception.Message);
+        }
     }
 }
