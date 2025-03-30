@@ -38,14 +38,10 @@ namespace GZipAndCrypt
             {
                 using var deprocessedStream = new GZipStream(stream, CompressionMode.Decompress);
 
-                using var reader = new StreamReader(deprocessedStream);
-                return reader.ReadToEnd();
+                return ReadFromStream(deprocessedStream);
             }
-            else
-            {
-                using var reader = new StreamReader(stream);
-                return reader.ReadToEnd();
-            }
+
+            return ReadFromStream(stream);
         }
 
         private static void WriteToStream(Stream stream, string input)
@@ -54,6 +50,12 @@ namespace GZipAndCrypt
 
             stream.Write(dataBytes, 0, dataBytes.Length);
             stream.Flush();
+        }
+
+        private static string ReadFromStream(Stream stream)
+        {
+            using var reader = new StreamReader(stream);
+            return reader.ReadToEnd();
         }
 
         private static void ValidateInput(string input)
