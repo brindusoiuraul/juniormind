@@ -12,9 +12,7 @@ namespace GZipAndCrypt
         {
             ArgumentNullException.ThrowIfNull(stream);
 
-            ArgumentNullException.ThrowIfNull(input);
-
-            if (string.Empty == input)
+            if (string.IsNullOrEmpty(input))
             {
                 throw new ArgumentException(nameof(input));
             }

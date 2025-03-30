@@ -30,7 +30,7 @@ namespace GZipAndCrypt
             MemoryStream stream = new MemoryStream();
             GZipAndCrypt gzipAndCrypt = new GZipAndCrypt();
 
-            Assert.Throws<ArgumentNullException>(() => gzipAndCrypt.Write(stream, null));
+            Assert.Throws<ArgumentException>(() => gzipAndCrypt.Write(stream, null));
         }
 
         [Fact]
