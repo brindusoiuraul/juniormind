@@ -12,10 +12,7 @@ namespace GZipAndCrypt
         {
             ArgumentNullException.ThrowIfNull(stream);
 
-            if (string.IsNullOrEmpty(input))
-            {
-                throw new ArgumentException(nameof(input));
-            }
+            ValidateInput(input);
 
             byte[] dataBytes = Encoding.UTF8.GetBytes(input);
 
@@ -27,6 +24,14 @@ namespace GZipAndCrypt
         public string Read(Stream stream, bool compressed = false, bool encrypted = false)
         {
             throw new NotImplementedException();
+        }
+
+        private void ValidateInput(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                throw new ArgumentException(nameof(input));
+            }
         }
     }
 }
