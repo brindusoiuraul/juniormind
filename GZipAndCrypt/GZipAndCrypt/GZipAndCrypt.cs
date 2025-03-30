@@ -1,10 +1,14 @@
 using System.IO.Compression;
+using System.Runtime.Intrinsics.Arm;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace GZipAndCrypt
 {
     public class GZipAndCrypt
     {
+        readonly System.Security.Cryptography.Aes AesEncryptor = System.Security.Cryptography.Aes.Create();
+
         public GZipAndCrypt()
         {
         }
@@ -20,6 +24,11 @@ namespace GZipAndCrypt
                 stream = new GZipStream(stream, CompressionMode.Compress);
             }
 
+            if (encrypt)
+            {
+                stream = new CryptoStream(stream, AesEncryptor.CreateEncryptor(), CryptoStreamMode.Write);
+            }
+
             WriteToStream(stream, input);
         }
 
@@ -32,6 +41,11 @@ namespace GZipAndCrypt
                 stream = new GZipStream(stream, CompressionMode.Decompress);
             }
 
+            if (encrypted)
+            {
+                stream = new CryptoStream(stream, AesEncryptor.CreateDecryptor(), CryptoStreamMode.Read);
+            }
+
             return new StreamReader(stream).ReadToEnd();
         }
 
@@ -41,6 +55,11 @@ namespace GZipAndCrypt
 
             stream.Write(dataBytes, 0, dataBytes.Length);
             stream.Flush();
+
+            if (stream is CryptoStream encryptedStream)
+            {
+                encryptedStream.FlushFinalBlock();
+            }
         }
 
         private void ValidateInput(string input)
