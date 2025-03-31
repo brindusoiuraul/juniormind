@@ -50,10 +50,9 @@ namespace GZipAndCrypt
 
         private void WriteToStream(Stream stream, string input)
         {
-            byte[] dataBytes = Encoding.UTF8.GetBytes(input);
-
-            stream.Write(dataBytes, 0, dataBytes.Length);
-            stream.Flush();
+            StreamWriter writer = new StreamWriter(stream);
+            writer.Write(input);
+            writer.Flush();
 
             FlushCryptoStreamFinalBlock(stream);
         }
