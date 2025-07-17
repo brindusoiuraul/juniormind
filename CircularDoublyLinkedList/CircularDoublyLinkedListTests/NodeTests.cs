@@ -21,5 +21,19 @@ namespace CircularDoublyLinkedList
 
             Assert.Equal("test", newNode.Value);
         }
+
+        [Fact]
+        public void CheckForNextNodeShouldReturnTrue()
+        {
+            Node<string> firstNode = new Node<string>();
+            firstNode.Value = "raul";
+
+            Node<string> nextNode = new Node<string>();
+            nextNode.Value = "alexandru";
+
+            firstNode.Next = nextNode;
+
+            Assert.Equal("alexandru", firstNode.Next.Value);
+        }
     }
 }
